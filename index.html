@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14 Sommets des Bauges · 13 Juin</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg2: #1a1d27;
+    --bg3: #232736;
+    --border: #2e3347;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --summit: #22c55e;
+    --ravito-car: #f59e0b;
+    --ravito-foot: #3b82f6;
+    --start: #ec4899;
+    --finish: #ec4899;
+    --night: #8b5cf6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; }
+
+  /* NAV */
+  nav { background: var(--bg2); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; display: flex; align-items: center; gap: 0; overflow-x: auto; }
+  nav button { background: none; border: none; color: var(--text2); padding: 14px 18px; cursor: pointer; font-size: 13px; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all .2s; }
+  nav button.active, nav button:hover { color: var(--text); }
+  nav button.active { border-bottom-color: var(--accent); }
+  .nav-title { padding: 14px 20px; font-weight: 700; font-size: 13px; color: var(--accent2); white-space: nowrap; border-right: 1px solid var(--border); }
+
+  /* HEADER */
+  .header { background: linear-gradient(135deg, #1e1b4b 0%, #0f1117 60%); padding: 32px 20px 24px; }
+  .header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+  .header .sub { color: var(--text2); font-size: 14px; margin-bottom: 20px; }
+  .stats { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stat { background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; min-width: 90px; }
+  .stat .val { font-size: 22px; font-weight: 700; color: var(--accent2); }
+  .stat .lbl { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+  /* SECTIONS */
+  .section { display: none; padding: 16px; max-width: 900px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .cp { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .cp:last-child { border-bottom: none; }
+  .cp-time { font-size: 15px; font-weight: 700; min-width: 52px; color: var(--text); }
+  .cp-time.night { color: var(--night); }
+  .cp-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
+  .cp-dot.sommet { background: var(--summit); box-shadow: 0 0 8px var(--summit); }
+  .cp-dot.ravito-voit { background: var(--ravito-car); }
+  .cp-dot.ravito-pied { background: var(--ravito-foot); }
+  .cp-dot.depart { background: var(--start); box-shadow: 0 0 8px var(--start); }
+  .cp-dot.arrivee { background: var(--finish); box-shadow: 0 0 8px var(--finish); }
+  .cp-info { flex: 1; }
+  .cp-name { font-weight: 600; font-size: 14px; }
+  .cp-meta { font-size: 12px; color: var(--text2); margin-top: 3px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag.sommet { background: rgba(34,197,94,.15); color: var(--summit); }
+  .tag.ravito-voit { background: rgba(245,158,11,.15); color: var(--ravito-car); }
+  .tag.ravito-pied { background: rgba(59,130,246,.15); color: var(--ravito-foot); }
+  .tag.depart, .tag.arrivee { background: rgba(236,72,153,.15); color: var(--start); }
+  .cp-comment { font-size: 12px; color: var(--text2); margin-top: 4px; font-style: italic; }
+  .cp-pause { font-size: 11px; color: var(--ravito-car); background: rgba(245,158,11,.1); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 4px; }
+
+  /* PACER TABS */
+  .pacer-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .pacer-nav button { background: var(--bg3); border: 1px solid var(--border); color: var(--text2); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; transition: all .2s; }
+  .pacer-nav button.active { background: var(--accent); border-color: var(--accent); color: white; }
+  .pacer-content { display: none; }
+  .pacer-content.active { display: block; }
+
+  /* CARDS */
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+  .card h3 { font-size: 13px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+  .info-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+  .info-label { font-size: 12px; color: var(--text2); min-width: 130px; }
+  .info-val { font-size: 13px; font-weight: 500; }
+  .info-val.highlight { color: var(--accent2); }
+  .section-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .section-table th { text-align: left; color: var(--text2); padding: 6px 8px; border-bottom: 1px solid var(--border); font-weight: 600; }
+  .section-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); }
+  .section-table tr:last-child td { border-bottom: none; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--accent); flex-shrink: 0; }
+  .checklist li.checked label { text-decoration: line-through; color: var(--text2); }
+  .check-label { flex: 1; cursor: pointer; }
+  .check-note { font-size: 11px; color: var(--text2); margin-top: 2px; }
+  .check-cat { font-size: 12px; font-weight: 700; color: var(--accent2); text-transform: uppercase; letter-spacing: .5px; padding: 12px 0 6px; }
+  .oblig { font-size: 10px; font-weight: 700; color: var(--ravito-car); }
+
+  /* RAVITO */
+  .ravito-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+  .ravito-header { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  .ravito-header h3 { font-size: 15px; font-weight: 700; }
+  .ravito-header .meta { font-size: 12px; color: var(--text2); margin-top: 4px; }
+  .ravito-body { padding: 12px 16px; }
+  .food-item { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); align-items: center; }
+  .food-item:last-child { border-bottom: none; }
+  .food-num { width: 20px; color: var(--text2); font-size: 12px; flex-shrink: 0; }
+  .food-name { flex: 1; font-size: 13px; }
+  .food-qty { font-size: 12px; color: var(--accent2); min-width: 80px; text-align: right; }
+  .food-note { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+  /* LOGISTIQUE */
+  .logis-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+  .logis-header { padding: 14px 16px; display: flex; gap: 12px; align-items: center; border-bottom: 1px solid var(--border); }
+  .logis-num { width: 32px; height: 32px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .logis-header h3 { font-size: 14px; font-weight: 700; }
+  .logis-header .meta { font-size: 12px; color: var(--text2); }
+  .logis-body { padding: 12px 16px; }
+  .action-list { list-style: none; margin-bottom: 10px; }
+  .action-list li { display: flex; gap: 8px; padding: 5px 0; font-size: 13px; }
+  .action-num { color: var(--accent2); font-weight: 700; min-width: 16px; }
+  .materiel-list { list-style: none; }
+  .materiel-list li { padding: 5px 0; font-size: 13px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .materiel-list li:last-child { border-bottom: none; }
+  .materiel-list input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; padding: 10px 14px; background: var(--bg2); border-radius: 10px; border: 1px solid var(--border); }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text2); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  @media print {
+    nav, .pacer-nav { display: none; }
+    .pacer-content { display: block !important; page-break-after: always; }
+    .section { display: block !important; }
+    body { background: white; color: black; }
+    .card, .ravito-card, .logis-card { background: white; border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-title">⛰️ 14 Bauges</div>
+  <button class="active" onclick="showSection('planning')">Planning</button>
+  <button onclick="showSection('pacers')">Pacers</button>
+  <button onclick="showSection('ravitos')">Ravitos</button>
+  <button onclick="showSection('logistique')">Logistique</button>
+  <button onclick="showSection('sac')">Mon Sac</button>
+</nav>
+
+<div class="header">
+  <h1>14 Sommets des Bauges</h1>
+  <div class="sub">13 Juin · Départ 03h00 · Parking des Rafforts</div>
+  <div class="stats">
+    <div class="stat"><div class="val">80,4 km</div><div class="lbl">Distance</div></div>
+    <div class="stat"><div class="val">8700 m</div><div class="lbl">D+ total</div></div>
+    <div class="stat"><div class="val">14</div><div class="lbl">Sommets</div></div>
+    <div class="stat"><div class="val">~24h</div><div class="lbl">Durée estimée</div></div>
+    <div class="stat"><div class="val">03h00</div><div class="lbl">Départ</div></div>
+  </div>
+</div>
+
+<!-- PLANNING -->
+<div id="planning" class="section active">
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--start)"></div> Départ/Arrivée</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--summit)"></div> Sommet</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--ravito-car)"></div> Ravito voiture</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--ravito-foot)"></div> Ravito à pied</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--night)"></div> Section nuit</div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="cp">
+      <div class="cp-time">03:00</div>
+      <div class="cp-dot depart"></div>
+      <div class="cp-info">
+        <div class="cp-name">Parking des Rafforts <span class="tag depart">Départ</span></div>
+        <div class="cp-meta"><span>km 0</span><span>Alt 1200m</span><span>Pacer: Firmin ou solo</span><span>Voiture: V1</span></div>
+        <div class="cp-comment">Départ 3h</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">03:45</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Dent de Cons <span class="tag sommet">Sommet 1</span></div>
+        <div class="cp-meta"><span>km 3.8</span><span>Alt 2016m</span><span>D+ 827m</span><span>Pacer: Firmin ou solo</span></div>
+        <div class="cp-comment">1er sommet</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">05:14</div>
+      <div class="cp-dot ravito-voit"></div>
+      <div class="cp-info">
+        <div class="cp-name">Route de Tamie <span class="tag ravito-voit">Ravito voiture</span></div>
+        <div class="cp-meta"><span>km 8.5</span><span>Alt 1022m</span><span>Voiture: V1+V2</span></div>
+        <div class="cp-comment">Ravito voiture · V1 récup Firmin · V2 dépose Vincent</div>
+        <div class="cp-pause">⏱ Pause 5 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">07:39</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Sambuy <span class="tag sommet">Sommet 2</span></div>
+        <div class="cp-meta"><span>km 18.3</span><span>Alt 2133m</span><span>D+ 1433m</span><span>Pacer: Vincent</span></div>
+        <div class="cp-comment">Longue section</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">08:04</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Chaurionde <span class="tag sommet">Sommet 3</span></div>
+        <div class="cp-meta"><span>km 19.6</span><span>Alt 2134m</span><span>Pacer: Vincent</span></div>
+        <div class="cp-comment">Crête très technique</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">08:48</div>
+      <div class="cp-dot ravito-pied"></div>
+      <div class="cp-info">
+        <div class="cp-name">Bas Arcalod 1 <span class="tag ravito-pied">Ravito à pied</span></div>
+        <div class="cp-meta"><span>km 22.5</span><span>Alt 1827m</span><span>Pacer: Vincent</span></div>
+        <div class="cp-comment">Ravito à pied · toute l'équipe monte depuis Nant Fourchu</div>
+        <div class="cp-pause">⏱ Pause 10 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">09:31</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Arcalod <span class="tag sommet">Sommet 4</span></div>
+        <div class="cp-meta"><span>km 23.7</span><span>Alt 2185m · Point culminant</span><span>Pacer: Vincent</span></div>
+        <div class="cp-comment">Point culminant · montée très raide</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">10:16</div>
+      <div class="cp-dot ravito-pied"></div>
+      <div class="cp-info">
+        <div class="cp-name">Bas Arcalod 2 <span class="tag ravito-pied">Ravito à pied</span></div>
+        <div class="cp-meta"><span>km 24.9</span><span>Alt 1862m</span><span>Pacer: Vincent → Hugo</span></div>
+        <div class="cp-comment">Fin section Vincent · Hugo prend le relais</div>
+        <div class="cp-pause">⏱ Pause 5 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">10:53</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Mont de la Coche <span class="tag sommet">Sommet 5</span></div>
+        <div class="cp-meta"><span>km 27.1</span><span>Alt 1975m</span><span>Pacer: Hugo</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">11:05</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Tré le Mollard <span class="tag sommet">Sommet 6</span></div>
+        <div class="cp-meta"><span>km 27.5</span><span>Alt 2031m</span><span>Pacer: Hugo</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">12:27</div>
+      <div class="cp-dot ravito-voit"></div>
+      <div class="cp-info">
+        <div class="cp-name">Nant Fourchu <span class="tag ravito-voit">Ravito voiture</span></div>
+        <div class="cp-meta"><span>km 34.1</span><span>Alt 1042m</span><span>Voiture: V1+V2+V3</span></div>
+        <div class="cp-comment">Hugo finit ici · Julien prend le relais · 🍝 Lasagnes midi</div>
+        <div class="cp-pause">⏱ Pause 20 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">14:17</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Pecloz <span class="tag sommet">Sommet 7</span></div>
+        <div class="cp-meta"><span>km 38.3</span><span>Alt 2166m</span><span>D+ 1153m</span><span>Pacer: Julien</span></div>
+        <div class="cp-comment">Section ultra-technique</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">14:40</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Armenaz <span class="tag sommet">Sommet 8</span></div>
+        <div class="cp-meta"><span>km 39.3</span><span>Alt 2111m</span><span>Pacer: Julien → Louis Le C</span></div>
+        <div class="cp-comment">Dernier point Julien · Louis Le C rejoint ici</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">15:25</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Pointe des Arces <span class="tag sommet">Sommet 9</span></div>
+        <div class="cp-meta"><span>km 41.6</span><span>Alt 2015m</span><span>Pacer: Louis Le C</span></div>
+        <div class="cp-comment">Arrêt repérage</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">15:51</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Pointe des Arlicots <span class="tag sommet">Sommet 10</span></div>
+        <div class="cp-meta"><span>km 43.4</span><span>Alt 2003m</span><span>Pacer: Louis Le C</span></div>
+        <div class="cp-comment">Arrêt repérage</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">15:53</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Grand Parra <span class="tag sommet">Sommet 11</span></div>
+        <div class="cp-meta"><span>km 43.7</span><span>Alt 1979m</span><span>Pacer: Louis Le C</span></div>
+        <div class="cp-comment">Arrêt repérage</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">17:24</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Dent d'Arclusaz <span class="tag sommet">Sommet 12</span></div>
+        <div class="cp-meta"><span>km 48.4</span><span>Alt 1960m</span><span>Pacer: Louis M</span></div>
+        <div class="cp-comment">Échange clés Louis Le C → Louis M · km 47.3</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time">19:08</div>
+      <div class="cp-dot ravito-voit"></div>
+      <div class="cp-info">
+        <div class="cp-name">Ravito Sainte-Reine <span class="tag ravito-voit">Ravito voiture</span></div>
+        <div class="cp-meta"><span>km 53.9 · D911</span><span>Alt 776m</span><span>Voiture: V1+V2+V3</span></div>
+        <div class="cp-comment">Sur D911 · km 52.8 · alt 776m · Louis M finit ici</div>
+        <div class="cp-pause">⏱ Pause 25 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time night">21:21</div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Colombier <span class="tag sommet">Sommet 13</span></div>
+        <div class="cp-meta"><span>km 61.1</span><span>Alt 1989m</span><span>D+ 1284m</span><span>Pacer: Solo</span></div>
+        <div class="cp-comment">Grande montée depuis D911 · 🌙 Section de nuit</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time night">23:05</div>
+      <div class="cp-dot ravito-voit"></div>
+      <div class="cp-info">
+        <div class="cp-name">La Compote <span class="tag ravito-voit">Ravito voiture</span></div>
+        <div class="cp-meta"><span>km 69.3</span><span>Alt 719m</span><span>Voiture: V1+V2+V3</span></div>
+        <div class="cp-comment">Ravito voiture avant montée finale · Tout le monde présent</div>
+        <div class="cp-pause">⏱ Pause 10 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time night">01:32 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-dot sommet"></div>
+      <div class="cp-info">
+        <div class="cp-name">Trelod <span class="tag sommet">Sommet 14</span></div>
+        <div class="cp-meta"><span>km 75.9</span><span>Alt 2124m</span><span>D+ 1414m</span><span>Pacer: Tout le monde</span></div>
+        <div class="cp-comment">Dernier sommet 🏔️</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time night">02:50 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-dot arrivee"></div>
+      <div class="cp-info">
+        <div class="cp-name">Parking des Cornes <span class="tag arrivee">Arrivée</span></div>
+        <div class="cp-meta"><span>km 81.5</span><span>Alt 1201m</span><span>Voiture: V1+V2+V3</span></div>
+        <div class="cp-comment">🎉 ARRIVÉE · ~23h50 de course</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PACERS -->
+<div id="pacers" class="section">
+  <div class="pacer-nav">
+    <button class="active" onclick="showPacer('firmin')">Firmin / Solo</button>
+    <button onclick="showPacer('vincent')">Vincent</button>
+    <button onclick="showPacer('hugo')">Hugo</button>
+    <button onclick="showPacer('julien')">Julien</button>
+    <button onclick="showPacer('louisc')">Louis Le C</button>
+    <button onclick="showPacer('louism')">Louis M</button>
+  </div>
+
+  <!-- FIRMIN -->
+  <div id="pacer-firmin" class="pacer-content active">
+    <div class="card">
+      <h3>Fiche Pacer · Firmin ou Solo</h3>
+      <div class="info-row"><div class="info-label">Section</div><div class="info-val highlight">Rafforts → Route de Tamie</div></div>
+      <div class="info-row"><div class="info-label">Point RDV</div><div class="info-val">Parking des Rafforts</div></div>
+      <div class="info-row"><div class="info-label">Heure RDV coureur</div><div class="info-val highlight">03:00</div></div>
+      <div class="info-row"><div class="info-label">Comment y aller</div><div class="info-val">Voiture depuis le gîte à ~2h30 · 20 min de route</div></div>
+      <div class="info-row"><div class="info-label">GPS / Accès</div><div class="info-val">Parking des Rafforts RD911 direction Tamie · alt 1200m</div></div>
+    </div>
+    <div class="card">
+      <h3>Fin de section</h3>
+      <div class="info-row"><div class="info-label">Point de fin</div><div class="info-val">Route de Tamie</div></div>
+      <div class="info-row"><div class="info-label">Heure estimée fin</div><div class="info-val highlight">05:14</div></div>
+      <div class="info-row"><div class="info-label">Suite</div><div class="info-val">V1 t'attend · pause 15 min</div></div>
+    </div>
+    <div class="card">
+      <h3>Sections à courir</h3>
+      <table class="section-table">
+        <tr><th>Section</th><th>Départ</th><th>km</th><th>D+</th><th>D-</th><th>Note</th></tr>
+        <tr><td>Rafforts → Dent de Cons</td><td class="highlight">03:00</td><td>3.8</td><td>827m</td><td>11m</td><td>Départ nuit</td></tr>
+        <tr><td>Dent de Cons → Tamie</td><td class="highlight">03:45</td><td>4.7</td><td>202m</td><td>1196m</td><td>Descente technique</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Ce que tu dois amener</h3>
+      <ul class="checklist">
+        <li><input type="checkbox" id="f1"><label class="check-label" for="f1">Frontale chargée <div class="check-note">Départ nuit 3h</div></label></li>
+        <li><input type="checkbox" id="f2"><label class="check-label" for="f2">Veste coupe-vent <div class="check-note">Froid</div></label></li>
+        <li><input type="checkbox" id="f3"><label class="check-label" for="f3">Eau 1L <div class="check-note">Pas de source avant Tamie</div></label></li>
+        <li><input type="checkbox" id="f4"><label class="check-label" for="f4">Gels / barres 2h</label></li>
+        <li><input type="checkbox" id="f5"><label class="check-label" for="f5">Téléphone chargé</label></li>
+      </ul>
+    </div>
+    <div class="card" style="border-color: rgba(245,158,11,.4);">
+      <h3 style="color:var(--ravito-car)">Notes importantes</h3>
+      <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:1.8;">
+        <li>Rythme imposé par le coureur — ne pas partir trop vite</li>
+        <li>Si Firmin absent : le coureur part solo sur sections 1 et 2</li>
+        <li>À Tamie : pause 5 min · V1 récup Firmin si présent</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- VINCENT -->
+  <div id="pacer-vincent" class="pacer-content">
+    <div class="card">
+      <h3>Fiche Pacer · Vincent</h3>
+      <div class="info-row"><div class="info-label">Section</div><div class="info-val highlight">Route de Tamie → Bas Arcalod 2</div></div>
+      <div class="info-row"><div class="info-label">Point RDV</div><div class="info-val">Route de Tamie</div></div>
+      <div class="info-row"><div class="info-label">Heure RDV coureur</div><div class="info-val highlight">05:14</div></div>
+      <div class="info-row"><div class="info-label">Comment y aller</div><div class="info-val">V2 depuis le gîte · départ ~4h45 · 15 min de route</div></div>
+      <div class="info-row"><div class="info-label">GPS / Accès</div><div class="info-val">Route de Tamie parking D911 · alt 1022m</div></div>
+    </div>
+    <div class="card">
+      <h3>Fin de section</h3>
+      <div class="info-row"><div class="info-label">Point de fin</div><div class="info-val">Bas Arcalod 2 · km 24.9</div></div>
+      <div class="info-row"><div class="info-label">Heure estimée fin</div><div class="info-val highlight">10:16</div></div>
+      <div class="info-row"><div class="info-label">Suite</div><div class="info-val">Tu termines ici · Hugo prend le relais</div></div>
+    </div>
+    <div class="card">
+      <h3>Sections à courir</h3>
+      <table class="section-table">
+        <tr><th>Section</th><th>Départ</th><th>km</th><th>D+</th><th>D-</th><th>Note</th></tr>
+        <tr><td>Tamie → Sambuy</td><td class="highlight">05:14</td><td>9.8</td><td>1433m</td><td>322m</td><td>Longue montée</td></tr>
+        <tr><td>Sambuy → Chaurionde</td><td class="highlight">07:39</td><td>1.3</td><td>98m</td><td>97m</td><td>Crête très technique</td></tr>
+        <tr><td>Chaurionde → Bas Arcalod 1</td><td class="highlight">08:04</td><td>2.9</td><td>104m</td><td>411m</td><td>RAVITO À PIED 10 min</td></tr>
+        <tr><td>Bas Arcalod 1 → Arcalod</td><td class="highlight">08:48</td><td>1.2</td><td>478m</td><td>0m</td><td>Montée très raide</td></tr>
+        <tr><td>Arcalod → Bas Arcalod 2</td><td class="highlight">09:31</td><td>1.2</td><td>0m</td><td>411m</td><td>RAVITO À PIED 5 min · FIN</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Ce que tu dois amener</h3>
+      <ul class="checklist">
+        <li><input type="checkbox" id="v1"><label class="check-label" for="v1">Eau 1.5L <div class="check-note">Long tronçon · 2 ravitos à pied</div></label></li>
+        <li><input type="checkbox" id="v2"><label class="check-label" for="v2">Nourriture 7h</label></li>
+        <li><input type="checkbox" id="v3"><label class="check-label" for="v3">Polaire <div class="check-note">Arcalod 2185m</div></label></li>
+        <li><input type="checkbox" id="v4"><label class="check-label" for="v4">Bâtons <div class="check-note">Fortement recommandé</div></label></li>
+        <li><input type="checkbox" id="v5"><label class="check-label" for="v5">Frontale <div class="check-note">Début section</div></label></li>
+      </ul>
+    </div>
+    <div class="card" style="border-color: rgba(245,158,11,.4);">
+      <h3 style="color:var(--ravito-car)">Notes importantes</h3>
+      <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:1.8;">
+        <li>Ravito À PIED Bas Arcalod 1 (km 22.5 alt 1827m) · pause 10 min · toute l'équipe monte</li>
+        <li>Arcalod point culminant (2185m) · montée 1.2km très raide depuis le bas</li>
+        <li>Ravito À PIED Bas Arcalod 2 (km 24.9 alt 1862m) · pause 5 min · FIN ta section</li>
+        <li>Hugo te rejoint au Bas Arcalod 2 et repart avec le coureur</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HUGO -->
+  <div id="pacer-hugo" class="pacer-content">
+    <div class="card">
+      <h3>Fiche Pacer · Hugo</h3>
+      <div class="info-row"><div class="info-label">Section</div><div class="info-val highlight">Bas Arcalod 2 → Parking Nant Fourchu</div></div>
+      <div class="info-row"><div class="info-label">Point RDV</div><div class="info-val">Bas Arcalod 2 (km 24.9)</div></div>
+      <div class="info-row"><div class="info-label">Heure RDV coureur</div><div class="info-val highlight">10:16</div></div>
+      <div class="info-row"><div class="info-label">Comment y aller</div><div class="info-val">Monter à pied depuis le parking Nant Fourchu avec toute l'équipe · compter ~1h de montée</div></div>
+      <div class="info-row"><div class="info-label">GPS / Accès</div><div class="info-val">Bas Arcalod 2 · km 24.9 alt 1862m · accès à pied depuis parking Nant Fourchu</div></div>
+    </div>
+    <div class="card">
+      <h3>Fin de section</h3>
+      <div class="info-row"><div class="info-label">Point de fin</div><div class="info-val">Parking Nant Fourchu</div></div>
+      <div class="info-row"><div class="info-label">Heure estimée fin</div><div class="info-val highlight">12:27</div></div>
+      <div class="info-row"><div class="info-label">Suite</div><div class="info-val">V2 t'attend · tu rejoins l'équipe voiture</div></div>
+    </div>
+    <div class="card">
+      <h3>Sections à courir</h3>
+      <table class="section-table">
+        <tr><th>Section</th><th>Départ</th><th>km</th><th>D+</th><th>D-</th><th>Note</th></tr>
+        <tr><td>Bas Arcalod 2 → Mont de la Coche</td><td class="highlight">10:16</td><td>2.2</td><td>367m</td><td>60m</td><td></td></tr>
+        <tr><td>Mont de la Coche → Tré le Mollard</td><td class="highlight">10:53</td><td>0.4</td><td>81m</td><td>81m</td><td></td></tr>
+        <tr><td>Tré le Mollard → Nant Fourchu</td><td class="highlight">11:05</td><td>6.6</td><td>0m</td><td>1030m</td><td>Longue descente · LASAGNES 20 min</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Ce que tu dois amener</h3>
+      <ul class="checklist">
+        <li><input type="checkbox" id="h1"><label class="check-label" for="h1">Eau 1L</label></li>
+        <li><input type="checkbox" id="h2"><label class="check-label" for="h2">Nourriture 3h</label></li>
+        <li><input type="checkbox" id="h3"><label class="check-label" for="h3">Bâtons <div class="check-note">Recommandé</div></label></li>
+        <li><input type="checkbox" id="h4"><label class="check-label" for="h4">Frontale si retard</label></li>
+      </ul>
+    </div>
+    <div class="card" style="border-color: rgba(245,158,11,.4);">
+      <h3 style="color:var(--ravito-car)">Notes importantes</h3>
+      <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:1.8;">
+        <li>Tu pars avec toute l'équipe depuis Nant Fourchu et tu montes à pied pour rejoindre le coureur au Bas Arcalod 2</li>
+        <li>Tu restes avec le coureur de km 24.9 jusqu'à km 34.1</li>
+        <li>À Nant Fourchu : lasagnes + pause 20 min · Julien prend le relais</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- JULIEN -->
+  <div id="pacer-julien" class="pacer-content">
+    <div class="card">
+      <h3>Fiche Pacer · Julien</h3>
+      <div class="info-row"><div class="info-label">Section</div><div class="info-val highlight">Nant Fourchu → Armenaz</div></div>
+      <div class="info-row"><div class="info-label">Point RDV</div><div class="info-val">Parking Nant Fourchu</div></div>
+      <div class="info-row"><div class="info-label">Heure RDV coureur</div><div class="info-val highlight">12:27</div></div>
+      <div class="info-row"><div class="info-label">Comment y aller</div><div class="info-val">Voiture depuis le gîte · 35 min de route · arriver 30 min avant le coureur</div></div>
+      <div class="info-row"><div class="info-label">GPS / Accès</div><div class="info-val">Parking Nant Fourchu D990 dir. St-François-de-Sales · alt 1042m</div></div>
+    </div>
+    <div class="card">
+      <h3>Fin de section</h3>
+      <div class="info-row"><div class="info-label">Point de fin</div><div class="info-val">Armenaz</div></div>
+      <div class="info-row"><div class="info-label">Heure estimée fin</div><div class="info-val highlight">14:40</div></div>
+      <div class="info-row"><div class="info-label">Suite</div><div class="info-val">Tu termines ici · Louis Le C prend le relais</div></div>
+    </div>
+    <div class="card">
+      <h3>Sections à courir</h3>
+      <table class="section-table">
+        <tr><th>Section</th><th>Départ</th><th>km</th><th>D+</th><th>D-</th><th>Note</th></tr>
+        <tr><td>Nant Fourchu → Pecloz</td><td class="highlight">12:27</td><td>4.2</td><td>1153m</td><td>29m</td><td>⚠️ Ultra-technique</td></tr>
+        <tr><td>Pecloz → Armenaz</td><td class="highlight">14:17</td><td>1.0</td><td>125m</td><td>180m</td><td>Dernier point Julien</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Ce que tu dois amener</h3>
+      <ul class="checklist">
+        <li><input type="checkbox" id="j1"><label class="check-label" for="j1">Eau 1L</label></li>
+        <li><input type="checkbox" id="j2"><label class="check-label" for="j2">Nourriture 3h</label></li>
+        <li><input type="checkbox" id="j3"><label class="check-label" for="j3">Polaire <div class="check-note">Crêtes 2000m+</div></label></li>
+        <li><input type="checkbox" id="j4"><label class="check-label" for="j4">Bâtons</label></li>
+        <li><input type="checkbox" id="j5"><label class="check-label" for="j5">Frontale secours</label></li>
+      </ul>
+    </div>
+    <div class="card" style="border-color: rgba(245,158,11,.4);">
+      <h3 style="color:var(--ravito-car)">Notes importantes</h3>
+      <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:1.8;">
+        <li>Nant Fourchu → Pecloz ultra-technique +1153m en 4.2km · passage le plus lent du parcours</li>
+        <li>Rythme imposé par le coureur</li>
+        <li>À Armenaz : Louis Le C prend le relais · tu attends la voiture</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LOUIS LE C -->
+  <div id="pacer-louisc" class="pacer-content">
+    <div class="card">
+      <h3>Fiche Pacer · Louis Le C</h3>
+      <div class="info-row"><div class="info-label">Section</div><div class="info-val highlight">Armenaz → Dent d'Arclusaz (km 48.4)</div></div>
+      <div class="info-row"><div class="info-label">Point RDV</div><div class="info-val">Armenaz</div></div>
+      <div class="info-row"><div class="info-label">Heure RDV coureur</div><div class="info-val highlight">14:40</div></div>
+      <div class="info-row"><div class="info-label">Comment y aller</div><div class="info-val">Voiture depuis le gîte · 40 min de route + ~1h30 à pied montée</div></div>
+      <div class="info-row"><div class="info-label">GPS / Accès</div><div class="info-val">Armenaz alt 2111m · accès D911 à Doucy-en-Bauges</div></div>
+    </div>
+    <div class="card">
+      <h3>Fin de section</h3>
+      <div class="info-row"><div class="info-label">Point de fin</div><div class="info-val">Dent d'Arclusaz km 48.4</div></div>
+      <div class="info-row"><div class="info-label">Heure estimée fin</div><div class="info-val highlight">17:24</div></div>
+      <div class="info-row"><div class="info-label">Suite</div><div class="info-val">Remets les clés à Louis M · voiture vient te chercher</div></div>
+    </div>
+    <div class="card">
+      <h3>Sections à courir</h3>
+      <table class="section-table">
+        <tr><th>Section</th><th>Départ</th><th>km</th><th>D+</th><th>D-</th><th>Note</th></tr>
+        <tr><td>Armenaz → Pointe des Arces</td><td class="highlight">14:40</td><td>2.3</td><td>248m</td><td>344m</td><td>Arrêt repérage</td></tr>
+        <tr><td>Pointe des Arces → Arlicots</td><td class="highlight">15:25</td><td>1.8</td><td>155m</td><td>167m</td><td>Arrêt repérage</td></tr>
+        <tr><td>Arlicots → Grand Parra</td><td class="highlight">15:51</td><td>0.3</td><td>5m</td><td>29m</td><td>Arrêt repérage</td></tr>
+        <tr><td>Grand Parra → Dent d'Arclusaz</td><td class="highlight">15:53</td><td>4.7</td><td>561m</td><td>581m</td><td>Descente technique</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Ce que tu dois amener</h3>
+      <ul class="checklist">
+        <li><input type="checkbox" id="lc1"><label class="check-label" for="lc1">Eau 1.5L <div class="check-note">Long tronçon sans ravito</div></label></li>
+        <li><input type="checkbox" id="lc2"><label class="check-label" for="lc2">Nourriture 5h</label></li>
+        <li><input type="checkbox" id="lc3"><label class="check-label" for="lc3">Polaire <div class="check-note">Crêtes 2000m+</div></label></li>
+        <li><input type="checkbox" id="lc4"><label class="check-label" for="lc4">Bâtons</label></li>
+        <li><input type="checkbox" id="lc5"><label class="check-label" for="lc5">Frontale secours</label></li>
+        <li><input type="checkbox" id="lc6"><label class="check-label" for="lc6" style="color:var(--ravito-car)"><strong>Clés voiture pour Louis M</strong> <div class="check-note" style="color:var(--ravito-car)">⚠️ IMPORTANT — remise à la Dent d'Arclusaz km 47.3</div></label></li>
+      </ul>
+    </div>
+    <div class="card" style="border-color: rgba(245,158,11,.4);">
+      <h3 style="color:var(--ravito-car)">Notes importantes</h3>
+      <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:1.8;">
+        <li>Repérer l'itinéraire sur GPX avant le jour J</li>
+        <li>Arrêts repérage ensemble à chaque sommet</li>
+        <li>⚠️ IMPORTANT : remise des clés à Louis M à la Dent d'Arclusaz (km 47.3) — confirmer RDV la veille</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LOUIS M -->
+  <div id="pacer-louism" class="pacer-content">
+    <div class="card">
+      <h3>Fiche Pacer · Louis M</h3>
+      <div class="info-row"><div class="info-label">Section</div><div class="info-val highlight">Dent d'Arclusaz → Ravito Sainte-Reine D911</div></div>
+      <div class="info-row"><div class="info-label">Point RDV</div><div class="info-val">Dent d'Arclusaz km 47.3</div></div>
+      <div class="info-row"><div class="info-label">Heure RDV coureur</div><div class="info-val highlight">17:24</div></div>
+      <div class="info-row"><div class="info-label">Comment y aller</div><div class="info-val">Monter depuis la D911 (zone km 52.8) à pied · compter ~1h30</div></div>
+      <div class="info-row"><div class="info-label">GPS / Accès</div><div class="info-val">Dent d'Arclusaz km 47.3 alt 1960m · accès depuis D911 vallée</div></div>
+    </div>
+    <div class="card">
+      <h3>Fin de section</h3>
+      <div class="info-row"><div class="info-label">Point de fin</div><div class="info-val">Ravito Sainte-Reine D911 km 53.9</div></div>
+      <div class="info-row"><div class="info-label">Heure estimée fin</div><div class="info-val highlight">19:08</div></div>
+      <div class="info-row"><div class="info-label">Suite</div><div class="info-val">La voiture t'attend sur la D911</div></div>
+    </div>
+    <div class="card">
+      <h3>Sections à courir</h3>
+      <table class="section-table">
+        <tr><th>Section</th><th>Départ</th><th>km</th><th>D+</th><th>D-</th><th>Note</th></tr>
+        <tr><td>Dent d'Arclusaz → Ravito Sainte-Reine</td><td class="highlight">17:24</td><td>5.5</td><td>19m</td><td>1203m</td><td>Descente vers D911 · pause 25 min</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Ce que tu dois amener</h3>
+      <ul class="checklist">
+        <li><input type="checkbox" id="lm1"><label class="check-label" for="lm1">Eau 0.5L <div class="check-note">Section courte</div></label></li>
+        <li><input type="checkbox" id="lm2"><label class="check-label" for="lm2">Frontale <div class="check-note">Nuit probable</div></label></li>
+        <li><input type="checkbox" id="lm3"><label class="check-label" for="lm3">Veste chaude <div class="check-note">Nuit altitude</div></label></li>
+        <li><input type="checkbox" id="lm4"><label class="check-label" for="lm4" style="color:var(--ravito-car)"><strong>Clés reçues de Louis Le C</strong></label></li>
+      </ul>
+    </div>
+    <div class="card" style="border-color: rgba(245,158,11,.4);">
+      <h3 style="color:var(--ravito-car)">Notes importantes</h3>
+      <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:1.8;">
+        <li>⚠️ Récupérer les clés de Louis Le C à la Dent d'Arclusaz — confirmer la veille</li>
+        <li>Section de nuit · frontale indispensable</li>
+        <li>Coureur à ~20h de course — soutien moral très important</li>
+        <li>À Ravito Sainte-Reine (D911) : pause 25 min · la voiture est là · coureur repart seul vers Colombier</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RAVITOS -->
+<div id="ravitos" class="section">
+  <div class="card" style="margin-bottom:12px; border-color: rgba(99,102,241,.4);">
+    <h3 style="color:var(--accent2)">Règle nutrition</h3>
+    <p style="font-size:13px; color:var(--text2); line-height:1.7;">500ml/h (eau + iso) · Alterner iso SUCRÉ / iso SALÉ · Gel Baouw (naturel) · Gel DÉCAF à partir de Nant Fourchu · Repas CHAUD à Nant Fourchu et Sainte-Reine</p>
+  </div>
+
+  <div class="ravito-card">
+    <div class="ravito-header">
+      <h3>Ravito 1 · Route de Tamie</h3>
+      <div class="meta">⏰ 05:14 · km 8.5 · D+ cumulé ~1000m · Pause 5 min</div>
+    </div>
+    <div class="ravito-body">
+      <div class="food-item"><div class="food-num">1</div><div class="food-name">Eau plate<div class="food-note">Remplissage poche</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">2</div><div class="food-name">Boisson iso SUCRÉE<div class="food-note">Flasques avant</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">3</div><div class="food-name">Gel Baouw<div class="food-note">Section Sambuy</div></div><div class="food-qty">x2</div></div>
+      <div class="food-item"><div class="food-num">4</div><div class="food-name">Barre énergétique</div><div class="food-qty">x1</div></div>
+      <div class="food-item"><div class="food-num">5</div><div class="food-name">Banane<div class="food-note">Apport naturel</div></div><div class="food-qty">x1</div></div>
+      <div class="food-item"><div class="food-num">6</div><div class="food-name">Café chaud + sucre<div class="food-note">5h du matin · frais</div></div><div class="food-qty">1 thermos</div></div>
+      <div class="food-item"><div class="food-num">7</div><div class="food-name">Veste coupe-vent<div class="food-note">Selon météo</div></div><div class="food-qty">1</div></div>
+      <div class="food-item"><div class="food-num">8</div><div class="food-name">Frontale + piles<div class="food-note">Encore nuit possible</div></div><div class="food-qty">1</div></div>
+    </div>
+  </div>
+
+  <div class="ravito-card">
+    <div class="ravito-header" style="background: rgba(59,130,246,.05);">
+      <h3>Ravito à pied · Bas Arcalod 1</h3>
+      <div class="meta" style="color: var(--ravito-foot);">⏰ 08:48 · km 22.5 · alt 1827m · Pause 10 min · ⚠️ ACCÈS À PIED UNIQUEMENT</div>
+    </div>
+    <div class="ravito-body">
+      <div class="food-item"><div class="food-num">1</div><div class="food-name">Eau plate<div class="food-note">Avant montée Arcalod</div></div><div class="food-qty">300 ml</div></div>
+      <div class="food-item"><div class="food-num">2</div><div class="food-name">Boisson iso SALÉE<div class="food-note">Effort intense</div></div><div class="food-qty">300 ml</div></div>
+      <div class="food-item"><div class="food-num">3</div><div class="food-name">Gel Baouw<div class="food-note">Énergie immédiate</div></div><div class="food-qty">x1</div></div>
+      <div class="food-item"><div class="food-num">4</div><div class="food-name">Encas salé<div class="food-note">Alterner sucré/salé</div></div><div class="food-qty">x1</div></div>
+      <div class="food-item" style="border:none; padding-top:8px;"><div class="food-num"></div><div class="food-name" style="color:var(--ravito-foot); font-size:12px;">📍 Sac porté à pied depuis parking Nant Fourchu · prévoir contenant léger</div><div class="food-qty"></div></div>
+    </div>
+  </div>
+
+  <div class="ravito-card">
+    <div class="ravito-header" style="background: rgba(59,130,246,.05);">
+      <h3>Ravito à pied · Bas Arcalod 2</h3>
+      <div class="meta" style="color: var(--ravito-foot);">⏰ 10:16 · km 24.9 · alt 1862m · Pause 5 min · ⚠️ ACCÈS À PIED UNIQUEMENT</div>
+    </div>
+    <div class="ravito-body">
+      <div class="food-item"><div class="food-num">1</div><div class="food-name">Eau plate<div class="food-note">Rapide</div></div><div class="food-qty">200 ml</div></div>
+      <div class="food-item"><div class="food-num">2</div><div class="food-name">Boisson iso SUCRÉE</div><div class="food-qty">200 ml</div></div>
+      <div class="food-item"><div class="food-num">3</div><div class="food-name">Gel Baouw<div class="food-note">Section Mont de la Coche</div></div><div class="food-qty">x1</div></div>
+    </div>
+  </div>
+
+  <div class="ravito-card">
+    <div class="ravito-header" style="background: rgba(34,197,94,.05);">
+      <h3>🍝 Ravito 3 · Nant Fourchu</h3>
+      <div class="meta" style="color:var(--summit);">⏰ 12:27 · km 34.1 · D+ cumulé ~3700m · Pause 20 min · LASAGNES</div>
+    </div>
+    <div class="ravito-body">
+      <div class="food-item"><div class="food-num">1</div><div class="food-name">LASAGNES / REPAS CHAUD<div class="food-note">Pâtes, lasagnes, riz · repas de midi · solide</div></div><div class="food-qty">1 assiette</div></div>
+      <div class="food-item"><div class="food-num">2</div><div class="food-name">Bouillon chaud très salé<div class="food-note">Électrolytes + chaleur</div></div><div class="food-qty">300 ml</div></div>
+      <div class="food-item"><div class="food-num">3</div><div class="food-name">Boisson iso SUCRÉE<div class="food-note">Flasques à refaire</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">4</div><div class="food-name">Eau plate<div class="food-note">Poche à eau</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">5</div><div class="food-name">Gel Baouw<div class="food-note">Pour section Pecloz ultra-technique</div></div><div class="food-qty">x3</div></div>
+      <div class="food-item"><div class="food-num">6</div><div class="food-name">Gel DÉCAF<div class="food-note">Début gels décaf — économiser caféine</div></div><div class="food-qty">x2</div></div>
+      <div class="food-item"><div class="food-num">7</div><div class="food-name">Capsules sel<div class="food-note">Chaleur après-midi</div></div><div class="food-qty">1 tube</div></div>
+      <div class="food-item"><div class="food-num">8</div><div class="food-name">Drop bag coureur<div class="food-note">Affaires préparées</div></div><div class="food-qty">1 sac</div></div>
+      <div class="food-item"><div class="food-num">9</div><div class="food-name">Café sucré<div class="food-note">Boost milieu de course</div></div><div class="food-qty">x1</div></div>
+    </div>
+  </div>
+
+  <div class="ravito-card">
+    <div class="ravito-header" style="background: rgba(139,92,246,.05);">
+      <h3>🌙 Ravito 4 · Sainte-Reine D911</h3>
+      <div class="meta" style="color:var(--night);">⏰ 19:08 · km 53.9 · alt 776m · Pause 25 min · Section nuit à venir</div>
+    </div>
+    <div class="ravito-body">
+      <div class="food-item"><div class="food-num">1</div><div class="food-name">Eau plate<div class="food-note">Remplissage</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">2</div><div class="food-name">Boisson iso SALÉE<div class="food-note">Soir · manque de sel</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">3</div><div class="food-name">Boisson chaude sucrée (thé/café)<div class="food-note">Nuit froide</div></div><div class="food-qty">500 ml</div></div>
+      <div class="food-item"><div class="food-num">4</div><div class="food-name">Gel DÉCAF<div class="food-note">Section Colombier de nuit · +1284m D+</div></div><div class="food-qty">x5</div></div>
+      <div class="food-item"><div class="food-num">5</div><div class="food-name">Barre énergétique</div><div class="food-qty">x3</div></div>
+      <div class="food-item"><div class="food-num">6</div><div class="food-name">Veste très chaude<div class="food-note">Colombier 1989m de nuit</div></div><div class="food-qty">1</div></div>
+      <div class="food-item"><div class="food-num">7</div><div class="food-name">Frontale + batterie<div class="food-note">Section nuit</div></div><div class="food-qty">1</div></div>
+      <div class="food-item"><div class="food-num">8</div><div class="food-name">Pansements / Compeed</div><div class="food-qty">1 kit</div></div>
+    </div>
+  </div>
+
+  <div class="ravito-card">
+    <div class="ravito-header" style="background: rgba(139,92,246,.05);">
+      <h3>🌙 Ravito 5 · La Compote</h3>
+      <div class="meta" style="color:var(--night);">⏰ 23:05 · km 69.3 · alt 719m · Pause 10 min · Montée finale Trelod</div>
+    </div>
+    <div class="ravito-body">
+      <div class="food-item"><div class="food-num">1</div><div class="food-name">Boisson chaude sucrée<div class="food-note">Nuit froide avant Trelod</div></div><div class="food-qty">400 ml</div></div>
+      <div class="food-item"><div class="food-num">2</div><div class="food-name">Boisson iso SALÉE<div class="food-note">Fin de course</div></div><div class="food-qty">300 ml</div></div>
+      <div class="food-item"><div class="food-num">3</div><div class="food-name">Gel DÉCAF<div class="food-note">Montée finale Trelod +1414m D+</div></div><div class="food-qty">x4</div></div>
+      <div class="food-item"><div class="food-num">4</div><div class="food-name">Encas salé<div class="food-note">Dernier solide</div></div><div class="food-qty">x1</div></div>
+      <div class="food-item"><div class="food-num">5</div><div class="food-name">Veste très chaude vérifiée<div class="food-note">Sommet Trelod de nuit</div></div><div class="food-qty">1</div></div>
+      <div class="food-item"><div class="food-num">6</div><div class="food-name">Frontale vérifiée<div class="food-note">Descente nuit Trelod → Parking Cornes</div></div><div class="food-qty">1</div></div>
+      <div class="food-item"><div class="food-num">7</div><div class="food-name">Boisson de récupération<div class="food-note">Pour l'arrivée</div></div><div class="food-qty">500 ml</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGISTIQUE -->
+<div id="logistique" class="section">
+  <div class="card" style="margin-bottom:12px; border-color:rgba(99,102,241,.4);">
+    <h3 style="color:var(--accent2)">Base · Gîte Sainte-Reine</h3>
+    <div style="font-size:13px; color:var(--text2);">1552 D911, 73630 Sainte-Reine</div>
+  </div>
+
+  <div class="logis-card">
+    <div class="logis-header">
+      <div class="logis-num">T1</div>
+      <div><h3>Départ · Parking des Rafforts</h3><div class="meta">⏰ Heure coureur : 03:00 · Route ~20 min depuis gîte</div></div>
+    </div>
+    <div class="logis-body">
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+        <div><div style="font-size:11px; color:var(--text2)">Voiture(s)</div><div style="font-weight:600; color:var(--accent2)">V1 + V2</div></div>
+        <div><div style="font-size:11px; color:var(--text2)">À bord</div><div style="font-weight:600;">Tout le monde + coureur + Firmin</div></div>
+      </div>
+      <h3 style="margin-bottom:6px;">Actions sur place</h3>
+      <ul class="action-list">
+        <li><div class="action-num">1</div><div>Dépose le coureur au parking · laisser le coureur + Firmin (si présent)</div></li>
+        <li><div class="action-num">2</div><div>Revenir au gîte · les voitures rentrent dormir ou se préparer</div></li>
+      </ul>
+      <h3 style="margin-bottom:6px; margin-top:12px;">Matériel à emporter</h3>
+      <ul class="materiel-list">
+        <li><input type="checkbox"> Drop bag coureur (sac avec affaires pour les ravitos)</li>
+        <li><input type="checkbox"> Frontales chargées pour tout le monde</li>
+        <li><input type="checkbox"> Téléphones chargés</li>
+        <li><input type="checkbox"> Boisson chaude pour le coureur au départ (thermos)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="logis-card">
+    <div class="logis-header">
+      <div class="logis-num">T2</div>
+      <div><h3>Route de Tamie · Ravito #1 + échange pacers</h3><div class="meta">⏰ Heure coureur : 05:14 · Route ~15 min depuis gîte</div></div>
+    </div>
+    <div class="logis-body">
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+        <div><div style="font-size:11px; color:var(--text2)">Voiture(s)</div><div style="font-weight:600; color:var(--accent2)">V1 (récup Firmin) + V2 (dépose Vincent)</div></div>
+        <div><div style="font-size:11px; color:var(--text2)">À bord</div><div style="font-weight:600;">Jeanne/Valérie · Vincent</div></div>
+      </div>
+      <h3 style="margin-bottom:6px;">Actions sur place</h3>
+      <ul class="action-list">
+        <li><div class="action-num">1</div><div>V2 dépose Vincent au parking D911 · Vincent commence son rôle de pacer ici</div></li>
+        <li><div class="action-num">2</div><div>V1 récup Firmin (si présent) · Firmin remonte en voiture</div></li>
+        <li><div class="action-num">3</div><div>Ravito coureur 5 min · remplir flasques · boisson chaude · barres</div></li>
+      </ul>
+      <h3 style="margin-bottom:6px; margin-top:12px;">Matériel à emporter</h3>
+      <ul class="materiel-list">
+        <li><input type="checkbox"> Thermos café/soupe chaud</li>
+        <li><input type="checkbox"> Flasques remplies (eau + iso sucré)</li>
+        <li><input type="checkbox"> Gel Baouw x3</li>
+        <li><input type="checkbox"> Barres énergétiques x2</li>
+        <li><input type="checkbox"> Banane</li>
+        <li><input type="checkbox"> Veste coupe-vent (si besoin)</li>
+        <li><input type="checkbox"> Frontale + piles rechange</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="logis-card">
+    <div class="logis-header">
+      <div class="logis-num">T3</div>
+      <div><h3>Nant Fourchu · Ravito #2 + Lasagnes + Ravito à pied Arcalod</h3><div class="meta">⏰ Heure coureur : 12:27 · Route ~35 min depuis gîte</div></div>
+    </div>
+    <div class="logis-body">
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+        <div><div style="font-size:11px; color:var(--text2)">Voiture(s)</div><div style="font-weight:600; color:var(--accent2)">V1 + V2 (+ V3 si dispo)</div></div>
+        <div><div style="font-size:11px; color:var(--text2)">À bord</div><div style="font-weight:600;">Tout le monde · Hugo monte aussi à pied</div></div>
+      </div>
+      <h3 style="margin-bottom:6px;">Actions sur place</h3>
+      <ul class="action-list">
+        <li><div class="action-num">1</div><div>Garer au parking Nant Fourchu · D990 direction St-François-de-Sales · alt 1042m</div></li>
+        <li><div class="action-num">2</div><div><strong>TOUT LE MONDE monte à pied vers le Bas Arcalod</strong> · Porter le matériel ravito · Hugo monte pour rejoindre le coureur</div></li>
+        <li><div class="action-num">3</div><div>Ravito à pied Bas Arcalod 1 (km 22.5 · alt 1827m) · Pause 10 min · Hugo reste avec le coureur</div></li>
+        <li><div class="action-num">4</div><div>Ravito à pied Bas Arcalod 2 (km 24.9 · alt 1862m) · Pause 5 min · Hugo repart avec le coureur · Vincent redescend</div></li>
+        <li><div class="action-num">5</div><div>Redescendre au parking Nant Fourchu · Préparer les lasagnes et le repas chaud</div></li>
+        <li><div class="action-num">6</div><div>Accueil coureur + Hugo au parking · Lasagnes + repas chaud · Pause 20 min · Julien prend le relais</div></li>
+      </ul>
+      <h3 style="margin-bottom:6px; margin-top:12px;">Matériel à emporter</h3>
+      <ul class="materiel-list">
+        <li><input type="checkbox"> LASAGNES / REPAS CHAUD pour le midi (thermos ou réchaud)</li>
+        <li><input type="checkbox"> Bouillon chaud salé</li>
+        <li><input type="checkbox"> Eau x4 bouteilles 500ml</li>
+        <li><input type="checkbox"> Boisson iso sucrée x2 500ml</li>
+        <li><input type="checkbox"> Gel Baouw x4</li>
+        <li><input type="checkbox"> Barre énergétique x2</li>
+        <li><input type="checkbox"> Drop bag #2 du coureur</li>
+        <li><input type="checkbox"> Capsules sel</li>
+        <li><input type="checkbox"> Café sucré</li>
+        <li><input type="checkbox"> Kit premiers secours</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="logis-card">
+    <div class="logis-header">
+      <div class="logis-num">T4</div>
+      <div><h3>Ravito Sainte-Reine · km 52.8 sur D911</h3><div class="meta">⏰ Heure coureur : 19:08 · Route ~10 min depuis gîte</div></div>
+    </div>
+    <div class="logis-body">
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+        <div><div style="font-size:11px; color:var(--text2)">Voiture(s)</div><div style="font-weight:600; color:var(--accent2)">V1 + V2 + V3</div></div>
+        <div><div style="font-size:11px; color:var(--text2)">À bord</div><div style="font-weight:600;">Tout le monde (Louis M attend le coureur ici)</div></div>
+      </div>
+      <h3 style="margin-bottom:6px;">Actions sur place</h3>
+      <ul class="action-list">
+        <li><div class="action-num">1</div><div>Garer sur la D911 au km 52.8 alt 776m · point accessible voiture</div></li>
+        <li><div class="action-num">2</div><div>Louis M rejoint le coureur ici · échange clés avec Louis Le C à la Dent d'Arclusaz avant</div></li>
+        <li><div class="action-num">3</div><div>Ravito rapide 25 min · eau · iso · gels décaf · veste chaude pour la nuit</div></li>
+        <li><div class="action-num">4</div><div>Louis M repart avec le coureur · section solo ensuite vers Colombier · grande montée +1284m D+</div></li>
+      </ul>
+      <h3 style="margin-bottom:6px; margin-top:12px;">Matériel à emporter</h3>
+      <ul class="materiel-list">
+        <li><input type="checkbox"> Eau x4 bouteilles 500ml</li>
+        <li><input type="checkbox"> Boisson iso SALÉE x2</li>
+        <li><input type="checkbox"> Gel DÉCAF x5</li>
+        <li><input type="checkbox"> Barre énergétique x3</li>
+        <li><input type="checkbox"> Veste très chaude pour la nuit</li>
+        <li><input type="checkbox"> Frontale + batterie rechargée</li>
+        <li><input type="checkbox"> Boisson chaude sucrée (thermos)</li>
+        <li><input type="checkbox"> Pansements / Compeed</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="logis-card">
+    <div class="logis-header">
+      <div class="logis-num">T5</div>
+      <div><h3>La Compote · Ravito #5 avant Trelod</h3><div class="meta">⏰ Heure coureur : 23:05 · Route ~10 min depuis gîte</div></div>
+    </div>
+    <div class="logis-body">
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+        <div><div style="font-size:11px; color:var(--text2)">Voiture(s)</div><div style="font-weight:600; color:var(--accent2)">V1 + V2 + V3</div></div>
+        <div><div style="font-size:11px; color:var(--text2)">À bord</div><div style="font-weight:600;">Tout le monde · dernière réunion avant l'arrivée</div></div>
+      </div>
+      <h3 style="margin-bottom:6px;">Actions sur place</h3>
+      <ul class="action-list">
+        <li><div class="action-num">1</div><div>Garer au village de La Compote · alt 719m · km 69.3 · D201</div></li>
+        <li><div class="action-num">2</div><div>Ravito 10 min avant montée finale Trelod · +1414m D+ pour le dernier sommet</div></li>
+        <li><div class="action-num">3</div><div>Tout le monde présent pour soutenir · moral important · coureur à ~22h de course</div></li>
+        <li><div class="action-num">4</div><div>Vérifier frontale et veste très chaude · descente de nuit depuis Trelod</div></li>
+      </ul>
+      <h3 style="margin-bottom:6px; margin-top:12px;">Matériel à emporter</h3>
+      <ul class="materiel-list">
+        <li><input type="checkbox"> Boisson chaude sucrée (thermos)</li>
+        <li><input type="checkbox"> Gel DÉCAF x4 (montée finale)</li>
+        <li><input type="checkbox"> Encas salé</li>
+        <li><input type="checkbox"> Veste très chaude vérifiée</li>
+        <li><input type="checkbox"> Frontale vérifiée + chargée</li>
+        <li><input type="checkbox"> Boisson de récupération (pour l'arrivée)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="logis-card">
+    <div class="logis-header">
+      <div class="logis-num" style="background:var(--start);">T6</div>
+      <div><h3>🎉 Parking des Cornes · ARRIVÉE</h3><div class="meta">⏰ Heure estimée : 02:50 (14 juin) · Route ~20 min depuis gîte</div></div>
+    </div>
+    <div class="logis-body">
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <div><div style="font-size:11px; color:var(--text2)">Voiture(s)</div><div style="font-weight:600; color:var(--accent2)">V1 + V2 + V3</div></div>
+        <div><div style="font-size:11px; color:var(--text2)">À bord</div><div style="font-weight:600;">Tout le monde</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SAC -->
+<div id="sac" class="section">
+  <div class="card" style="margin-bottom:12px; border-color:rgba(99,102,241,.4);">
+    <h3 style="color:var(--accent2)">Mon Sac · Départ 03:00</h3>
+    <p style="font-size:13px; color:var(--text2);">Poids cible 6-8 kg avec eau · Cocher chaque item la veille au soir</p>
+    <div style="margin-top:8px; font-size:12px; color:var(--text2);"><span style="color:var(--ravito-car); font-weight:700;">V</span> = Obligatoire &nbsp;·&nbsp; <span style="color:var(--summit); font-weight:700;">O</span> = Conseillé</div>
+  </div>
+
+  <div class="card">
+    <ul class="checklist">
+      <li class="check-cat" style="border:none; padding-bottom:0;">🔴 Sécurité obligatoire</li>
+      <li><input type="checkbox" id="s1"><label class="check-label" for="s1"><div>Couverture de survie <span class="oblig">V</span></div><div class="check-note">ISO 13537 · poche accessible</div></label></li>
+      <li><input type="checkbox" id="s2"><label class="check-label" for="s2"><div>Sifflet <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s3"><label class="check-label" for="s3"><div>Téléphone chargé + contacts urgence <span class="oblig">V</span></div><div class="check-note">Powerbank dans le sac</div></label></li>
+      <li><input type="checkbox" id="s4"><label class="check-label" for="s4"><div>Montre GPS + trace GPX chargée <span class="oblig">V</span></div><div class="check-note">Alarmes alti activées</div></label></li>
+      <li><input type="checkbox" id="s5"><label class="check-label" for="s5"><div>Carte / topo Bauges <span class="oblig">V</span></div><div class="check-note">Backup si GPS tombe</div></label></li>
+      <li><input type="checkbox" id="s6"><label class="check-label" for="s6"><div>Trousse premiers secours <span class="oblig">V</span></div><div class="check-note">Pansements · Compeed · antalgiques</div></label></li>
+
+      <li class="check-cat" style="border:none; padding-bottom:0;">💡 Éclairage</li>
+      <li><input type="checkbox" id="s7"><label class="check-label" for="s7"><div>Frontale principale CHARGÉE <span class="oblig">V</span></div><div class="check-note">Départ 3h = nuit complète</div></label></li>
+      <li><input type="checkbox" id="s8"><label class="check-label" for="s8"><div>Frontale de secours <span class="oblig">V</span></div><div class="check-note">Section finale aussi de nuit</div></label></li>
+      <li><input type="checkbox" id="s9"><label class="check-label" for="s9"><div>Piles ou batterie rechange <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s10"><label class="check-label" for="s10"><div>Powerbank + câbles <span class="oblig">V</span></div><div class="check-note">Montre + tél sur 26h+</div></label></li>
+
+      <li class="check-cat" style="border:none; padding-bottom:0;">💧 Hydratation · remplies au départ</li>
+      <li><input type="checkbox" id="s11"><label class="check-label" for="s11"><div>Poche à eau 1.5L PLEINE <span class="oblig">V</span></div><div class="check-note">Pas de source avant Tamie</div></label></li>
+      <li><input type="checkbox" id="s12"><label class="check-label" for="s12"><div>Flasque avant gauche : eau plate 500ml <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s13"><label class="check-label" for="s13"><div>Flasque avant droite : iso sucré 500ml <span class="oblig">V</span></div></label></li>
+
+      <li class="check-cat" style="border:none; padding-bottom:0;">🍌 Nutrition départ (jusqu'à Tamie ~2h)</li>
+      <li><input type="checkbox" id="s14"><label class="check-label" for="s14"><div>Gel Baouw x3 <span class="oblig">V</span></div><div class="check-note">1 gel toutes les 40-45 min</div></label></li>
+      <li><input type="checkbox" id="s15"><label class="check-label" for="s15"><div>Barre énergétique x2 <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s16"><label class="check-label" for="s16"><div>Dattes / banane <span class="oblig">V</span></div><div class="check-note">Apport naturel</div></label></li>
+      <li><input type="checkbox" id="s17"><label class="check-label" for="s17"><div>Capsules sel x5 <span class="oblig">V</span></div><div class="check-note">Dès le début</div></label></li>
+
+      <li class="check-cat" style="border:none; padding-bottom:0;">👕 Vêtements sur soi</li>
+      <li><input type="checkbox" id="s18"><label class="check-label" for="s18"><div>T-shirt technique respirant <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s19"><label class="check-label" for="s19"><div>Collant ou short technique <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s20"><label class="check-label" for="s20"><div>Veste coupe-vent légère <span class="oblig">V</span></div><div class="check-note">Départ froid · à enlever rapidement</div></label></li>
+      <li><input type="checkbox" id="s21"><label class="check-label" for="s21"><div>Buff / tour de cou <span class="oblig">V</span></div></label></li>
+      <li><input type="checkbox" id="s22"><label class="check-label" for="s22"><div>Gants légers <span class="oblig">V</span></div><div class="check-note">Froid au départ</div></label></li>
+      <li><input type="checkbox" id="s23"><label class="check-label" for="s23"><div>Casquette <span class="oblig">V</span></div><div class="check-note">Pour la journée</div></label></li>
+
+      <li class="check-cat" style="border:none; padding-bottom:0;">🎒 Dans le sac</li>
+      <li><input type="checkbox" id="s24"><label class="check-label" for="s24"><div>Veste polaire / softshell <span class="oblig">V</span></div><div class="check-note">Sommets et nuit</div></label></li>
+      <li><input type="checkbox" id="s25"><label class="check-label" for="s25"><div>Veste très chaude <span class="oblig">V</span></div><div class="check-note">Section de nuit Colombier/Trelod</div></label></li>
+      <li><input type="checkbox" id="s26"><label class="check-label" for="s26"><div>Chaussettes de rechange <span style="color:var(--summit); font-weight:700; font-size:10px;">O</span></div><div class="check-note">Ou en drop bag</div></label></li>
+      <li><input type="checkbox" id="s27"><label class="check-label" for="s27"><div>Crème anti-frottement <span class="oblig">V</span></div><div class="check-note">Appliquer AVANT le départ</div></label></li>
+      <li><input type="checkbox" id="s28"><label class="check-label" for="s28"><div>Argent / CB <span class="oblig">V</span></div><div class="check-note">Urgence ou abandon</div></label></li>
+      <li><input type="checkbox" id="s29"><label class="check-label" for="s29"><div>Bâtons pliables <span class="oblig">V</span></div><div class="check-note">8700m D+ · fortement recommandé</div></label></li>
+
+      <li class="check-cat" style="border:none; padding-bottom:0;">👟 Chaussures</li>
+      <li><input type="checkbox" id="s30"><label class="check-label" for="s30"><div>Chaussures trail terrain rocheux <span class="oblig">V</span></div><div class="check-note">Vérifiées et rodées · semelle rigide</div></label></li>
+      <li><input type="checkbox" id="s31"><label class="check-label" for="s31"><div>Chaussettes technique anti-ampoule <span class="oblig">V</span></div><div class="check-note">Celles que tu connais</div></label></li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-color:rgba(245,158,11,.4);">
+    <h3 style="color:var(--ravito-car)">Notes préparation veille</h3>
+    <ul style="padding-left:16px; color:var(--text2); font-size:13px; line-height:2;">
+      <li>Préparer le sac la VEILLE au soir · tout cocher avant de dormir</li>
+      <li>Drop bags (Tamie / Nant Fourchu) : préparer et étiqueter la veille</li>
+      <li>Poids sac cible : 6-8 kg avec eau · peser si doute</li>
+      <li>Vérifier la météo la veille : adapter vêtements · risque orage = veste imper obligatoire</li>
+      <li>Charger TOUS les appareils électroniques la veille au soir</li>
+      <li>Repas solide vers 22h la veille (pâtes ou riz) · se coucher tôt</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function showPacer(id) {
+  document.querySelectorAll('.pacer-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pacer-nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('pacer-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Persist checkbox state
+document.querySelectorAll('input[type=checkbox]').forEach(cb => {
+  const key = 'cb_' + cb.id;
+  if (localStorage.getItem(key) === 'true') cb.checked = true;
+  cb.addEventListener('change', () => {
+    localStorage.setItem(key, cb.checked);
+    const li = cb.closest('li');
+    if (li) li.classList.toggle('checked', cb.checked);
+  });
+  if (cb.checked) { const li = cb.closest('li'); if (li) li.classList.add('checked'); }
+});
+</script>
+</body>
+</html>
