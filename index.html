@@ -702,30 +702,56 @@ nav button.active{border-bottom-color:var(--acc);}
   <!-- CHRONO VOITURE -->
   <div class="card" style="margin-bottom:14px;border-color:rgba(99,102,241,.25);">
     <h3 style="color:var(--acc2);margin-bottom:12px;">🚗 Chrono voiture · résumé</h3>
-    <div style="display:flex;flex-direction:column;gap:0;">
-      <div class="drive-row"><span class="drive-t">Ven ~20h</span><span class="drive-arrow">→</span><span class="drive-d">Bivouac Parking Rafforts</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">Sam 03:00</span><span class="drive-arrow">▶</span><span class="drive-d">Départ coureur · rester sur place</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">~03:15</span><span class="drive-arrow">→</span><span class="drive-d">Rafforts → Route de Tamie · <b>37 min</b> · arriver ~03:52</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Attendre coureur ~05:56 · fenêtre de repos ~2h</div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">~06:10</span><span class="drive-arrow">→</span><span class="drive-d">Tamie → Nant Fourchu · <b>1h09</b> · arriver ~07:19</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Montée à pied pour ravito Arcalod ~08:50 · lasagnes · coureur ~11:49</div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">~12:15</span><span class="drive-arrow">→</span><span class="drive-d">Nant Fourchu → Sainte-Reine D911 · <b>20 min</b> · arriver ~12:35</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Attendre coureur ~18:27 · <b>fenêtre de repos ~6h</b></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">~18:55</span><span class="drive-arrow">→</span><span class="drive-d">Sainte-Reine → La Compote · <b>10 min</b> · arriver ~19:05</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Attendre coureur ~22:34 · <b>fenêtre de repos ~3h30</b></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">~22:45</span><span class="drive-arrow">→</span><span class="drive-d">La Compote → Parking des Cornes · <b>13 min</b> · arriver ~22:58</span></div>
-      <div class="drive-connector"></div>
-      <div class="drive-row"><span class="drive-t">~02:24</span><span class="drive-arrow">🎉</span><span class="drive-d">Arrivée coureur · Parking des Cornes</span></div>
+    <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Départ max = arriver 30 min avant le coureur · à ajuster selon les news en temps réel</div>
+    <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--border);">
+          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Stop</th>
+          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Heure coureur</th>
+          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Trajet</th>
+          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">⚠️ Partir de … au plus tard</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 8px;font-weight:600;">T2 · Tamié</td>
+          <td style="padding:7px 8px;color:var(--acc2);">05:56</td>
+          <td style="padding:7px 8px;color:var(--text2);">Rafforts → Tamié · 37 min</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;">04:49</span> depuis Rafforts</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);background:rgba(59,130,246,.04);">
+          <td style="padding:7px 8px;font-weight:600;">T3a · Arcalod pied</td>
+          <td style="padding:7px 8px;color:var(--acc2);">08:50</td>
+          <td style="padding:7px 8px;color:var(--text2);">Tamié → Nant Fourchu 1h09 + montée à pied ~1h30</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(239,68,68,.15);color:#ef4444;padding:2px 8px;border-radius:4px;font-weight:700;">Partir dès T2 fini</span> (~06:06)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 8px;font-weight:600;">T3b · Nant Fourchu</td>
+          <td style="padding:7px 8px;color:var(--acc2);">11:49</td>
+          <td style="padding:7px 8px;color:var(--text2);">Déjà sur place (redescente Arcalod)</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(34,197,94,.15);color:var(--summit);padding:2px 8px;border-radius:4px;font-weight:700;">Déjà là ✓</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 8px;font-weight:600;">T4 · Sainte-Reine</td>
+          <td style="padding:7px 8px;color:var(--acc2);">18:27</td>
+          <td style="padding:7px 8px;color:var(--text2);">Nant Fourchu → Ste-Reine · 20 min</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;">17:37</span> depuis Nant Fourchu</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 8px;font-weight:600;">T5 · La Compote</td>
+          <td style="padding:7px 8px;color:var(--acc2);">22:34</td>
+          <td style="padding:7px 8px;color:var(--text2);">Sainte-Reine → La Compote · 10 min</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;">21:54</span> depuis Sainte-Reine</td>
+        </tr>
+        <tr>
+          <td style="padding:7px 8px;font-weight:600;">T6 · Parking Cornes</td>
+          <td style="padding:7px 8px;color:var(--acc2);">02:24</td>
+          <td style="padding:7px 8px;color:var(--text2);">La Compote → Cornes · 13 min</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;">01:41</span> depuis La Compote</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
   </div>
 
