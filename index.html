@@ -141,6 +141,14 @@ nav button.active{border-bottom-color:var(--acc);}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
 .leg-dot{width:9px;height:9px;border-radius:50%;}
 
+/* DRIVE CHRONO */
+.drive-row{display:flex;align-items:baseline;gap:8px;padding:5px 0;font-size:12px;}
+.drive-t{font-weight:700;color:var(--acc2);min-width:60px;flex-shrink:0;}
+.drive-arrow{color:var(--text2);flex-shrink:0;}
+.drive-d{color:var(--text);flex:1;}
+.drive-connector{width:1px;height:10px;background:var(--border);margin-left:28px;}
+.drive-badge{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:7px;padding:7px 11px;margin-bottom:10px;font-size:12px;color:var(--acc2);}
+
 @media(min-width:600px){
   .map-wrap .leaflet-container{height:280px;}
 }
@@ -687,16 +695,88 @@ nav button.active{border-bottom-color:var(--acc);}
   <div class="card" style="margin-bottom:12px;border-color:rgba(99,102,241,.3);">
     <h3 style="color:var(--acc2)">Organisation</h3>
     <div class="info-row"><div class="info-label">Voiture</div><div class="info-val hl">1 voiture (V1)</div></div>
-    <div class="info-row"><div class="info-label">Hébergement</div><div class="info-val">Bivouac · voiture · sur le terrain</div></div>
-    <div class="info-row"><div class="info-label">Pacers</div><div class="info-val">Vincent · Julien · Louis Le C · Louis M</div></div>
+    <div class="info-row"><div class="info-label">Hébergement</div><div class="info-val">Bivouac au parking des Rafforts</div></div>
+    <div class="info-row"><div class="info-label">Pacers</div><div class="info-val">Vincent · Louis M · Julien · Louis Le C</div></div>
+  </div>
+
+  <!-- CHRONO VOITURE -->
+  <div class="card" style="margin-bottom:14px;border-color:rgba(99,102,241,.25);">
+    <h3 style="color:var(--acc2);margin-bottom:12px;">🚗 Chrono voiture · résumé</h3>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div class="drive-row"><span class="drive-t">Ven ~20h</span><span class="drive-arrow">→</span><span class="drive-d">Bivouac Parking Rafforts</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">Sam 03:00</span><span class="drive-arrow">▶</span><span class="drive-d">Départ coureur · rester sur place</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~03:15</span><span class="drive-arrow">→</span><span class="drive-d">Rafforts → Route de Tamie · <b>~20 min</b> · arriver ~05:40</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~06:10</span><span class="drive-arrow">→</span><span class="drive-d">Tamie → Pied Arcalod · <b>~25 min</b> · arriver ~06:35</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Montée à pied pour ravito ~08:50 · redescendre ~09:30</div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~09:30</span><span class="drive-arrow">→</span><span class="drive-d">Pied Arcalod → Nant Fourchu · <b>~35 min</b> · arriver ~10:05</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Préparer lasagnes · accueil coureur ~11:49</div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~12:15</span><span class="drive-arrow">→</span><span class="drive-d">Nant Fourchu → Sainte-Reine D911 · <b>~45 min</b> · arriver ~13:00</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Attendre coureur ~18:27 · fenêtre de repos ~5h</div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~18:55</span><span class="drive-arrow">→</span><span class="drive-d">Sainte-Reine → La Compote · <b>~20 min</b> · arriver ~19:15</span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row" style="padding-left:12px;font-size:11px;color:var(--text2);padding-top:2px;">↪ Attendre coureur ~22:34 · fenêtre de repos ~3h</div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~22:45</span><span class="drive-arrow">→</span><span class="drive-d">La Compote → Parking des Cornes · <b>~25 min</b></span></div>
+      <div class="drive-connector"></div>
+      <div class="drive-row"><span class="drive-t">~02:24</span><span class="drive-arrow">🎉</span><span class="drive-d">Arrivée coureur · Parking des Cornes</span></div>
+    </div>
+  </div>
+
+  <!-- DÉPART : 2 OPTIONS -->
+  <div class="lcard" style="border-color:rgba(99,102,241,.35);">
+    <div class="lcard-h" style="background:rgba(99,102,241,.08);">
+      <div class="lnum" style="background:var(--acc)">D</div>
+      <div><h3>Départ · Vendredi 12 juin · 2 options</h3><div class="meta">Choisir avant le 12 juin</div></div>
+    </div>
+    <div class="lcard-b">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="background:rgba(148,163,184,.15);color:var(--text2);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">Option A</span>
+            <span style="font-size:13px;font-weight:600;">Départ de Grenoble en nuit</span>
+          </div>
+          <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
+            <li>Départ Grenoble ~<strong>01:15</strong> → Parking des Rafforts ~03:00</li>
+            <li>Trajet ~1h30-1h45 selon les conditions</li>
+            <li style="color:#ef4444;">⚠️ Risque fatigue avant la course · pas de repos possible</li>
+          </ul>
+        </div>
+        <div style="border:1px solid rgba(34,197,94,.4);border-radius:8px;padding:12px;background:rgba(34,197,94,.04);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="background:rgba(34,197,94,.15);color:var(--summit);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">Option B ✓</span>
+            <span style="font-size:13px;font-weight:600;">Bivouac vendredi soir — recommandé</span>
+          </div>
+          <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
+            <li>Arriver au parking des Rafforts vendredi ~<strong>19h-20h</strong></li>
+            <li>Préparer le matériel · dernier repas solide · installer le bivouac</li>
+            <li>Ceux qui n'accompagnent pas le coureur au départ dorment jusqu'à ~02h30</li>
+            <li>Le coureur se lève ~02h30 · départ 03h00 sans stress ni conduite de nuit</li>
+            <li style="color:var(--summit);">✓ Tout le monde reposé · pas de conduite nocturne risquée</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum">T1</div><div><h3>Départ · Parking des Rafforts</h3><div class="meta">⏰ 03:00 · ~20 min depuis toute base</div></div></div>
+    <div class="lcard-h">
+      <div class="lnum">T1</div>
+      <div><h3>Départ · Parking des Rafforts</h3><div class="meta">⏰ 03:00</div></div>
+    </div>
     <div class="lcard-b">
+      <div class="drive-badge">🚗 Rester sur place · départ voiture ~03:15 → Tamie (~20 min)</div>
       <ul class="act-list">
-        <li><div class="act-n">1</div><div>Dépose le coureur au parking des Rafforts (alt 1200m · RD911 direction Tamie)</div></li>
-        <li><div class="act-n">2</div><div>V1 repart → se positionner au parking Nant Fourchu pour bivouac / ravito à pied</div></li>
+        <li><div class="act-n">1</div><div>Départ coureur 03:00 · tout le monde accompagne au départ</div></li>
+        <li><div class="act-n">2</div><div>V1 repart ~03:15 vers Route de Tamie pour arriver avant le coureur (~05:40)</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel à emporter</h3>
       <ul class="mat-list">
@@ -709,43 +789,71 @@ nav button.active{border-bottom-color:var(--acc);}
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum">T2</div><div><h3>Route de Tamie · Ravito S1→S2</h3><div class="meta">⏰ ~05:56 · Pause 10 min · Vincent arrive ici</div></div></div>
+    <div class="lcard-h">
+      <div class="lnum">T2</div>
+      <div><h3>Route de Tamie · Ravito S1→S2</h3><div class="meta">⏰ coureur ~05:56 · Pause 10 min</div></div>
+    </div>
     <div class="lcard-b">
+      <div class="drive-badge">🚗 Rafforts → Tamie ~20 min · arriver ~05:40 (16 min avant le coureur)</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 au parking Route de Tamie (D911 · alt ~900m)</div></li>
-        <li><div class="act-n">2</div><div>Ravito rapide 10 min · remplir flasques · café chaud</div></li>
-        <li><div class="act-n">3</div><div>Vincent repart avec le coureur (S2 démarre)</div></li>
-        <li><div class="act-n">4</div><div>V1 → Nant Fourchu pour préparer le ravito à pied et le repas (lasagnes)</div></li>
+        <li><div class="act-n">2</div><div>Ravito 10 min · flasques · café chaud</div></li>
+        <li><div class="act-n">3</div><div>Vincent repart avec le coureur (S2 démarre ~06:06)</div></li>
+        <li><div class="act-n">4</div><div>V1 → pied de l'Arcalod (~25 min) · arriver ~06:35 · <strong>montée à pied dès l'arrivée</strong></div></li>
       </ul>
-      <h3 style="margin:8px 0 6px;">Matériel à emporter</h3>
+      <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
-        <li><input type="checkbox"> Thermos café/soupe</li>
-        <li><input type="checkbox"> Flasques remplies</li>
-        <li><input type="checkbox"> Gels Baouw x3 + barre x2</li>
-        <li><input type="checkbox"> Banane</li>
+        <li><input type="checkbox"> Thermos café/soupe chaud</li>
+        <li><input type="checkbox"> Flasques remplies (eau + iso sucré)</li>
+        <li><input type="checkbox"> Gels Baouw x3 + barre x2 + banane</li>
         <li><input type="checkbox"> Frontale si besoin</li>
       </ul>
     </div>
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum">T3</div><div><h3>Arcalod (pied) + Nant Fourchu · Ravito à pied + Lasagnes · S2→S3→S4</h3><div class="meta">⏰ Ravito pied ~08:50 · Arrivée coureur Nant Fourchu ~11:49</div></div></div>
+    <div class="lcard-h">
+      <div class="lnum">T3a</div>
+      <div><h3>Pied de l'Arcalod · Ravito à pied S2→S3</h3><div class="meta">⏰ coureur ~08:50 · Pause 15 min · À PIED</div></div>
+    </div>
     <div class="lcard-b">
+      <div class="drive-badge">🚗 Tamie → Pied Arcalod ~25 min · arriver ~06:35 · 🥾 Montée à pied ~2h (alt ~1800m)</div>
       <ul class="act-list">
-        <li><div class="act-n">1</div><div>Depuis le Parking des Rafforts : V1 roule jusqu'au parking au <strong>pied de l'Arcalod</strong> (accessible en voiture)</div></li>
-        <li><div class="act-n">2</div><div><strong>TOUT LE MONDE monte à pied au pied de l'Arcalod</strong> pour rejoindre le coureur au relais S2→S3 (~08:50) · Louis M prend le relais ici</div></li>
-        <li><div class="act-n">3</div><div>Ravito rapide · Vincent redescend · équipe redescend à V1</div></li>
-        <li><div class="act-n">4</div><div>V1 roule vers <strong>Parking Nant Fourchu</strong> (D990 dir. St-François-de-Sales · alt 1042m) · préparer lasagnes et repas chaud</div></li>
-        <li><div class="act-n">5</div><div>Accueil coureur + Louis M au parking (~11:49) · 🍝 Lasagnes + pause 20 min</div></li>
-        <li><div class="act-n">6</div><div>Julien + Louis Le C repartent ensemble avec le coureur (S4 démarre)</div></li>
+        <li><div class="act-n">1</div><div>Garer V1 au parking pied de l'Arcalod (accessible depuis D911 côté Rafforts)</div></li>
+        <li><div class="act-n">2</div><div><strong>TOUT LE MONDE monte à pied</strong> vers la zone de transition S2→S3 (alt ~1800m) · compter ~1h30-2h de montée · partir dès ~06:30-07:00</div></li>
+        <li><div class="act-n">3</div><div>Ravito à pied ~08:50 · Louis M prend le relais · Vincent redescend</div></li>
+        <li><div class="act-n">4</div><div>Redescendre à V1 · V1 → Nant Fourchu (~35 min) · arriver ~10:05</div></li>
       </ul>
-      <h3 style="margin:8px 0 6px;">Matériel à emporter</h3>
+      <h3 style="margin:8px 0 6px;">Matériel à porter à pied</h3>
+      <ul class="mat-list">
+        <li><input type="checkbox"> Eau 300 ml + iso SALÉE 300 ml</li>
+        <li><input type="checkbox"> Gel Baouw x2 + encas salé</li>
+        <li><input type="checkbox"> Sac léger pour monter</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lcard">
+    <div class="lcard-h">
+      <div class="lnum">T3b</div>
+      <div><h3>Nant Fourchu · Lasagnes + Ravito S3→S4</h3><div class="meta">⏰ coureur ~11:49 · Pause 20 min</div></div>
+    </div>
+    <div class="lcard-b">
+      <div class="drive-badge">🚗 Pied Arcalod → Nant Fourchu ~35 min · arriver ~10:05 (1h45 pour préparer les lasagnes)</div>
+      <ul class="act-list">
+        <li><div class="act-n">1</div><div>Garer V1 au parking Nant Fourchu (D990 dir. St-François-de-Sales · alt 1042m)</div></li>
+        <li><div class="act-n">2</div><div>Préparer lasagnes + repas chaud pour l'arrivée ~11:49</div></li>
+        <li><div class="act-n">3</div><div>Accueil coureur + Louis M · 🍝 Lasagnes + pause 20 min</div></li>
+        <li><div class="act-n">4</div><div>Julien + Louis Le C repartent avec le coureur (S4 démarre ~12:09)</div></li>
+        <li><div class="act-n">5</div><div>V1 → Sainte-Reine D911 (~45 min) · arriver ~13:00 · <strong>fenêtre de repos ~5h</strong> avant le coureur</div></li>
+      </ul>
+      <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
         <li><input type="checkbox"> LASAGNES / REPAS CHAUD (thermos ou réchaud)</li>
         <li><input type="checkbox"> Bouillon chaud salé</li>
-        <li><input type="checkbox"> Eau x4 · iso sucré x2</li>
-        <li><input type="checkbox"> Gels Baouw x4 + Décaf x2</li>
-        <li><input type="checkbox"> Drop bag #2 coureur</li>
+        <li><input type="checkbox"> Eau x4 + iso sucré x2</li>
+        <li><input type="checkbox"> Gels Baouw x3 + Décaf x2</li>
+        <li><input type="checkbox"> Drop bag coureur</li>
         <li><input type="checkbox"> Capsules sel + café sucré</li>
         <li><input type="checkbox"> Kit premiers secours</li>
       </ul>
@@ -753,13 +861,18 @@ nav button.active{border-bottom-color:var(--acc);}
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum">T4</div><div><h3>Sainte-Reine D911 · Ravito S4→S5</h3><div class="meta">⏰ ~18:27 · Pause 25 min · km 52 · alt 776m</div></div></div>
+    <div class="lcard-h">
+      <div class="lnum">T4</div>
+      <div><h3>Sainte-Reine D911 · Ravito S4→S5</h3><div class="meta">⏰ coureur ~18:27 · Pause 25 min · km 52 · alt 776m</div></div>
+    </div>
     <div class="lcard-b">
+      <div class="drive-badge">🚗 Nant Fourchu → Sainte-Reine D911 ~45 min · arriver ~13:00 · 💤 Repos ~5h sur place</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 sur D911 au km 52 (alt ~776m) · entre Arclusaz et Colombier</div></li>
-        <li><div class="act-n">2</div><div>Louis M + Vincent rejoignent le coureur ici · Julien + Louis Le C descendent en voiture</div></li>
-        <li><div class="act-n">3</div><div>Ravito 25 min · eau · iso · gels décaf · veste chaude pour la nuit</div></li>
-        <li><div class="act-n">4</div><div>Louis M + Vincent repartent avec le coureur (S5 démarre)</div></li>
+        <li><div class="act-n">2</div><div>Louis M + Vincent descendent à pied depuis Dent d'Arclusaz pour rejoindre le coureur</div></li>
+        <li><div class="act-n">3</div><div>Ravito 25 min · veste chaude · gels décaf · frontale</div></li>
+        <li><div class="act-n">4</div><div>Louis M + Vincent repartent avec le coureur (S5 démarre ~18:52)</div></li>
+        <li><div class="act-n">5</div><div>V1 → La Compote (~20 min) · arriver ~19:15 · <strong>fenêtre de repos ~3h</strong></div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
@@ -774,32 +887,38 @@ nav button.active{border-bottom-color:var(--acc);}
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum">T5</div><div><h3>La Compote · Ravito S5→S6</h3><div class="meta">⏰ ~22:34 · Pause 10 min · Tout le monde</div></div></div>
+    <div class="lcard-h">
+      <div class="lnum">T5</div>
+      <div><h3>La Compote · Ravito S5→S6</h3><div class="meta">⏰ coureur ~22:34 · Pause 10 min · Tout le monde</div></div>
+    </div>
     <div class="lcard-b">
+      <div class="drive-badge">🚗 Sainte-Reine → La Compote ~20 min · arriver ~19:15 · 💤 Repos ~3h sur place</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 au village de La Compote (alt 719m · D201)</div></li>
-        <li><div class="act-n">2</div><div>Tout le monde présent pour soutenir → moral crucial à ~22h de course</div></li>
+        <li><div class="act-n">2</div><div>Tout le monde présent · soutien moral crucial à ~22h de course</div></li>
         <li><div class="act-n">3</div><div>Vérifier frontale + veste très chaude · descente de nuit depuis Trelod</div></li>
-        <li><div class="act-n">4</div><div>Tout le monde repart avec le coureur (S6) · V1 → Parking des Cornes (voiture conduite par quelqu'un qui ne monte pas)</div></li>
+        <li><div class="act-n">4</div><div><strong>Tout le monde repart avec le coureur</strong> pour la montée finale (S6)</div></li>
+        <li><div class="act-n">5</div><div>1 personne conduit V1 → Parking des Cornes (~25 min) pour accueillir à l'arrivée</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
         <li><input type="checkbox"> Boisson chaude sucrée</li>
         <li><input type="checkbox"> Gel DÉCAF x4</li>
-        <li><input type="checkbox"> Encas salé</li>
-        <li><input type="checkbox"> Veste très chaude vérifiée</li>
-        <li><input type="checkbox"> Frontale vérifiée + chargée</li>
+        <li><input type="checkbox"> Encas salé + iso SALÉE</li>
+        <li><input type="checkbox"> Veste très chaude vérifiée (tous)</li>
+        <li><input type="checkbox"> Frontale vérifiée + chargée (tous)</li>
         <li><input type="checkbox"> Boisson de récupération (pour l'arrivée)</li>
       </ul>
     </div>
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum" style="background:var(--s6)">T6</div><div><h3>🎉 Parking des Cornes · ARRIVÉE</h3><div class="meta">⏰ ~02:24 (14 juin) · Tout le monde</div></div></div>
+    <div class="lcard-h"><div class="lnum" style="background:var(--s6)">T6</div><div><h3>🎉 Parking des Cornes · ARRIVÉE</h3><div class="meta">⏰ ~02:24 (14 juin) · alt 1202m</div></div></div>
     <div class="lcard-b">
+      <div class="drive-badge">🚗 La Compote → Parking des Cornes ~25 min · arriver ~23:10 (attendre ~3h)</div>
       <ul class="act-list">
-        <li><div class="act-n">1</div><div>Garer V1 au Parking des Cornes (alt 1202m)</div></li>
-        <li><div class="act-n">2</div><div>Accueil du coureur · boisson de récupération · couverture de survie</div></li>
+        <li><div class="act-n">1</div><div>Accueil du coureur · boisson de récupération · couverture de survie</div></li>
+        <li><div class="act-n">2</div><div>Tout le monde arrive ensemble depuis Trelod 🏔️</div></li>
       </ul>
     </div>
   </div>
