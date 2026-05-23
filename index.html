@@ -152,6 +152,44 @@ nav button.active{border-bottom-color:var(--acc);}
 @media(min-width:600px){
   .map-wrap .leaflet-container{height:280px;}
 }
+
+/* PACER MODAL */
+.pm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;align-items:center;justify-content:center;padding:16px;}
+.pm-overlay.open{display:flex;}
+.pm-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:480px;overflow:hidden;}
+.pm-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.pm-body{padding:14px 16px;max-height:70vh;overflow-y:auto;}
+.pm-foot{padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;}
+.pm-row{margin-bottom:14px;}
+.pm-sec{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.pm-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 10px;color:var(--text);font-size:13px;outline:none;}
+.pm-input:focus{border-color:var(--acc);}
+.pm-hint{font-size:11px;color:var(--text2);margin-top:3px;}
+.pm-btn{padding:8px 18px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600;border:none;}
+.pm-save{background:var(--acc);color:white;}
+.pm-cancel{background:var(--bg3);color:var(--text);border:1px solid var(--border);}
+.pm-reset{background:none;border:1px solid var(--border);color:var(--text2);padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;margin-right:auto;}
+
+/* JOUR J */
+.jj-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;padding:12px 14px;}
+.jj-card.done{border-color:rgba(34,197,94,.4);}
+.jj-row{display:flex;gap:10px;align-items:center;}
+.jj-num{width:28px;height:28px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:var(--text2);transition:all .2s;}
+.jj-num.set{background:var(--summit);border-color:var(--summit);color:#0f1117;}
+.jj-info{flex:1;min-width:0;}
+.jj-name{font-size:13px;font-weight:600;}
+.jj-sub{font-size:11px;color:var(--text2);margin-top:2px;}
+.jj-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.jj-time-display{font-size:17px;font-weight:700;letter-spacing:.5px;}
+.jj-delta{font-size:11px;font-weight:600;}
+.jj-inp-row{display:flex;gap:6px;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
+.jj-inp-label{font-size:11px;color:var(--text2);flex:1;}
+.jj-input{background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:5px 8px;font-size:13px;font-weight:600;width:100px;outline:none;}
+.jj-input:focus{border-color:var(--acc);}
+.jj-clr{background:none;border:none;color:var(--text2);cursor:pointer;padding:4px 6px;font-size:13px;border-radius:4px;}
+.jj-clr:hover{color:#ef4444;}
+.jj-badge{background:rgba(34,197,94,.15);color:var(--summit);padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-left:4px;}
+.jj-voiture{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--acc2);margin-top:8px;}
 </style>
 </head>
 <body>
@@ -163,6 +201,8 @@ nav button.active{border-bottom-color:var(--acc);}
   <button onclick="showTab('ravitos',this)">Ravitos</button>
   <button onclick="showTab('logistique',this)">Logistique</button>
   <button onclick="showTab('sac',this)">Mon Sac</button>
+  <button onclick="showTab('jourj',this)" style="color:#ec4899;font-weight:700;">🏃 Jour J</button>
+  <button onclick="openPacerModal()" style="margin-left:auto;padding:13px 12px;font-size:15px;" title="Modifier les pacers">⚙</button>
 </nav>
 
 <div class="header">
@@ -191,11 +231,11 @@ nav button.active{border-bottom-color:var(--acc);}
   <div class="timeline">
 
     <div class="cp">
-      <div class="cp-time">03:00</div>
+      <div class="cp-time" data-cp-time="T1">03:00</div>
       <div class="cp-dot" style="background:#ec4899;box-shadow:0 0 6px #ec4899"></div>
       <div class="cp-info">
         <div class="cp-name">Parking des Rafforts <span class="tag" style="background:rgba(236,72,153,.15);color:#ec4899">Départ</span></div>
-        <div class="cp-meta"><span>km 0 · alt 1200m</span><span>Pacer : Solo</span><span>Voiture : V1</span></div>
+        <div class="cp-meta"><span>km 0 · alt 1200m</span><span data-pacer-label="S1">Pacer : Solo</span><span>Voiture : V1</span></div>
       </div>
     </div>
 
@@ -209,21 +249,21 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time">05:56</div>
+      <div class="cp-time" data-cp-time="T2">05:56</div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
         <div class="cp-name">Fin S1 · Ravito <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>~km 12 · alt ~765m</span><span>Voiture : V1</span><span>→ Vincent prend le relais</span></div>
+        <div class="cp-meta"><span>~km 12 · alt ~765m</span><span>Voiture : V1</span><span data-pacer-relay="S2">→ Vincent prend le relais</span></div>
         <div class="cp-pause">⏱ Pause 10 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">06:06</div>
+      <div class="cp-time" data-cp-time="S2_start">06:06</div>
       <div class="cp-dot" style="background:var(--s2)"></div>
       <div class="cp-info">
-        <div class="cp-name">Début S2 — Vincent</div>
-        <div class="cp-meta"><span>km ~12 · alt ~900m</span><span>Pacer : Vincent</span></div>
+        <div class="cp-name" data-sec-header="S2">Début S2 — Vincent</div>
+        <div class="cp-meta"><span>km ~12 · alt ~900m</span><span data-pacer-label="S2">Pacer : Vincent</span></div>
       </div>
     </div>
 
@@ -232,7 +272,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Sambuy <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 2</span></div>
-        <div class="cp-meta"><span>km ~18 · alt 2133m</span><span>Vincent</span></div>
+        <div class="cp-meta"><span>km ~18 · alt 2133m</span><span data-pacer-name="S2">Vincent</span></div>
       </div>
     </div>
 
@@ -241,26 +281,26 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Chaurionde <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 3</span></div>
-        <div class="cp-meta"><span>km ~19.6 · alt 2134m</span><span>Vincent · Crête très technique</span></div>
+        <div class="cp-meta"><span>km ~19.6 · alt 2134m</span><span><span data-pacer-name="S2">Vincent</span> · Crête très technique</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">08:50</div>
+      <div class="cp-time" data-cp-time="T3">08:50</div>
       <div class="cp-dot" style="background:var(--ravped)"></div>
       <div class="cp-info">
         <div class="cp-name">Arcalod · Fin S2 <span class="tag" style="background:rgba(59,130,246,.12);color:var(--ravped)">Ravito à pied</span></div>
-        <div class="cp-meta"><span>km ~22-23 · alt ~1800m</span><span>Tout le monde monte depuis parking Rafforts</span><span>→ Louis M prend le relais</span></div>
+        <div class="cp-meta"><span>km ~22-23 · alt ~1800m</span><span>Tout le monde monte depuis parking Rafforts</span><span data-pacer-relay="S3">→ Louis M prend le relais</span></div>
         <div class="cp-pause">⏱ Pause 15 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">09:05</div>
+      <div class="cp-time" data-cp-time="S3_start">09:05</div>
       <div class="cp-dot" style="background:var(--s3)"></div>
       <div class="cp-info">
-        <div class="cp-name">Début S3 — Julien</div>
-        <div class="cp-meta"><span>alt ~1800m</span><span>Pacer : Julien</span></div>
+        <div class="cp-name" data-sec-header="S3">Début S3 — Louis M</div>
+        <div class="cp-meta"><span>alt ~1800m</span><span data-pacer-label="S3">Pacer : Louis M</span></div>
       </div>
     </div>
 
@@ -269,27 +309,27 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Mont de la Coche · Tré le Mollard <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommets 5-6</span></div>
-        <div class="cp-meta"><span>km ~27-28 · alt ~1975-2031m</span><span>Julien</span></div>
+        <div class="cp-meta"><span>km ~27-28 · alt ~1975-2031m</span><span data-pacer-name="S3">Louis M</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">11:49</div>
+      <div class="cp-time" data-cp-time="T4">11:49</div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
         <div class="cp-name">Nant Fourchu · Fin S3 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>km ~34 · alt 1042m</span><span>Voiture : V1</span><span>→ Julien + Louis Le C prennent le relais</span></div>
+        <div class="cp-meta"><span>km ~34 · alt 1042m</span><span>Voiture : V1</span><span data-pacer-relay="S4">→ Julien + Louis Le C prennent le relais</span></div>
         <div class="cp-comment">🍝 Lasagnes / repas chaud</div>
         <div class="cp-pause">⏱ Pause 20 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">12:09</div>
+      <div class="cp-time" data-cp-time="S4_start">12:09</div>
       <div class="cp-dot" style="background:var(--s4)"></div>
       <div class="cp-info">
-        <div class="cp-name">Début S4 — Louis Le C</div>
-        <div class="cp-meta"><span>km ~34 · alt ~1015m</span><span>Pacer : Louis Le C</span></div>
+        <div class="cp-name" data-sec-header="S4">Début S4 — Julien + Louis Le C</div>
+        <div class="cp-meta"><span>km ~34 · alt ~1015m</span><span data-pacer-label="S4">Pacer : Julien + Louis Le C</span></div>
       </div>
     </div>
 
@@ -298,7 +338,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Pecloz · Armenaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommets 7-8</span></div>
-        <div class="cp-meta"><span>km ~38-39 · alt ~2111-2166m</span><span>Louis Le C · Section ultra-technique</span></div>
+        <div class="cp-meta"><span>km ~38-39 · alt ~2111-2166m</span><span><span data-pacer-name="S4">Louis Le C</span> · Section ultra-technique</span></div>
       </div>
     </div>
 
@@ -307,7 +347,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Pte Arces · Pte Arlicots · Grand Parra <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommets 9-11</span></div>
-        <div class="cp-meta"><span>km ~41-44 · alt ~2000m</span><span>Louis Le C · Arrêts repérage</span></div>
+        <div class="cp-meta"><span>km ~41-44 · alt ~2000m</span><span><span data-pacer-name="S4">Louis Le C</span> · Arrêts repérage</span></div>
       </div>
     </div>
 
@@ -316,26 +356,26 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Dent d'Arclusaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 12</span></div>
-        <div class="cp-meta"><span>km ~48 · alt 1960m</span><span>Louis Le C</span></div>
+        <div class="cp-meta"><span>km ~48 · alt 1960m</span><span data-pacer-name="S4">Louis Le C</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">18:27</div>
+      <div class="cp-time" data-cp-time="T5">18:27</div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
         <div class="cp-name">Sainte-Reine D911 · Fin S4 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>km ~52 · alt 776m</span><span>Voiture : V1</span><span>→ Louis M + Vincent prennent le relais</span></div>
+        <div class="cp-meta"><span>km ~52 · alt 776m</span><span>Voiture : V1</span><span data-pacer-relay="S5">→ Louis M + Vincent prennent le relais</span></div>
         <div class="cp-pause">⏱ Pause 25 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time">18:52</div>
+      <div class="cp-time" data-cp-time="S5_start">18:52</div>
       <div class="cp-dot" style="background:var(--s5)"></div>
       <div class="cp-info">
-        <div class="cp-name">Début S5 — Louis M</div>
-        <div class="cp-meta"><span>alt ~780m</span><span>Pacer : Louis M</span></div>
+        <div class="cp-name" data-sec-header="S5">Début S5 — Louis M + Vincent</div>
+        <div class="cp-meta"><span>alt ~780m</span><span data-pacer-label="S5">Pacer : Louis M + Vincent</span></div>
       </div>
     </div>
 
@@ -344,12 +384,12 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Colombier <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 13</span></div>
-        <div class="cp-meta"><span>km ~61 · alt 1989m · D+ 1284m depuis D911</span><span>Louis M · 🌙 Section nuit</span></div>
+        <div class="cp-meta"><span>km ~61 · alt 1989m · D+ 1284m depuis D911</span><span><span data-pacer-name="S5">Louis M</span> · 🌙 Section nuit</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time night">22:34</div>
+      <div class="cp-time night" data-cp-time="T6">22:34</div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
         <div class="cp-name">La Compote · Fin S5 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
@@ -360,11 +400,11 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time night">22:44</div>
+      <div class="cp-time night" data-cp-time="S6_start">22:44</div>
       <div class="cp-dot" style="background:var(--s6)"></div>
       <div class="cp-info">
-        <div class="cp-name">Début S6 — Section finale</div>
-        <div class="cp-meta"><span>alt ~720m</span><span>Tout le monde 🌙</span></div>
+        <div class="cp-name" data-sec-header="S6">Début S6 — Tout le monde</div>
+        <div class="cp-meta"><span>alt ~720m</span><span data-pacer-label="S6">Tout le monde 🌙</span></div>
       </div>
     </div>
 
@@ -378,7 +418,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time night">02:24 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-time night" data-cp-time="T7">02:24 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
       <div class="cp-dot" style="background:#ec4899;box-shadow:0 0 6px #ec4899"></div>
       <div class="cp-info">
         <div class="cp-name">Parking des Cornes <span class="tag" style="background:rgba(236,72,153,.15);color:#ec4899">Arrivée</span></div>
@@ -403,7 +443,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="sc-num s1-bg" style="color:#0f1117">S1</div>
       <div class="sc-title">
         <h3>Rafforts → Route de Tamie</h3>
-        <div class="times">03:00 → 05:56 · Solo · Nuit</div>
+        <div class="times" data-sec-times="S1" data-sec-suffix=" · Nuit">03:00 → 05:56 · Solo · Nuit</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -413,7 +453,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip dp">D+ 1 093 m</span>
         <span class="chip dm">D- 1 521 m</span>
         <span class="chip night">🌙 Nuit</span>
-        <span class="chip pacer" style="background:rgba(148,163,184,.12);color:var(--s1)">Solo</span>
+        <span data-pacer-chips="S1"><span class="chip pacer" style="background:rgba(148,163,184,.12);color:var(--s1)">Solo</span></span>
       </div>
       <div class="map-wrap" id="map1-wrap">
         <div id="map1" style="height:200px"></div>
@@ -430,7 +470,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="sc-num s2-bg" style="color:white">S2</div>
       <div class="sc-title">
         <h3>Route de Tamie → Arcalod</h3>
-        <div class="times">06:06 → 08:50 · Vincent</div>
+        <div class="times" data-sec-times="S2">06:06 → 08:50 · Vincent</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -439,7 +479,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip km">10.5 km</span>
         <span class="chip dp">D+ 1 502 m</span>
         <span class="chip dm">D- 590 m</span>
-        <span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span>
+        <span data-pacer-chips="S2"><span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span></span>
       </div>
       <div class="map-wrap" id="map2-wrap">
         <div id="map2" style="height:200px"></div>
@@ -466,7 +506,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="sc-num s3-bg" style="color:#0f1117">S3</div>
       <div class="sc-title">
         <h3>Arcalod → Nant Fourchu</h3>
-        <div class="times">09:05 → 11:49 · Louis M</div>
+        <div class="times" data-sec-times="S3">09:05 → 11:49 · Louis M</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -475,7 +515,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip km">9.0 km</span>
         <span class="chip dp">D+ 783 m</span>
         <span class="chip dm">D- 1 574 m</span>
-        <span class="chip pacer" style="background:rgba(34,197,94,.12);color:var(--s3)">Louis M</span>
+        <span data-pacer-chips="S3"><span class="chip pacer" style="background:rgba(34,197,94,.12);color:var(--s3)">Louis M</span></span>
       </div>
       <div class="map-wrap" id="map3-wrap">
         <div id="map3" style="height:200px"></div>
@@ -502,7 +542,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="sc-num s4-bg" style="color:#0f1117">S4</div>
       <div class="sc-title">
         <h3>Nant Fourchu → Sainte-Reine D911</h3>
-        <div class="times">12:09 → 18:27 · Julien + Louis Le C</div>
+        <div class="times" data-sec-times="S4">12:09 → 18:27 · Julien + Louis Le C</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -511,8 +551,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip km">21.4 km</span>
         <span class="chip dp">D+ 2 338 m</span>
         <span class="chip dm">D- 2 570 m</span>
-        <span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Julien</span>
-        <span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Louis Le C</span>
+        <span data-pacer-chips="S4"><span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Julien</span><span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Louis Le C</span></span>
       </div>
       <div class="map-wrap" id="map4-wrap">
         <div id="map4" style="height:200px"></div>
@@ -541,7 +580,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="sc-num s5-bg" style="color:white">S5</div>
       <div class="sc-title">
         <h3>Sainte-Reine → La Compote</h3>
-        <div class="times">18:52 → 22:34 · Louis M + Vincent · Nuit</div>
+        <div class="times" data-sec-times="S5" data-sec-suffix=" · Nuit">18:52 → 22:34 · Louis M + Vincent · Nuit</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -551,8 +590,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip dp">D+ 1 340 m</span>
         <span class="chip dm">D- 1 401 m</span>
         <span class="chip night">🌙 Nuit</span>
-        <span class="chip pacer" style="background:rgba(168,85,247,.12);color:var(--s5)">Louis M</span>
-        <span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span>
+        <span data-pacer-chips="S5"><span class="chip pacer" style="background:rgba(168,85,247,.12);color:var(--s5)">Louis M</span><span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span></span>
       </div>
       <div class="map-wrap" id="map5-wrap">
         <div id="map5" style="height:200px"></div>
@@ -581,7 +619,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="sc-num s6-bg" style="color:white">S6</div>
       <div class="sc-title">
         <h3>La Compote → Trelod → Parking des Cornes</h3>
-        <div class="times">22:44 → 02:24 · Tout le monde possible · Nuit</div>
+        <div class="times" data-sec-times="S6" data-sec-suffix=" · Nuit">22:44 → 02:24 · Tout le monde · Nuit</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -591,10 +629,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip dp">D+ 1 499 m</span>
         <span class="chip dm">D- 1 015 m</span>
         <span class="chip night">🌙 Nuit</span>
-        <span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span>
-        <span class="chip pacer" style="background:rgba(34,197,94,.12);color:var(--s3)">Louis M</span>
-        <span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Julien</span>
-        <span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Louis Le C</span>
+        <span data-pacer-chips="S6"><span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span><span class="chip pacer" style="background:rgba(34,197,94,.12);color:var(--s3)">Louis M</span><span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Julien</span><span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Louis Le C</span></span>
       </div>
       <div style="background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.3);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:#ec4899;">
         🎉 Section finale — tout le monde monte pour finir en beauté avec le coureur
@@ -949,6 +984,19 @@ nav button.active{border-bottom-color:var(--acc);}
 
 </div>
 
+<!-- ═══════════════ JOUR J ═══════════════ -->
+<div id="jourj" class="tab">
+  <div class="jj-banner">
+    🏃 Jour J · 13 Juin 2026 · Saisir l'heure réelle de passage pour recalculer tout le planning
+  </div>
+  <div id="jj-content"></div>
+  <div class="card" style="margin-top:14px;border-color:rgba(239,68,68,.2);">
+    <button onclick="resetActual()" style="background:none;border:1px solid rgba(239,68,68,.4);color:#ef4444;padding:8px 16px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;width:100%;">
+      Réinitialiser toutes les heures réelles
+    </button>
+  </div>
+</div>
+
 <!-- ═══════════════ SAC ═══════════════ -->
 <div id="sac" class="tab">
   <div class="card" style="margin-bottom:10px;border-color:rgba(99,102,241,.3);">
@@ -1006,7 +1054,296 @@ nav button.active{border-bottom-color:var(--acc);}
   </div>
 </div>
 
+<!-- ═══ PACER MODAL ═══ -->
+<div id="pm-overlay" class="pm-overlay" onclick="if(event.target===this)closePacerModal()">
+  <div class="pm-box">
+    <div class="pm-head">
+      <span style="font-size:15px;font-weight:700;">⚙ Modifier les pacers</span>
+      <button onclick="closePacerModal()" style="background:none;border:none;color:var(--text2);cursor:pointer;font-size:22px;line-height:1;">×</button>
+    </div>
+    <div class="pm-body" id="pm-body"></div>
+    <div class="pm-foot">
+      <button class="pm-reset pm-btn" onclick="resetPacers()">Réinitialiser</button>
+      <button class="pm-cancel pm-btn" onclick="closePacerModal()">Annuler</button>
+      <button class="pm-save pm-btn" onclick="savePacerModal()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 <script>
+// ─── CONFIG ───
+const DEFAULT_PACERS = {
+  S1: [],
+  S2: ["Vincent"],
+  S3: ["Louis M"],
+  S4: ["Julien", "Louis Le C"],
+  S5: ["Louis M", "Vincent"],
+  S6: ["Vincent", "Louis M", "Julien", "Louis Le C"]
+};
+
+// Durée section (min) + pause après arrivée avant départ section suivante
+const SCHED = [
+  { dur: 176, pause: 10 },
+  { dur: 164, pause: 15 },
+  { dur: 164, pause: 20 },
+  { dur: 378, pause: 25 },
+  { dur: 222, pause: 10 },
+  { dur: 220, pause: 0  }
+];
+const BASE_DEP = 180; // 03:00 en minutes depuis minuit
+
+// Couleurs par section
+const SEC_COLORS  = ['#94a3b8','#3b82f6','#22c55e','#f59e0b','#a855f7','#ec4899'];
+const SEC_ALPHAS  = ['rgba(148,163,184','rgba(59,130,246','rgba(34,197,94','rgba(245,158,11','rgba(168,85,247','rgba(236,72,153'];
+
+// ─── STORAGE ───
+function loadPacers() {
+  try { const p = JSON.parse(localStorage.getItem('bauges_pacers')); return p || JSON.parse(JSON.stringify(DEFAULT_PACERS)); }
+  catch { return JSON.parse(JSON.stringify(DEFAULT_PACERS)); }
+}
+function savePacers(p) { localStorage.setItem('bauges_pacers', JSON.stringify(p)); }
+function loadActual() {
+  try { return JSON.parse(localStorage.getItem('bauges_actual')) || {}; }
+  catch { return {}; }
+}
+function saveActual(t) { localStorage.setItem('bauges_actual', JSON.stringify(t)); }
+
+// ─── TIME UTILS ───
+function toHHMM(m) {
+  const n = ((m % 1440) + 1440) % 1440;
+  return String(Math.floor(n / 60)).padStart(2, '0') + ':' + String(n % 60).padStart(2, '0');
+}
+function parseHHMM(s) {
+  if (!s) return null;
+  const [h, min] = s.split(':').map(Number);
+  return h * 60 + (min || 0);
+}
+
+// ─── COMPUTE TIMES ───
+// Returns { T1, T2..T7, S2_start..S6_start } in minutes from midnight
+function computeTimes(actual) {
+  actual = actual || {};
+  const t = {};
+  t.T1 = actual.T1 != null ? actual.T1 : BASE_DEP;
+  t.S1_start = t.T1;
+  let cursor = t.T1;
+  SCHED.forEach((sc, i) => {
+    const tidEnd   = 'T' + (i + 2);
+    const sidStart = 'S' + (i + 2) + '_start';
+    t[tidEnd]   = actual[tidEnd] != null ? actual[tidEnd] : cursor + sc.dur;
+    t[sidStart] = t[tidEnd] + sc.pause;
+    cursor      = t[sidStart];
+  });
+  return t;
+}
+
+// ─── PACER LABEL ───
+function pacerStr(sec, pacers) {
+  const p = pacers[sec];
+  return (!p || p.length === 0) ? 'Solo' : p.join(' + ');
+}
+
+// ─── RENDER ALL ───
+function renderAll() {
+  const pacers = loadPacers();
+  const actual = loadActual();
+  const times  = computeTimes(actual);
+
+  // Checkpoint times
+  document.querySelectorAll('[data-cp-time]').forEach(el => {
+    const key = el.dataset.cpTime;
+    if (times[key] == null) return;
+    const suffix = el.querySelector('small');
+    el.childNodes[0].textContent = toHHMM(times[key]) + (suffix ? ' ' : '');
+  });
+
+  // Pacer: bare name
+  document.querySelectorAll('[data-pacer-name]').forEach(el => {
+    el.textContent = pacerStr(el.dataset.pacerName, pacers);
+  });
+
+  // Pacer: "Pacer : NAME"
+  document.querySelectorAll('[data-pacer-label]').forEach(el => {
+    const sec = el.dataset.pacerLabel;
+    const ps = pacerStr(sec, pacers);
+    el.textContent = sec === 'S6' ? ps + ' 🌙' : 'Pacer : ' + ps;
+  });
+
+  // Pacer: "→ NAME prend le relais"
+  document.querySelectorAll('[data-pacer-relay]').forEach(el => {
+    el.textContent = '→ ' + pacerStr(el.dataset.pacerRelay, pacers) + ' prend le relais';
+  });
+
+  // Section header: "Début SX — NAME"
+  document.querySelectorAll('[data-sec-header]').forEach(el => {
+    const sec = el.dataset.secHeader;
+    const n = sec.slice(1);
+    const ps = pacerStr(sec, pacers);
+    el.textContent = (sec === 'S6') ? 'Début S6 — ' + ps + ' 🎉' : 'Début S' + n + ' — ' + ps;
+  });
+
+  // Section times subtitle: "HH:MM → HH:MM · NAME (suffix)"
+  document.querySelectorAll('[data-sec-times]').forEach(el => {
+    const sec    = el.dataset.secTimes;
+    const n      = parseInt(sec.slice(1));
+    const start  = times[n === 1 ? 'T1' : 'S' + n + '_start'];
+    const end    = times['T' + (n + 1)];
+    const suffix = el.dataset.secSuffix || '';
+    el.textContent = toHHMM(start) + ' → ' + toHHMM(end) + ' · ' + pacerStr(sec, pacers) + suffix;
+  });
+
+  // Pacer chip groups
+  document.querySelectorAll('[data-pacer-chips]').forEach(container => {
+    const sec = container.dataset.pacerChips;
+    const n   = parseInt(sec.slice(1));
+    const c   = SEC_COLORS[n - 1];
+    const a   = SEC_ALPHAS[n - 1];
+    const p   = loadPacers()[sec];
+    const names = (!p || p.length === 0) ? ['Solo'] : p;
+    // Use S1 grey for Solo regardless of section
+    container.innerHTML = names.map((name, i) => {
+      const ci = (name === 'Solo') ? SEC_COLORS[0] : c;
+      const ai = (name === 'Solo') ? SEC_ALPHAS[0] : a;
+      return `<span class="chip pacer" style="background:${ai},.12);color:${ci}">${name}</span>`;
+    }).join('');
+  });
+
+  // Refresh Jour J if active
+  if (document.getElementById('jourj')?.classList.contains('active')) renderJourJ();
+}
+
+// ─── JOUR J ───
+const JJ_CPS = [
+  { id: 'T1', name: 'Départ',        loc: 'Parking des Rafforts',  pause: null, voiture: null },
+  { id: 'T2', name: 'Fin S1',        loc: 'Route de Tamie',         pause: 10,   voiture: 'Rafforts → Tamié · 37 min' },
+  { id: 'T3', name: 'Fin S2',        loc: 'Arcalod (à pied)',        pause: 15,   voiture: null },
+  { id: 'T4', name: 'Fin S3 🍝',     loc: 'Nant Fourchu',           pause: 20,   voiture: 'Arcalod → Nant Fourchu · ~35 min' },
+  { id: 'T5', name: 'Fin S4',        loc: 'Sainte-Reine D911',      pause: 25,   voiture: 'Nant Fourchu → Ste-Reine · 20 min' },
+  { id: 'T6', name: 'Fin S5',        loc: 'La Compote',             pause: 10,   voiture: 'Ste-Reine → La Compote · 10 min' },
+  { id: 'T7', name: 'ARRIVÉE 🎉',    loc: 'Parking des Cornes',     pause: null, voiture: 'La Compote → Cornes · 13 min' },
+];
+
+function renderJourJ() {
+  const actual   = loadActual();
+  const times    = computeTimes(actual);
+  const origTimes = computeTimes({});
+  const container = document.getElementById('jj-content');
+  if (!container) return;
+
+  container.innerHTML = JJ_CPS.map((cp, i) => {
+    const cur      = times[cp.id];
+    const orig     = origTimes[cp.id];
+    const isSet    = actual[cp.id] != null;
+    const delta    = cur - orig;
+    const absDelta = Math.abs(delta);
+    const deltaStr = absDelta < 1 ? 'Dans les temps ✓' : (delta > 0 ? '+' + delta + ' min retard' : absDelta + ' min avance');
+    const deltaCol = delta > 0 ? '#ef4444' : (absDelta < 1 ? 'var(--summit)' : '#22c55e');
+
+    // "Partir de ... au plus tard" for voiture
+    let voitureHtml = '';
+    if (cp.voiture && cp.id !== 'T3') {
+      const departMax = cur - 30;
+      voitureHtml = `<div class="jj-voiture">🚗 ${cp.voiture} · partir avant <strong>${toHHMM(departMax)}</strong></div>`;
+    }
+
+    const timeInputVal = isSet ? toHHMM(actual[cp.id]) : '';
+
+    return `
+<div class="jj-card${isSet ? ' done' : ''}" id="jj-card-${cp.id}">
+  <div class="jj-row">
+    <div class="jj-num${isSet ? ' set' : ''}">${i + 1}</div>
+    <div class="jj-info">
+      <div class="jj-name">${cp.name}${isSet ? '<span class="jj-badge">✓ Réel</span>' : ''}</div>
+      <div class="jj-sub">${cp.loc}${cp.pause ? ' · Pause ' + cp.pause + ' min' : ''}</div>
+    </div>
+    <div class="jj-right">
+      <div class="jj-time-display">${toHHMM(cur)}</div>
+      <div class="jj-delta" style="color:${deltaCol}">${deltaStr}</div>
+    </div>
+  </div>
+  <div class="jj-inp-row">
+    <div class="jj-inp-label">Heure réelle de passage :</div>
+    <input type="time" class="jj-input" value="${timeInputVal}"
+      placeholder="${toHHMM(orig)}"
+      onchange="setActual('${cp.id}', this.value)">
+    ${isSet ? `<button class="jj-clr" onclick="clearActual('${cp.id}')" title="Effacer">✕</button>` : ''}
+  </div>
+  ${voitureHtml}
+</div>`;
+  }).join('');
+}
+
+function setActual(cpId, value) {
+  if (!value) { clearActual(cpId); return; }
+  const actual = loadActual();
+  actual[cpId] = parseHHMM(value);
+  saveActual(actual);
+  renderAll();
+}
+
+function clearActual(cpId) {
+  const actual = loadActual();
+  delete actual[cpId];
+  saveActual(actual);
+  renderAll();
+}
+
+function resetActual() {
+  if (confirm('Réinitialiser toutes les heures réelles ?')) {
+    saveActual({});
+    renderAll();
+  }
+}
+
+// ─── PACER MODAL ───
+function openPacerModal() {
+  const pacers = loadPacers();
+  const secs = [
+    { id:'S1', label:'S1 · Rafforts → Tamié',             n:1 },
+    { id:'S2', label:'S2 · Tamié → Arcalod',               n:2 },
+    { id:'S3', label:'S3 · Arcalod → Nant Fourchu',        n:3 },
+    { id:'S4', label:'S4 · Nant Fourchu → Sainte-Reine',   n:4 },
+    { id:'S5', label:'S5 · Sainte-Reine → La Compote',     n:5 },
+    { id:'S6', label:'S6 · La Compote → Parking Cornes',   n:6 },
+  ];
+  const body = secs.map(s => `
+<div class="pm-row">
+  <div class="pm-sec" style="color:${SEC_COLORS[s.n-1]}">${s.label}</div>
+  <input type="text" class="pm-input" id="pm-${s.id}"
+    value="${pacerStr(s.id, pacers)}"
+    placeholder="Solo"
+    style="border-color:${SEC_COLORS[s.n-1]}44">
+  <div class="pm-hint">Plusieurs pacers : séparer par " + " · laisser vide ou "Solo" pour aucun</div>
+</div>`).join('');
+
+  document.getElementById('pm-body').innerHTML = body;
+  document.getElementById('pm-overlay').classList.add('open');
+}
+
+function closePacerModal() {
+  document.getElementById('pm-overlay').classList.remove('open');
+}
+
+function savePacerModal() {
+  const secs = ['S1','S2','S3','S4','S5','S6'];
+  const newP = {};
+  secs.forEach(s => {
+    const val = (document.getElementById('pm-' + s)?.value || '').trim();
+    newP[s] = (!val || val.toLowerCase() === 'solo') ? [] : val.split('+').map(x => x.trim()).filter(Boolean);
+  });
+  savePacers(newP);
+  closePacerModal();
+  renderAll();
+}
+
+function resetPacers() {
+  if (confirm('Réinitialiser les pacers par défaut ?')) {
+    savePacers(JSON.parse(JSON.stringify(DEFAULT_PACERS)));
+    closePacerModal();
+    renderAll();
+  }
+}
+
 // ─── TAB NAVIGATION ───
 function showTab(id, btn) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1014,6 +1351,7 @@ function showTab(id, btn) {
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
   if (id === 'sections') initMaps();
+  if (id === 'jourj') renderJourJ();
 }
 
 // ─── SECTION ACCORDION ───
@@ -1044,11 +1382,8 @@ function initMap(idx) {
 
   const latlngs = coords.map(c => [c[0], c[1]]);
   const polyline = L.polyline(latlngs, { color: COLORS[idx], weight: 3.5, opacity: 0.9 }).addTo(map);
-
-  // Start/end markers
   const startIcon = L.divIcon({ html: `<div style="width:12px;height:12px;border-radius:50%;background:${COLORS[idx]};border:2px solid white;"></div>`, className:'', iconAnchor:[6,6] });
   L.marker(latlngs[0], { icon: startIcon }).addTo(map);
-
   map.fitBounds(polyline.getBounds(), { padding: [16, 16] });
   mapInstances[mapId] = map;
 }
@@ -1060,15 +1395,8 @@ function initMaps() {
   });
 }
 
-// Auto-init S1 map on load (it's open by default)
-window.addEventListener('load', () => {
-  initMap(0);
-  // init maps when sections become open
-});
-
 // ─── CHECKBOXES PERSISTENCE ───
 document.querySelectorAll('input[type=checkbox]').forEach(cb => {
-  const key = 'cb_' + (cb.id || cb.closest('li')?.innerText?.trim().slice(0,20));
   if (!cb.id) cb.id = 'cb_' + Math.random().toString(36).slice(2);
   const k = 'cb_' + cb.id;
   if (localStorage.getItem(k) === '1') { cb.checked = true; cb.closest('li')?.classList.add('checked'); }
@@ -1076,6 +1404,12 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb => {
     localStorage.setItem(k, cb.checked ? '1' : '0');
     cb.closest('li')?.classList.toggle('checked', cb.checked);
   });
+});
+
+// ─── INIT ───
+window.addEventListener('load', () => {
+  initMap(0);
+  renderAll();
 });
 </script>
 </body>
