@@ -739,13 +739,19 @@ nav button.active{border-bottom-color:var(--acc);}
     <h3 style="color:var(--acc2);margin-bottom:12px;">🚗 Chrono voiture · résumé</h3>
     <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Départ max = arriver 30 min avant le coureur · à ajuster selon les news en temps réel</div>
     <div style="overflow-x:auto;">
-    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;overflow-wrap:break-word;word-break:break-word;">
+      <colgroup>
+        <col style="width:22%">
+        <col style="width:15%">
+        <col style="width:33%">
+        <col style="width:30%">
+      </colgroup>
       <thead>
         <tr style="border-bottom:1px solid var(--border);">
           <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Stop</th>
-          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Heure coureur</th>
+          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Heure</th>
           <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">Trajet</th>
-          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">⚠️ Partir de … au plus tard</th>
+          <th style="padding:6px 8px;text-align:left;color:var(--text2);font-weight:600;">⚠️ Partir au plus tard</th>
         </tr>
       </thead>
       <tbody>
