@@ -190,6 +190,93 @@ nav button.active{border-bottom-color:var(--acc);}
 .jj-clr:hover{color:#ef4444;}
 .jj-badge{background:rgba(34,197,94,.15);color:var(--summit);padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-left:4px;}
 .jj-voiture{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--acc2);margin-top:8px;}
+
+/* ─── CALENDRIER ─── */
+.cal-outer{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.cal-grid{
+  display:grid;
+  grid-template-columns:52px repeat(7,minmax(0,1fr)) 72px;
+  min-width:640px;
+  border-left:1px solid var(--border);
+  border-top:1px solid var(--border);
+}
+.cal-th{
+  background:var(--bg2);
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:7px 4px;
+  text-align:center;
+  font-size:10px;
+  font-weight:700;
+  color:var(--text2);
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  position:sticky;top:44px;z-index:5;
+}
+.cal-th.today-col{color:var(--acc2);}
+.cal-wlabel{
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:6px 4px;
+  display:flex;flex-direction:column;gap:2px;
+  background:var(--bg2);
+}
+.cal-wnum{font-size:10px;font-weight:800;color:var(--acc2);}
+.cal-wtitle{font-size:9px;color:var(--text2);line-height:1.3;margin-top:1px;}
+.cal-day{
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:5px 4px;
+  min-height:88px;
+  vertical-align:top;
+}
+.cal-day.other-month{background:rgba(255,255,255,.01);}
+.cal-day.is-today{background:rgba(99,102,241,.05);}
+.cal-day.is-race{background:rgba(236,72,153,.06);}
+.cal-dnum{
+  font-size:11px;font-weight:700;margin-bottom:3px;
+  width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  color:var(--text2);
+}
+.cal-dnum.today{background:var(--acc);color:white;font-size:11px;}
+.cal-dnum.race-day{background:#ec4899;color:white;font-size:10px;width:22px;height:22px;}
+.cal-ev{
+  border-radius:4px;padding:2px 5px;margin-bottom:2px;
+  font-size:9px;line-height:1.4;cursor:default;
+  overflow:hidden;
+}
+.cal-ev-title{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:white;}
+.cal-ev-meta{color:rgba(255,255,255,.65);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cal-ev.trail{background:#2563eb;}
+.cal-ev.run{background:#16a34a;}
+.cal-ev.easy{background:rgba(148,163,184,.25);}.cal-ev.easy .cal-ev-title{color:var(--text2);}
+.cal-ev.easy .cal-ev-meta{color:var(--text2);opacity:.7;}
+.cal-ev.strength{background:rgba(245,158,11,.3);}.cal-ev.strength .cal-ev-title{color:#f59e0b;}
+.cal-ev.strength .cal-ev-meta{color:#f59e0b;opacity:.7;}
+.cal-ev.rest{background:rgba(148,163,184,.1);border:1px dashed rgba(148,163,184,.3);}
+.cal-ev.rest .cal-ev-title{color:var(--text2);font-style:italic;}
+.cal-ev.logistics{background:rgba(99,102,241,.25);}.cal-ev.logistics .cal-ev-title{color:var(--acc2);}
+.cal-ev.race{background:linear-gradient(135deg,#ec4899,#f43f5e);box-shadow:0 2px 8px rgba(236,72,153,.4);}
+.cal-ev.race .cal-ev-title{font-size:10px;font-weight:800;}
+.cal-ev.race .cal-ev-meta{font-size:9px;color:rgba(255,255,255,.85);}
+.cal-wtotal{
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:5px 5px;
+  font-size:9px;
+  display:flex;flex-direction:column;gap:3px;justify-content:center;
+  background:var(--bg2);
+}
+.cal-tot-row{display:flex;gap:3px;align-items:baseline;}
+.cal-tot-val{font-weight:700;font-size:10px;color:var(--text);}
+.cal-tot-lbl{color:var(--text2);font-size:8px;}
+.cal-nav{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.cal-nav-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.cal-nav-btn:hover{color:var(--text);}
+.cal-month-title{font-size:15px;font-weight:700;flex:1;}
+.cal-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.cal-leg{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2);}
+.cal-leg-dot{width:8px;height:8px;border-radius:3px;}
 </style>
 </head>
 <body>
@@ -201,6 +288,7 @@ nav button.active{border-bottom-color:var(--acc);}
   <button onclick="showTab('ravitos',this)">Ravitos</button>
   <button onclick="showTab('logistique',this)">Logistique</button>
   <button onclick="showTab('sac',this)">Mon Sac</button>
+  <button onclick="showTab('calendrier',this)">Calendrier</button>
   <button onclick="showTab('jourj',this)" style="color:#ec4899;font-weight:700;">🏃 Jour J</button>
   <button onclick="openPacerModal()" style="margin-left:auto;padding:13px 12px;font-size:15px;" title="Modifier les pacers">⚙</button>
 </nav>
@@ -990,6 +1078,25 @@ nav button.active{border-bottom-color:var(--acc);}
 
 </div>
 
+<!-- ═══════════════ CALENDRIER ═══════════════ -->
+<div id="calendrier" class="tab">
+  <div class="cal-nav">
+    <button class="cal-nav-btn" onclick="calNav(-1)">‹</button>
+    <div class="cal-month-title" id="cal-title"></div>
+    <button class="cal-nav-btn" onclick="calNav(1)">›</button>
+  </div>
+  <div class="cal-legend">
+    <div class="cal-leg"><div class="cal-leg-dot" style="background:#2563eb"></div>Trail</div>
+    <div class="cal-leg"><div class="cal-leg-dot" style="background:#16a34a"></div>Run</div>
+    <div class="cal-leg"><div class="cal-leg-dot" style="background:rgba(148,163,184,.4)"></div>Récup / Facile</div>
+    <div class="cal-leg"><div class="cal-leg-dot" style="background:rgba(245,158,11,.5)"></div>Muscu</div>
+    <div class="cal-leg"><div class="cal-leg-dot" style="background:#ec4899"></div>Course 🏔️</div>
+  </div>
+  <div class="cal-outer">
+    <div class="cal-grid" id="cal-grid"></div>
+  </div>
+</div>
+
 <!-- ═══════════════ JOUR J ═══════════════ -->
 <div id="jourj" class="tab">
   <div class="jj-banner">
@@ -1358,6 +1465,7 @@ function showTab(id, btn) {
   btn.classList.add('active');
   if (id === 'sections') initMaps();
   if (id === 'jourj') renderJourJ();
+  if (id === 'calendrier') renderCal();
 }
 
 // ─── SECTION ACCORDION ───
@@ -1412,10 +1520,166 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb => {
   });
 });
 
+// ─── CALENDRIER ───
+const TRAINING = {
+  // S22 · May 25–31
+  '2026-05-25': [{ t:'trail', n:'Sortie longue courrir', d:"~3h", k:'15km', p:'↑623m' }],
+  '2026-05-26': [
+    { t:'run',   n:'Footing + 10×30 30',          d:"40'", k:'8.0km' },
+    { t:'trail', n:'Trail intensité fractionné',   d:'1h30', k:'12km', p:'↑12m' }
+  ],
+  '2026-05-27': [
+    { t:'trail', n:'Sortie longue',   d:'2h00', k:'15km', p:'↑1000m' },
+    { t:'trail', n:'Trail endurance', d:'1h30', k:'10km', p:'↑428m' }
+  ],
+  '2026-05-28': [
+    { t:'trail', n:'Sortie endurance', d:'1h30', k:'40km', p:'↑800m' },
+    { t:'trail', n:'Reco Bauges',      d:'4h00', k:'16km', p:'↑1300m' }
+  ],
+  '2026-05-29': [{ t:'trail', n:'Sortie longue', d:'3h20', k:'70km', p:'↑2100m' }],
+  // S23 · Jun 1–7 — Affûtage Bauges
+  '2026-06-01': [{ t:'easy',     n:'Récup active · marche légère',        d:"1h00", k:'5km',  p:'↑300m' }],
+  '2026-06-02': [{ t:'run',      n:'Footing léger + escalier activation',  d:"45'",  k:'7km',  p:'↑250m' }],
+  '2026-06-03': [{ t:'trail',    n:'Trail activation légère',              d:'1h15', k:'9km',  p:'↑400m' }],
+  '2026-06-04': [{ t:'strength', n:'Activation musculaire légère',         d:"45'" }],
+  '2026-06-05': [{ t:'run',      n:'Footing court + 3×30s allure race',   d:"30'",  k:'5km',  p:'↑150m' }],
+  '2026-06-06': [{ t:'easy',     n:'Marche légère',                        d:"30'",  k:'4km' }],
+  // S24 · Jun 8–14 — Affutage + Course
+  '2026-06-09': [{ t:'run',       n:'Footing léger 20min',          d:"20'", k:'3km' }],
+  '2026-06-10': [{ t:'easy',      n:'Marche 30min',                  d:"30'" }],
+  '2026-06-11': [{ t:'rest',      n:'Repos — J-2' }],
+  '2026-06-12': [{ t:'logistics', n:'Logistique + activation courte', d:"15'", k:'2km' }],
+  '2026-06-13': [{ t:'race',      n:'14 Sommets des Bauges',         d:'~23h', k:'80.4km', p:'↑8700m' }],
+};
+
+const WEEK_TOTALS = {
+  22: { label:'Charge', km:'288km', dp:'↑7.0km', time:'18h59' },
+  23: { label:'Affûtage Bauges', km:'30km', dp:'↑1.3km', time:'4h45' },
+  24: { label:'Affutage · Course', km:'98km', dp:'↑8.9km', time:'23h04' },
+};
+
+let calYear = 2026, calMonth = 4; // 0-based: 4 = May
+
+function calNav(dir) {
+  calMonth += dir;
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  if (calMonth > 11) { calMonth = 0;  calYear++; }
+  renderCal();
+}
+
+function isoDate(y, m, d) {
+  return y + '-' + String(m + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+}
+
+function getWeekNum(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+}
+
+function renderCal() {
+  const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const DAYS_FR   = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  document.getElementById('cal-title').textContent = MONTHS_FR[calMonth] + ' ' + calYear;
+
+  // First day of month — Monday-based grid
+  const firstDay = new Date(calYear, calMonth, 1);
+  let startDow = firstDay.getDay(); // 0=Sun
+  startDow = (startDow === 0) ? 6 : startDow - 1; // convert to Mon=0
+
+  // Build grid cells: find Monday of first week
+  const gridStart = new Date(firstDay);
+  gridStart.setDate(gridStart.getDate() - startDow);
+
+  // Count weeks needed
+  const lastDay = new Date(calYear, calMonth + 1, 0);
+  let endDow = lastDay.getDay();
+  endDow = (endDow === 0) ? 6 : endDow - 1;
+  const gridEnd = new Date(lastDay);
+  gridEnd.setDate(gridEnd.getDate() + (6 - endDow));
+
+  const totalDays = Math.round((gridEnd - gridStart) / 86400000) + 1;
+  const numWeeks  = totalDays / 7;
+
+  // Determine "today col" header highlight
+  const todayDow = (today.getDay() === 0) ? 6 : today.getDay() - 1;
+
+  let html = '';
+
+  // Header row (week label + 7 days + total)
+  html += `<div class="cal-th" style="background:var(--bg);"></div>`; // week col header
+  DAYS_FR.forEach((d, i) => {
+    const isTodayCol = (today.getFullYear() === calYear && today.getMonth() === calMonth && i === todayDow);
+    html += `<div class="cal-th${isTodayCol ? ' today-col' : ''}">${d}</div>`;
+  });
+  html += `<div class="cal-th" style="text-align:center;">Sem.</div>`;
+
+  // Week rows
+  for (let w = 0; w < numWeeks; w++) {
+    const weekMon = new Date(gridStart);
+    weekMon.setDate(weekMon.getDate() + w * 7);
+    const wn = getWeekNum(weekMon);
+    const wt = WEEK_TOTALS[wn] || null;
+
+    // Week label cell
+    html += `<div class="cal-wlabel">
+      <div class="cal-wnum">S${wn}</div>
+      ${wt ? `<div class="cal-wtitle">${wt.label}</div>` : ''}
+    </div>`;
+
+    // 7 day cells
+    for (let d = 0; d < 7; d++) {
+      const cur = new Date(weekMon);
+      cur.setDate(cur.getDate() + d);
+      const curDate = isoDate(cur.getFullYear(), cur.getMonth(), cur.getDate());
+      const isThisMonth = (cur.getMonth() === calMonth && cur.getFullYear() === calYear);
+      const isToday = (cur.getTime() === today.getTime());
+      const isRace  = (curDate === '2026-06-13');
+      const events  = TRAINING[curDate] || [];
+
+      let cls = 'cal-day';
+      if (!isThisMonth) cls += ' other-month';
+      if (isToday) cls += ' is-today';
+      if (isRace)  cls += ' is-race';
+
+      let dnumCls = 'cal-dnum';
+      if (isToday) dnumCls += ' today';
+      if (isRace)  dnumCls += ' race-day';
+
+      const evHtml = events.map(ev => `
+        <div class="cal-ev ${ev.t}">
+          <div class="cal-ev-title">${ev.n}</div>
+          ${(ev.d || ev.k || ev.p) ? `<div class="cal-ev-meta">${[ev.d, ev.k, ev.p].filter(Boolean).join(' · ')}</div>` : ''}
+        </div>`).join('');
+
+      html += `<div class="${cls}">
+        <div class="${dnumCls}">${cur.getDate()}</div>
+        ${evHtml}
+      </div>`;
+    }
+
+    // Weekly total cell
+    html += `<div class="cal-wtotal">`;
+    if (wt) {
+      html += `<div class="cal-tot-row"><span class="cal-tot-val">${wt.km}</span><span class="cal-tot-lbl"> dist</span></div>`;
+      html += `<div class="cal-tot-row"><span class="cal-tot-val">${wt.dp}</span><span class="cal-tot-lbl"> D+</span></div>`;
+      html += `<div class="cal-tot-row"><span class="cal-tot-val">${wt.time}</span><span class="cal-tot-lbl"> tps</span></div>`;
+    }
+    html += `</div>`;
+  }
+
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
 // ─── INIT ───
 window.addEventListener('load', () => {
   initMap(0);
   renderAll();
+  renderCal();
 });
 </script>
 </body>
