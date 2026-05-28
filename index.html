@@ -201,107 +201,87 @@ nav button.active{border-bottom-color:var(--acc);}
 .cal-today-btn{background:none;border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;}
 .cal-today-btn:hover{color:var(--text);}
 
-.cal-grid{
-  display:grid;
-  grid-template-columns:repeat(7,minmax(0,1fr)) 88px;
-  min-width:580px;
+/* Table — table-layout:fixed garantit que th et td de la même colonne ont exactement la même largeur */
+.cal-table{
+  width:100%;
+  table-layout:fixed;
+  border-collapse:collapse;
+  min-width:560px;
+  border:1px solid var(--border);
   border-radius:12px;
   overflow:hidden;
+}
+.cal-table th,.cal-table td{
   border:1px solid var(--border);
+  vertical-align:top;
 }
-
-/* Header row */
-.cal-hdr{
+/* En-têtes */
+.cal-table thead th{
   background:var(--bg2);
-  border-bottom:1px solid var(--border);
-  border-right:1px solid var(--border);
-  padding:8px 10px 6px;
-  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:8px 8px 6px;
+  text-align:center;
+  border-top:none;
 }
-.cal-hdr:last-child{border-right:none;}
-.cal-hdr-day{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;}
+.cal-table thead th:first-child{border-left:none;}
+.cal-table thead th:last-child{border-right:none;}
+.cal-hdr-day{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;}
 .cal-hdr-num{
-  font-size:18px;font-weight:800;line-height:1;
-  width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  font-size:17px;font-weight:800;line-height:1.1;margin:3px auto 0;
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;
   color:var(--text);
 }
 .cal-hdr-num.is-today{background:var(--acc);color:white;}
 .cal-hdr-num.is-race{background:#ec4899;color:white;}
-.cal-hdr.is-today-col .cal-hdr-day{color:var(--acc2);}
-.cal-hdr.is-race-col .cal-hdr-day{color:#ec4899;}
+.cal-th-today .cal-hdr-day{color:var(--acc2);}
+.cal-th-race .cal-hdr-day{color:#ec4899;}
 
-/* Content row */
-.cal-cell{
-  border-right:1px solid var(--border);
-  border-bottom:none;
-  padding:6px 6px 8px;
-  min-height:160px;
-  vertical-align:top;
+/* Cellules de contenu */
+.cal-table tbody td{
   background:var(--bg);
+  padding:6px 5px 8px;
+  min-height:160px;
+  height:180px;
+  border-bottom:none;
 }
-.cal-cell:last-child{border-right:none;}
-.cal-cell.is-today-col{background:rgba(99,102,241,.03);}
-.cal-cell.is-race-col{background:rgba(236,72,153,.04);}
+.cal-table tbody td:first-child{border-left:none;}
+.cal-table tbody td:last-child{border-right:none;}
+.cal-td-today{background:rgba(99,102,241,.04) !important;}
+.cal-td-race{background:rgba(236,72,153,.05) !important;}
 
-/* Training cards */
+/* Cartes entraînement */
 .cal-card{
-  border-radius:6px;
-  padding:5px 7px;
-  margin-bottom:4px;
-  cursor:default;
-  border-left:3px solid transparent;
+  border-radius:6px;padding:5px 7px;margin-bottom:4px;
+  cursor:default;border-left:3px solid transparent;
 }
-.cal-card-top{display:flex;align-items:center;gap:5px;margin-bottom:1px;}
-.cal-card-icon{font-size:11px;flex-shrink:0;}
-.cal-card-name{font-size:11px;font-weight:600;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;}
-.cal-card-meta{font-size:10px;margin-top:2px;opacity:.75;}
+.cal-card-top{display:flex;align-items:flex-start;gap:4px;margin-bottom:1px;}
+.cal-card-icon{font-size:10px;flex-shrink:0;margin-top:1px;}
+.cal-card-name{font-size:11px;font-weight:600;line-height:1.3;word-break:break-word;}
+.cal-card-meta{font-size:9px;margin-top:2px;opacity:.8;}
 
 .cal-card.trail{background:rgba(37,99,235,.18);border-left-color:#3b82f6;}
-.cal-card.trail .cal-card-name{color:#93c5fd;}
-.cal-card.trail .cal-card-meta{color:#93c5fd;}
-
+.cal-card.trail .cal-card-name,.cal-card.trail .cal-card-meta{color:#93c5fd;}
 .cal-card.run{background:rgba(22,163,74,.18);border-left-color:#22c55e;}
-.cal-card.run .cal-card-name{color:#86efac;}
-.cal-card.run .cal-card-meta{color:#86efac;}
-
+.cal-card.run .cal-card-name,.cal-card.run .cal-card-meta{color:#86efac;}
 .cal-card.easy{background:rgba(148,163,184,.1);border-left-color:rgba(148,163,184,.4);}
-.cal-card.easy .cal-card-name{color:var(--text2);}
-.cal-card.easy .cal-card-meta{color:var(--text2);}
-
+.cal-card.easy .cal-card-name,.cal-card.easy .cal-card-meta{color:var(--text2);}
 .cal-card.strength{background:rgba(245,158,11,.15);border-left-color:#f59e0b;}
-.cal-card.strength .cal-card-name{color:#fcd34d;}
-.cal-card.strength .cal-card-meta{color:#fcd34d;}
-
+.cal-card.strength .cal-card-name,.cal-card.strength .cal-card-meta{color:#fcd34d;}
 .cal-card.rest{background:rgba(148,163,184,.07);border-left-color:rgba(148,163,184,.2);border-left-style:dashed;}
 .cal-card.rest .cal-card-name{color:var(--text2);font-style:italic;}
-
 .cal-card.logistics{background:rgba(99,102,241,.15);border-left-color:var(--acc);}
-.cal-card.logistics .cal-card-name{color:var(--acc2);}
-.cal-card.logistics .cal-card-meta{color:var(--acc2);}
-
-.cal-card.race{
-  background:linear-gradient(135deg,rgba(236,72,153,.25),rgba(244,63,94,.2));
-  border-left-color:#ec4899;
-  border-left-width:4px;
-  box-shadow:0 2px 10px rgba(236,72,153,.2);
-}
-.cal-card.race .cal-card-name{color:#f9a8d4;font-size:12px;font-weight:700;}
+.cal-card.logistics .cal-card-name,.cal-card.logistics .cal-card-meta{color:var(--acc2);}
+.cal-card.race{background:linear-gradient(135deg,rgba(236,72,153,.25),rgba(244,63,94,.2));border-left-color:#ec4899;border-left-width:4px;box-shadow:0 2px 8px rgba(236,72,153,.2);}
+.cal-card.race .cal-card-name{color:#f9a8d4;font-size:11px;font-weight:700;}
 .cal-card.race .cal-card-meta{color:#f9a8d4;}
 
-/* Semaine column */
-.cal-sem-hdr{
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  padding:8px 8px 6px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
-}
-.cal-sem-num{font-size:11px;font-weight:800;color:var(--acc2);}
-.cal-sem-name{font-size:9px;color:var(--text2);line-height:1.3;}
-.cal-sem-cell{
-  background:var(--bg2);padding:10px 8px;
-  display:flex;flex-direction:column;gap:5px;justify-content:center;
-}
-.cal-sem-row{display:flex;flex-direction:column;gap:1px;}
+/* Colonne Semaine */
+.cal-th-sem{text-align:left !important;padding:8px !important;}
+.cal-td-sem{background:var(--bg2) !important;padding:8px !important;vertical-align:middle !important;height:auto !important;}
+.cal-sem-num{font-size:11px;font-weight:800;color:var(--acc2);display:block;margin-bottom:2px;}
+.cal-sem-name{font-size:9px;color:var(--text2);line-height:1.3;display:block;}
+.cal-sem-stat{display:flex;flex-direction:column;gap:1px;margin-top:6px;}
 .cal-sem-val{font-size:11px;font-weight:700;color:var(--text);}
-.cal-sem-lbl{font-size:9px;color:var(--text2);}
+.cal-sem-lbl{font-size:8px;color:var(--text2);}
 
 .cal-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
 .cal-leg{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2);}
@@ -1122,9 +1102,7 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="cal-leg"><div class="cal-leg-dot" style="background:#f59e0b"></div>Muscu</div>
     <div class="cal-leg"><div class="cal-leg-dot" style="background:#ec4899"></div>Course 🏔️</div>
   </div>
-  <div class="cal-outer">
-    <div class="cal-grid" id="cal-grid"></div>
-  </div>
+  <div class="cal-outer" id="cal-container"></div>
 </div>
 
 <!-- ═══════════════ JOUR J ═══════════════ -->
@@ -1656,39 +1634,47 @@ function renderCal() {
     days.push(d);
   }
 
-  let html = '';
+  // ── Construire la table ──
+  // <colgroup> : 7 colonnes égales + 1 colonne Semaine fixe 82px
+  let html = `<table class="cal-table">
+  <colgroup>
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:calc((100% - 82px)/7)">
+    <col style="width:82px">
+  </colgroup>
+  <thead><tr>`;
 
-  // ── Header row: 7 day headers + Semaine ──
+  // 7 en-têtes jours
   days.forEach((d, i) => {
-    const key = isoDate(d);
+    const key     = isoDate(d);
     const isToday = d.getTime() === today.getTime();
     const isRace  = key === '2026-06-13';
-    let cls = 'cal-hdr';
-    if (isToday) cls += ' is-today-col';
-    if (isRace)  cls += ' is-race-col';
-    let numCls = 'cal-hdr-num';
-    if (isToday) numCls += ' is-today';
-    if (isRace)  numCls += ' is-race';
-    html += `<div class="${cls}">
+    let thCls = isToday ? 'cal-th-today' : (isRace ? 'cal-th-race' : '');
+    let numCls = 'cal-hdr-num' + (isToday ? ' is-today' : '') + (isRace ? ' is-race' : '');
+    html += `<th class="${thCls}">
       <div class="cal-hdr-day">${DAYS_FR[i]}</div>
       <div class="${numCls}">${d.getDate()}</div>
-    </div>`;
+    </th>`;
   });
-  // Semaine header
-  html += `<div class="cal-sem-hdr">
-    <div class="cal-sem-num">S${wn}</div>
-    ${wi ? `<div class="cal-sem-name">${wi.label.replace(/^S\d+ · /,'')}</div>` : ''}
-  </div>`;
+  // En-tête Semaine
+  html += `<th class="cal-th-sem">
+    <span class="cal-sem-num">S${wn}</span>
+    ${wi ? `<span class="cal-sem-name">${wi.label.replace(/^S\d+ · /,'')}</span>` : ''}
+  </th>`;
+  html += `</tr></thead><tbody><tr>`;
 
-  // ── Content row: 7 day cells + Semaine totals ──
+  // 7 cellules de contenu
   days.forEach((d, i) => {
-    const key    = isoDate(d);
+    const key     = isoDate(d);
     const isToday = d.getTime() === today.getTime();
     const isRace  = key === '2026-06-13';
     const events  = TRAINING[key] || [];
-    let cls = 'cal-cell';
-    if (isToday) cls += ' is-today-col';
-    if (isRace)  cls += ' is-race-col';
+    let tdCls = isToday ? 'cal-td-today' : (isRace ? 'cal-td-race' : '');
     const cards = events.map(ev => {
       const icon = TYPE_ICON[ev.t] || '';
       const meta = [ev.d, ev.k, ev.p].filter(x => x && x.length > 0).join(' · ');
@@ -1700,21 +1686,21 @@ function renderCal() {
         ${meta ? `<div class="cal-card-meta">${meta}</div>` : ''}
       </div>`;
     }).join('');
-    html += `<div class="${cls}">${cards}</div>`;
+    html += `<td class="${tdCls}">${cards}</td>`;
   });
 
-  // Semaine totals
-  html += `<div class="cal-sem-cell">`;
+  // Cellule totaux Semaine
+  html += `<td class="cal-td-sem">`;
   if (wi) {
-    html += `<div class="cal-sem-row"><div class="cal-sem-val">${wi.km}</div><div class="cal-sem-lbl">distance</div></div>`;
-    html += `<div class="cal-sem-row"><div class="cal-sem-val">${wi.dp}</div><div class="cal-sem-lbl">dénivelé</div></div>`;
-    html += `<div class="cal-sem-row"><div class="cal-sem-val">${wi.time}</div><div class="cal-sem-lbl">temps</div></div>`;
-  } else {
-    html += `<div class="cal-sem-lbl" style="font-size:10px;color:var(--text2)">—</div>`;
-  }
-  html += `</div>`;
+    html += `<div class="cal-sem-stat">
+      <div><span class="cal-sem-val">${wi.km}</span><div class="cal-sem-lbl">distance</div></div>
+      <div><span class="cal-sem-val">${wi.dp}</span><div class="cal-sem-lbl">dénivelé</div></div>
+      <div><span class="cal-sem-val">${wi.time}</span><div class="cal-sem-lbl">temps</div></div>
+    </div>`;
+  } else { html += `<span style="font-size:10px;color:var(--text2)">—</span>`; }
+  html += `</td></tr></tbody></table>`;
 
-  document.getElementById('cal-grid').innerHTML = html;
+  document.getElementById('cal-container').innerHTML = html;
 }
 
 // ─── INIT ───
