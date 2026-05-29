@@ -459,11 +459,20 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="pecloz_arm">14:00</div>
+      <div class="cp-time" data-cp-time="pecloz">14:15</div>
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
-        <div class="cp-name">Pecloz · Armenaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommets 7-8</span></div>
-        <div class="cp-meta"><span>km ~38-39 · alt ~2111-2166m</span><span><span data-pacer-name="S4">Louis Le C</span> · Section ultra-technique</span></div>
+        <div class="cp-name">Pecloz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 7</span></div>
+        <div class="cp-meta"><span>km ~38 · alt 2197m</span><span><span data-pacer-name="S4">Louis Le C</span> · Section ultra-technique</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="armenaz">15:10</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Armenaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 8</span></div>
+        <div class="cp-meta"><span>km ~39 · alt 2166m</span><span data-pacer-name="S4">Louis Le C</span></div>
       </div>
     </div>
 
@@ -1285,7 +1294,8 @@ const DEFAULT_SUBSEG = {
     { dur: 35,  id: null,             label: 'Mont de la Coche → Nant Fourchu' }
   ],
   S4: [
-    { dur: 111, id: 'pecloz_arm',     label: 'Nant Fourchu → Pecloz/Armenaz' },
+    { dur: 56,  id: 'pecloz',          label: 'Nant Fourchu → Pecloz' },
+    { dur: 55,  id: 'armenaz',         label: 'Pecloz → Armenaz' },
     { dur: 30,  id: 'pte_arces',      label: 'Pecloz → Pte des Arces' },
     { dur: 30,  id: 'pte_arlicot',    label: 'Pte Arces → Pte des Arlicots' },
     { dur: 30,  id: 'grand_parra',    label: 'Pte Arlicots → Grand Parra' },
