@@ -311,7 +311,7 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="stat"><div class="val">8 700 m</div><div class="lbl">D+ total</div></div>
     <div class="stat"><div class="val">14</div><div class="lbl">Sommets</div></div>
     <div class="stat"><div class="val">6 sections</div><div class="lbl">Découpage</div></div>
-    <div class="stat"><div class="val">~23h</div><div class="lbl">Durée estimée</div></div>
+    <div class="stat"><div class="val" id="stat-total">~23h</div><div class="lbl">Durée estimée</div></div>
   </div>
 </div>
 
@@ -1464,6 +1464,14 @@ function renderAll() {
       return `<span class="chip pacer" style="background:${ai},.12);color:${ci}">${name}</span>`;
     }).join('');
   });
+
+  // Total duration in header
+  const totalEl = document.getElementById('stat-total');
+  if (totalEl && times.T7 != null && times.T1 != null) {
+    const tot = times.T7 - times.T1;
+    const h = Math.floor(tot / 60), m = tot % 60;
+    totalEl.textContent = '~' + h + 'h' + (m ? String(m).padStart(2,'0') : '');
+  }
 
   // Depart max = checkpoint - travel offset (data-depart-offset in minutes, negative)
   document.querySelectorAll('[data-depart-max]').forEach(el => {
