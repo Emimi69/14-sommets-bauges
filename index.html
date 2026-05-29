@@ -468,11 +468,29 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="arces_group">15:30</div>
+      <div class="cp-time" data-cp-time="pte_arces">15:40</div>
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
-        <div class="cp-name">Pte Arces · Pte Arlicots · Grand Parra <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommets 9-11</span></div>
-        <div class="cp-meta"><span>km ~41-44 · alt ~2000m</span><span><span data-pacer-name="S4">Louis Le C</span> · Arrêts repérage</span></div>
+        <div class="cp-name">Pointe des Arces <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 9</span></div>
+        <div class="cp-meta"><span>km ~41 · alt ~2000m</span><span data-pacer-name="S4">Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="pte_arlicot">16:10</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Pointe des Arlicots <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 10</span></div>
+        <div class="cp-meta"><span>km ~42 · alt ~2000m</span><span data-pacer-name="S4">Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="grand_parra">16:40</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Grand Parra <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 11</span></div>
+        <div class="cp-meta"><span>km ~44 · alt ~2000m</span><span><span data-pacer-name="S4">Louis Le C</span> · Arrêts repérage</span></div>
       </div>
     </div>
 
@@ -1268,8 +1286,10 @@ const DEFAULT_SUBSEG = {
   ],
   S4: [
     { dur: 111, id: 'pecloz_arm',     label: 'Nant Fourchu → Pecloz/Armenaz' },
-    { dur: 90,  id: 'arces_group',    label: 'Pecloz → Arces/Arlicots/Grand Parra' },
-    { dur: 90,  id: 'arclusaz',       label: 'Arces → Dent d\'Arclusaz' },
+    { dur: 30,  id: 'pte_arces',      label: 'Pecloz → Pte des Arces' },
+    { dur: 30,  id: 'pte_arlicot',    label: 'Pte Arces → Pte des Arlicots' },
+    { dur: 30,  id: 'grand_parra',    label: 'Pte Arlicots → Grand Parra' },
+    { dur: 90,  id: 'arclusaz',       label: 'Grand Parra → Dent d\'Arclusaz' },
     { dur: 87,  id: null,             label: 'Arclusaz → Sainte-Reine' }
   ],
   S5: [
