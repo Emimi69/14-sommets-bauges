@@ -1240,8 +1240,9 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="pm-body" id="tm-body">
       <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Format : <code>h:mm</code> · ex. <code>1:10</code> = 1h10</div>
     </div>
-    <div class="pm-foot">
+    <div class="pm-foot" style="flex-wrap:wrap;gap:6px;">
       <button class="pm-reset pm-btn" onclick="resetTimes()">Réinitialiser</button>
+      <button id="tm-share-btn" class="pm-cancel pm-btn" onclick="copyShareLink()" style="margin-right:auto;">🔗 Copier le lien</button>
       <button class="pm-cancel pm-btn" onclick="closeTimeModal()">Annuler</button>
       <button class="pm-save pm-btn" onclick="saveTimeModal()">Enregistrer</button>
     </div>
@@ -1294,21 +1295,21 @@ const DEFAULT_SUBSEG = {
     { dur: 35,  id: null,             label: 'Mont de la Coche → Nant Fourchu' }
   ],
   S4: [
-    { dur: 56,  id: 'pecloz',          label: 'Nant Fourchu → Pecloz' },
-    { dur: 55,  id: 'armenaz',         label: 'Pecloz → Armenaz' },
-    { dur: 30,  id: 'pte_arces',      label: 'Armenaz → Pte des Arces' },
-    { dur: 30,  id: 'pte_arlicot',    label: 'Pte Arces → Pte des Arlicots' },
-    { dur: 30,  id: 'grand_parra',    label: 'Pte Arlicots → Grand Parra' },
-    { dur: 90,  id: 'arclusaz',       label: 'Grand Parra → Dent d\'Arclusaz' },
-    { dur: 87,  id: null,             label: 'Arclusaz → Sainte-Reine' }
+    { dur: 130, id: 'pecloz',          label: 'Nant Fourchu → Pecloz' },
+    { dur: 30,  id: 'armenaz',         label: 'Pecloz → Armenaz' },
+    { dur: 50,  id: 'pte_arces',      label: 'Armenaz → Pte des Arces' },
+    { dur: 50,  id: 'pte_arlicot',    label: 'Pte Arces → Pte des Arlicots' },
+    { dur: 35,  id: 'grand_parra',    label: 'Pte Arlicots → Grand Parra' },
+    { dur: 75,  id: 'arclusaz',       label: 'Grand Parra → Dent d\'Arclusaz' },
+    { dur: 60,  id: null,             label: 'Arclusaz → Sainte-Reine' }
   ],
   S5: [
-    { dur: 128, id: 'colombier',      label: 'Sainte-Reine → Colombier' },
-    { dur: 94,  id: null,             label: 'Colombier → La Compote' }
+    { dur: 135, id: 'colombier',      label: 'Sainte-Reine → Colombier' },
+    { dur: 65,  id: null,             label: 'Colombier → La Compote' }
   ],
   S6: [
-    { dur: 166, id: 'trelod',         label: 'La Compote → Trelod' },
-    { dur: 54,  id: null,             label: 'Trelod → Parking des Cornes' }
+    { dur: 165, id: 'trelod',         label: 'La Compote → Trelod' },
+    { dur: 50,  id: null,             label: 'Trelod → Parking des Cornes' }
   ]
 };
 const SCHED_PAUSES = [10, 15, 20, 25, 10, 0];
@@ -1673,6 +1674,28 @@ function resetTimes() {
     renderAll();
   }
 }
+function copyShareLink() {
+  const ss = getSubSegs();
+  const data = {};
+  Object.keys(ss).forEach(sec => { data[sec] = ss[sec].map(s => s.dur); });
+  const url = location.origin + location.pathname + '#cfg=' + btoa(JSON.stringify(data));
+  navigator.clipboard.writeText(url).then(
+    () => { const b = document.getElementById('tm-share-btn'); b.textContent = '✓ Lien copié !'; setTimeout(() => b.textContent = '🔗 Copier le lien', 2000); },
+    () => prompt('Copie ce lien :', url)
+  );
+}
+function checkURLConfig() {
+  if (!location.hash.startsWith('#cfg=')) return;
+  try {
+    const data = JSON.parse(atob(location.hash.slice(5)));
+    const ss = getSubSegs();
+    Object.keys(data).forEach(sec => {
+      if (ss[sec]) data[sec].forEach((dur, i) => { if (ss[sec][i] && dur > 0) ss[sec][i].dur = dur; });
+    });
+    saveSubSegs(ss);
+    history.replaceState(null, '', location.pathname);
+  } catch(e) {}
+}
 
 // ─── TAB NAVIGATION ───
 function showTab(id, btn) {
@@ -1914,6 +1937,7 @@ function renderCal() {
 
 // ─── INIT ───
 window.addEventListener('load', () => {
+  checkURLConfig();
   initMap(0);
   renderAll();
   renderCal();
