@@ -191,101 +191,6 @@ nav button.active{border-bottom-color:var(--acc);}
 .jj-badge{background:rgba(34,197,94,.15);color:var(--summit);padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-left:4px;}
 .jj-voiture{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--acc2);margin-top:8px;}
 
-/* ─── CALENDRIER HEBDOMADAIRE ─── */
-.cal-outer{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.cal-nav{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-.cal-nav-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.cal-nav-btn:hover{border-color:var(--acc);color:var(--text);}
-.cal-week-title{font-size:15px;font-weight:700;flex:1;}
-.cal-week-label{font-size:11px;color:var(--text2);margin-left:4px;font-weight:400;}
-.cal-today-btn{background:none;border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;}
-.cal-today-btn:hover{color:var(--text);}
-
-/* Table — table-layout:fixed garantit que th et td de la même colonne ont exactement la même largeur */
-.cal-table{
-  width:100%;
-  table-layout:fixed;
-  border-collapse:collapse;
-  min-width:560px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-}
-.cal-table th,.cal-table td{
-  border:1px solid var(--border);
-  vertical-align:top;
-}
-/* En-têtes */
-.cal-table thead th{
-  background:var(--bg2);
-  padding:8px 8px 6px;
-  text-align:center;
-  border-top:none;
-}
-.cal-table thead th:first-child{border-left:none;}
-.cal-table thead th:last-child{border-right:none;}
-.cal-hdr-day{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;}
-.cal-hdr-num{
-  font-size:17px;font-weight:800;line-height:1.1;margin:3px auto 0;
-  width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;
-  color:var(--text);
-}
-.cal-hdr-num.is-today{background:var(--acc);color:white;}
-.cal-hdr-num.is-race{background:#ec4899;color:white;}
-.cal-th-today .cal-hdr-day{color:var(--acc2);}
-.cal-th-race .cal-hdr-day{color:#ec4899;}
-
-/* Cellules de contenu */
-.cal-table tbody td{
-  background:var(--bg);
-  padding:6px 5px 8px;
-  min-height:160px;
-  height:180px;
-  border-bottom:none;
-}
-.cal-table tbody td:first-child{border-left:none;}
-.cal-table tbody td:last-child{border-right:none;}
-.cal-td-today{background:rgba(99,102,241,.04) !important;}
-.cal-td-race{background:rgba(236,72,153,.05) !important;}
-
-/* Cartes entraînement */
-.cal-card{
-  border-radius:6px;padding:5px 7px;margin-bottom:4px;
-  cursor:default;border-left:3px solid transparent;
-}
-.cal-card-top{display:flex;align-items:flex-start;gap:4px;margin-bottom:1px;}
-.cal-card-icon{font-size:10px;flex-shrink:0;margin-top:1px;}
-.cal-card-name{font-size:11px;font-weight:600;line-height:1.3;word-break:break-word;}
-.cal-card-meta{font-size:9px;margin-top:2px;opacity:.8;}
-
-.cal-card.trail{background:rgba(37,99,235,.18);border-left-color:#3b82f6;}
-.cal-card.trail .cal-card-name,.cal-card.trail .cal-card-meta{color:#93c5fd;}
-.cal-card.run{background:rgba(22,163,74,.18);border-left-color:#22c55e;}
-.cal-card.run .cal-card-name,.cal-card.run .cal-card-meta{color:#86efac;}
-.cal-card.easy{background:rgba(148,163,184,.1);border-left-color:rgba(148,163,184,.4);}
-.cal-card.easy .cal-card-name,.cal-card.easy .cal-card-meta{color:var(--text2);}
-.cal-card.strength{background:rgba(245,158,11,.15);border-left-color:#f59e0b;}
-.cal-card.strength .cal-card-name,.cal-card.strength .cal-card-meta{color:#fcd34d;}
-.cal-card.rest{background:rgba(148,163,184,.07);border-left-color:rgba(148,163,184,.2);border-left-style:dashed;}
-.cal-card.rest .cal-card-name{color:var(--text2);font-style:italic;}
-.cal-card.logistics{background:rgba(99,102,241,.15);border-left-color:var(--acc);}
-.cal-card.logistics .cal-card-name,.cal-card.logistics .cal-card-meta{color:var(--acc2);}
-.cal-card.race{background:linear-gradient(135deg,rgba(236,72,153,.25),rgba(244,63,94,.2));border-left-color:#ec4899;border-left-width:4px;box-shadow:0 2px 8px rgba(236,72,153,.2);}
-.cal-card.race .cal-card-name{color:#f9a8d4;font-size:11px;font-weight:700;}
-.cal-card.race .cal-card-meta{color:#f9a8d4;}
-
-/* Colonne Semaine */
-.cal-th-sem{text-align:left !important;padding:8px !important;}
-.cal-td-sem{background:var(--bg2) !important;padding:8px !important;vertical-align:middle !important;height:auto !important;}
-.cal-sem-num{font-size:11px;font-weight:800;color:var(--acc2);display:block;margin-bottom:2px;}
-.cal-sem-name{font-size:9px;color:var(--text2);line-height:1.3;display:block;}
-.cal-sem-stat{display:flex;flex-direction:column;gap:1px;margin-top:6px;}
-.cal-sem-val{font-size:11px;font-weight:700;color:var(--text);}
-.cal-sem-lbl{font-size:8px;color:var(--text2);}
-
-.cal-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
-.cal-leg{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2);}
-.cal-leg-dot{width:10px;height:10px;border-radius:3px;}
 </style>
 </head>
 <body>
@@ -297,7 +202,6 @@ nav button.active{border-bottom-color:var(--acc);}
   <button onclick="showTab('ravitos',this)">Ravitos</button>
   <button onclick="showTab('logistique',this)">Logistique</button>
   <button onclick="showTab('sac',this)">Mon Sac</button>
-  <button onclick="showTab('calendrier',this)">Calendrier</button>
   <button onclick="showTab('jourj',this)" style="color:#ec4899;font-weight:700;">🏃 Jour J</button>
   <button onclick="openTimeModal()" style="padding:13px 12px;font-size:15px;" title="Modifier les temps de segment">⏱</button>
   <button onclick="openPacerModal()" style="margin-left:auto;padding:13px 12px;font-size:15px;" title="Modifier les pacers">⚙</button>
@@ -504,6 +408,16 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
+      <div class="cp-time" data-cp-time="ravito_gp">17:10</div>
+      <div class="cp-dot" style="background:var(--ravped)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Ravito à pied · après descente Grand Parra <span class="tag" style="background:rgba(59,130,246,.12);color:var(--ravped)">Ravito à pied</span></div>
+        <div class="cp-meta"><span>Accessible à pied depuis la route</span><span data-pacer-name="S4">Louis Le C</span></div>
+        <div class="cp-pause">⏱ Pause 10 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
       <div class="cp-time" data-cp-time="arclusaz">17:00</div>
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
@@ -601,6 +515,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
     <div class="sc-body">
       <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S1">3h20</span>
         <span class="chip km">12.0 km</span>
         <span class="chip dp">D+ 1 093 m</span>
         <span class="chip dm">D- 1 521 m</span>
@@ -643,6 +558,33 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
   </div>
 
+  <!-- R2↑ Ravito pied Grand Parra -->
+  <div class="sc" id="sc_r2">
+    <div class="sc-header" onclick="toggleSection('sc_r2')">
+      <div class="sc-num" style="background:#f59e0b;color:#0f1117;font-size:11px;letter-spacing:-.5px;">R2↑</div>
+      <div class="sc-title">
+        <h3>Ravito à pied · Descente Grand Parra</h3>
+        <div class="times" style="font-size:12px;color:var(--ravcar);">🥾 À pied · Dans S4 · Accompagnateurs</div>
+      </div>
+      <div class="sc-toggle">▾</div>
+    </div>
+    <div class="sc-body">
+      <div class="chips">
+        <span class="chip" style="background:rgba(245,158,11,.15);color:var(--ravcar);">Ravito à pied S4</span>
+        <span class="chip" style="background:rgba(59,130,246,.12);color:var(--ravped);">Accompagnateurs</span>
+      </div>
+      <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--ravcar);">
+        🥾 Accessible uniquement à pied depuis la route · Arriver avant <span data-cp-time="ravito_gp">17:10</span>
+      </div>
+      <div class="map-wrap" id="mapr2-wrap">
+        <div id="mapr2" style="height:200px"></div>
+      </div>
+      <a class="dl-btn" href="gpx/Ravito-marche-2.gpx" download>
+        ⬇ Télécharger GPX Ravito Grand Parra
+      </a>
+    </div>
+  </div>
+
   <!-- S2 -->
   <div class="sc" id="sc2">
     <div class="sc-header" onclick="toggleSection('sc2')">
@@ -655,6 +597,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
     <div class="sc-body">
       <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S2">3h30</span>
         <span class="chip km">10.5 km</span>
         <span class="chip dp">D+ 1 502 m</span>
         <span class="chip dm">D- 590 m</span>
@@ -691,6 +634,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
     <div class="sc-body">
       <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S3">2h44</span>
         <span class="chip km">9.0 km</span>
         <span class="chip dp">D+ 783 m</span>
         <span class="chip dm">D- 1 574 m</span>
@@ -727,6 +671,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
     <div class="sc-body">
       <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S4">7h10</span>
         <span class="chip km">21.4 km</span>
         <span class="chip dp">D+ 2 338 m</span>
         <span class="chip dm">D- 2 570 m</span>
@@ -765,6 +710,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
     <div class="sc-body">
       <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S5">3h20</span>
         <span class="chip km">15.4 km</span>
         <span class="chip dp">D+ 1 340 m</span>
         <span class="chip dm">D- 1 401 m</span>
@@ -804,6 +750,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
     <div class="sc-body">
       <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S6">3h35</span>
         <span class="chip km">12.2 km</span>
         <span class="chip dp">D+ 1 499 m</span>
         <span class="chip dm">D- 1 015 m</span>
@@ -866,13 +813,23 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
   </div>
 
+  <div class="rcard" style="border-color:rgba(245,158,11,.3);">
+    <div class="rcard-h" style="background:rgba(245,158,11,.05);"><h3>🥾 Ravito à pied · Descente Grand Parra (S4)</h3><div class="meta" style="color:var(--ravcar);">⏰ ~<span data-cp-time="ravito_gp">17:10</span> · Pause 10 min · ⚠️ À PIED depuis route</div></div>
+    <div class="rcard-b">
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Eau plate</div><div class="fi-qty">500 ml</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Boisson iso Baouw<div class="fi-note">40g / 500ml</div></div><div class="fi-qty">500 ml</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Gel Baouw x2 + Power Gel x1</div><div class="fi-qty">x3</div></div>
+      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Encas salé · capsules sel</div><div class="fi-qty">1 set</div></div>
+    </div>
+  </div>
+
   <div class="rcard" style="border-color:rgba(34,197,94,.3);">
     <div class="rcard-h" style="background:rgba(34,197,94,.05);"><h3>🍝 Ravito S3 → S4 · Nant Fourchu</h3><div class="meta" style="color:var(--summit);">⏰ ~<span data-cp-time="T4">12:59</span> · Pause 20 min · V1 · D+ cumulé ~3700m</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">LASAGNES / REPAS CHAUD<div class="fi-note">Pâtes, riz · repas de midi</div></div><div class="fi-qty">1 assiette</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Bouillon chaud très salé<div class="fi-note">Électrolytes</div></div><div class="fi-qty">300 ml</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso SUCRÉE + eau</div><div class="fi-qty">1L</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Gel Baouw x3 + Gel DÉCAF x2<div class="fi-note">Début gels décaf · section Pecloz</div></div><div class="fi-qty">x5</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Plat lyophilisé chaud<div class="fi-note">Riz, pâtes ou ragoût · réchauffer à l'eau bouillante</div></div><div class="fi-qty">1 plat</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Bouillon chaud très salé · NAAK<div class="fi-note">Électrolytes + sel</div></div><div class="fi-qty">300 ml</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso Baouw<div class="fi-note">40g / 500ml · plein des flasques</div></div><div class="fi-qty">1.5 L</div></div>
+      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Gel Baouw x3 + Power Gel x2<div class="fi-note">Pour S4a jusqu'au ravito Grand Parra</div></div><div class="fi-qty">x5</div></div>
       <div class="fi"><div class="fi-n">5</div><div class="fi-name">Capsules sel + café sucré</div><div class="fi-qty">1 set</div></div>
       <div class="fi"><div class="fi-n">6</div><div class="fi-name">Drop bag coureur</div><div class="fi-qty">1 sac</div></div>
     </div>
@@ -881,21 +838,21 @@ nav button.active{border-bottom-color:var(--acc);}
   <div class="rcard" style="border-color:rgba(139,92,246,.3);">
     <div class="rcard-h" style="background:rgba(139,92,246,.05);"><h3>🌙 Ravito S4 → S5 · Sainte-Reine D911</h3><div class="meta" style="color:#a78bfa;">⏰ ~<span data-cp-time="T5">19:37</span> · Pause 25 min · V1 · km 52</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Eau + iso SALÉE<div class="fi-note">Soir · manque de sel</div></div><div class="fi-qty">1L</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Boisson chaude sucrée<div class="fi-note">Nuit froide à venir</div></div><div class="fi-qty">500 ml</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Gel DÉCAF x5<div class="fi-note">Colombier de nuit +1284m</div></div><div class="fi-qty">x5</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Veste très chaude<div class="fi-note">Colombier 1989m de nuit</div></div><div class="fi-qty">1</div></div>
-      <div class="fi"><div class="fi-n">5</div><div class="fi-name">Frontale + batterie rechargée</div><div class="fi-qty">1</div></div>
-      <div class="fi"><div class="fi-n">6</div><div class="fi-name">Barres x3 + Pansements/Compeed</div><div class="fi-qty">1 kit</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Pizza ou plat lyophilisé chaud<div class="fi-note">Repas chaud · regain d'énergie pour la nuit</div></div><div class="fi-qty">1 plat</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">NAAK Bouillon salé chaud<div class="fi-note">Sections nuit · électrolytes et réchauffement</div></div><div class="fi-qty">300 ml</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso Baouw décaf<div class="fi-note">40g / 500ml · sections nuit</div></div><div class="fi-qty">1.5 L</div></div>
+      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Power Gel caféiné x5<div class="fi-note">Colombier de nuit + section S5</div></div><div class="fi-qty">x5</div></div>
+      <div class="fi"><div class="fi-n">5</div><div class="fi-name">Veste très chaude<div class="fi-note">Colombier 1989m de nuit</div></div><div class="fi-qty">1</div></div>
+      <div class="fi"><div class="fi-n">6</div><div class="fi-name">Frontale + batterie rechargée</div><div class="fi-qty">1</div></div>
     </div>
   </div>
 
   <div class="rcard" style="border-color:rgba(236,72,153,.3);">
     <div class="rcard-h" style="background:rgba(236,72,153,.05);"><h3>🌙 Ravito S5 → S6 · La Compote</h3><div class="meta" style="color:#ec4899;">⏰ ~<span data-cp-time="T6">23:44</span> · Pause 10 min · V1 · Tout le monde</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Boisson chaude sucrée<div class="fi-note">Nuit froide avant Trelod</div></div><div class="fi-qty">400 ml</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel DÉCAF x4<div class="fi-note">Montée finale Trelod +1499m</div></div><div class="fi-qty">x4</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Encas salé · iso SALÉE</div><div class="fi-qty">1 set</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">NAAK Bouillon salé chaud<div class="fi-note">Nuit froide avant Trelod · sodium</div></div><div class="fi-qty">400 ml</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Power Gel caféiné x4<div class="fi-note">Montée finale Trelod +1499m</div></div><div class="fi-qty">x4</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso Baouw décaf · encas salé<div class="fi-note">40g / 500ml</div></div><div class="fi-qty">1 set</div></div>
       <div class="fi"><div class="fi-n">4</div><div class="fi-name">Veste très chaude + frontale vérifiés<div class="fi-note">Descente nuit Trelod → Cornes</div></div><div class="fi-qty">check</div></div>
       <div class="fi"><div class="fi-n">5</div><div class="fi-name">Boisson de récupération<div class="fi-note">Pour l'arrivée</div></div><div class="fi-qty">500 ml</div></div>
     </div>
@@ -1169,24 +1126,6 @@ nav button.active{border-bottom-color:var(--acc);}
 
 </div>
 
-<!-- ═══════════════ CALENDRIER ═══════════════ -->
-<div id="calendrier" class="tab">
-  <div class="cal-nav">
-    <button class="cal-nav-btn" onclick="calNav(-1)">‹</button>
-    <div class="cal-week-title" id="cal-title"></div>
-    <button class="cal-nav-btn" onclick="calNav(1)">›</button>
-    <button class="cal-today-btn" onclick="calGoToday()">Aujourd'hui</button>
-  </div>
-  <div class="cal-legend">
-    <div class="cal-leg"><div class="cal-leg-dot" style="background:#3b82f6"></div>Trail</div>
-    <div class="cal-leg"><div class="cal-leg-dot" style="background:#22c55e"></div>Run</div>
-    <div class="cal-leg"><div class="cal-leg-dot" style="background:rgba(148,163,184,.4)"></div>Récup / Facile</div>
-    <div class="cal-leg"><div class="cal-leg-dot" style="background:#f59e0b"></div>Muscu</div>
-    <div class="cal-leg"><div class="cal-leg-dot" style="background:#ec4899"></div>Course 🏔️</div>
-  </div>
-  <div class="cal-outer" id="cal-container"></div>
-</div>
-
 <!-- ═══════════════ JOUR J ═══════════════ -->
 <div id="jourj" class="tab">
   <div class="jj-banner">
@@ -1327,7 +1266,8 @@ const DEFAULT_SUBSEG = {
     { dur: 50,  id: 'pte_arces',      label: 'Armenaz → Pte des Arces' },
     { dur: 50,  id: 'pte_arlicot',    label: 'Pte Arces → Pte des Arlicots' },
     { dur: 35,  id: 'grand_parra',    label: 'Pte Arlicots → Grand Parra' },
-    { dur: 75,  id: 'arclusaz',       label: 'Grand Parra → Dent d\'Arclusaz' },
+    { dur: 30,  id: 'ravito_gp',      label: 'Grand Parra → Ravito pied descente' },
+    { dur: 45,  id: 'arclusaz',       label: 'Ravito pied → Dent d\'Arclusaz' },
     { dur: 60,  id: null,             label: 'Arclusaz → Sainte-Reine' }
   ],
   S5: [
@@ -1507,6 +1447,16 @@ function renderAll() {
     const offset = parseInt(el.dataset.departOffset || '-30');
     if (times[key] == null) return;
     el.textContent = toHHMM(times[key] + offset);
+  });
+
+  // Section duration chips
+  document.querySelectorAll('[data-sec-dur]').forEach(el => {
+    const sec = el.dataset.secDur;
+    const n = parseInt(sec.slice(1));
+    const sched = getSCHED();
+    const dur = sched[n-1].dur;
+    const h = Math.floor(dur/60), m = dur%60;
+    el.textContent = h + 'h' + (m ? String(m).padStart(2,'0') : '');
   });
 
   // Refresh Jour J if active
@@ -1732,7 +1682,6 @@ function showTab(id, btn) {
   btn.classList.add('active');
   if (id === 'sections') initMaps();
   if (id === 'jourj') renderJourJ();
-  if (id === 'calendrier') renderCal();
 }
 
 // ─── SECTION ACCORDION ───
@@ -1741,6 +1690,7 @@ function toggleSection(id) {
   el.classList.toggle('open');
   if (el.classList.contains('open')) {
     if (id === 'sc12') setTimeout(() => initMapGPX('map12', 'gpx/section1-2.gpx', '#6366f1'), 50);
+    else if (id === 'sc_r2') setTimeout(() => initMapGPX('mapr2', 'gpx/Ravito-marche-2.gpx', '#f59e0b'), 50);
     else { const idx = parseInt(id.replace('sc','')) - 1; setTimeout(() => initMap(idx), 50); }
   }
 }
@@ -1772,6 +1722,7 @@ function initMap(idx) {
 function initMaps() {
   document.querySelectorAll('.sc.open').forEach(sc => {
     if (sc.id === 'sc12') setTimeout(() => initMapGPX('map12', 'gpx/section1-2.gpx', '#6366f1'), 50);
+    else if (sc.id === 'sc_r2') setTimeout(() => initMapGPX('mapr2', 'gpx/Ravito-marche-2.gpx', '#f59e0b'), 50);
     else { const idx = parseInt(sc.id.replace('sc','')) - 1; setTimeout(() => initMap(idx), 50); }
   });
 }
@@ -1814,187 +1765,11 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb => {
   });
 });
 
-// ─── CALENDRIER HEBDOMADAIRE ───
-const TRAINING = {
-  // S22 · 25–31 mai
-  '2026-05-25': [{ t:'trail', n:'Sortie longue courrir',        d:'~3h',  k:'15.0km', p:'↑623m' }],
-  '2026-05-26': [
-    { t:'run',   n:'Footing + 10×30 30',         d:"40'",  k:'8.0km' },
-    { t:'trail', n:'Trail intensité fractionné',  d:'1h30', k:'12.0km', p:'↑12m' }
-  ],
-  '2026-05-27': [
-    { t:'trail', n:'Sortie longue',   d:'2h00', k:'15.0km', p:'↑1000m' },
-    { t:'trail', n:'Trail endurance', d:'1h30', k:'10.0km', p:'↑428m' }
-  ],
-  '2026-05-28': [
-    { t:'trail', n:'Sortie endurance', d:'1h30', k:'40.0km', p:'↑800m' },
-    { t:'trail', n:'Reco Bauges',      d:'4h00', k:'16.0km', p:'↑1300m' }
-  ],
-  '2026-05-29': [{ t:'trail', n:'Sortie longue', d:'3h20', k:'70.0km', p:'↑2100m' }],
-  '2026-05-30': [{ t:'easy',  n:'Repos — J6',    d:'' }],
-  '2026-05-31': [{ t:'easy',  n:'Repos — J7',    d:'' }],
-  // S23 · 1–7 juin · Affûtage Bauges
-  '2026-06-01': [{ t:'easy',     n:'Récup active · marche légère',       d:'1h00', k:'5.0km', p:'↑300m' }],
-  '2026-06-02': [{ t:'run',      n:'Footing léger + escalier activation', d:"45'",  k:'7.0km', p:'↑250m' }],
-  '2026-06-03': [{ t:'trail',    n:'Trail activation légère',             d:'1h15', k:'9.0km', p:'↑400m' }],
-  '2026-06-04': [{ t:'strength', n:'Activation musculaire légère',        d:"45'" }],
-  '2026-06-05': [{ t:'run',      n:'Footing court + 3×30s allure race',  d:"30'",  k:'5.0km', p:'↑150m' }],
-  '2026-06-06': [{ t:'easy',     n:'Marche + logistique race',            d:"30'",  k:'4.0km', p:'↑200m' }],
-  '2026-06-07': [{ t:'easy',     n:'Repos',                               d:'' }],
-  // S24 · 8–14 juin · Affutage · Course
-  '2026-06-08': [{ t:'easy',     n:'Repos — J5',                         d:'' }],
-  '2026-06-09': [{ t:'run',      n:'Footing léger 20min',                 d:"20'",  k:'3.0km', p:'↑100m' }],
-  '2026-06-10': [{ t:'easy',     n:'Marche 30min',                        d:"30'",  k:'3.0km', p:'↑100m' }],
-  '2026-06-11': [{ t:'rest',     n:'Repos — J-2' }],
-  '2026-06-12': [{ t:'logistics',n:'Logistique + activation courte',      d:"15'",  k:'2.0km' }],
-  '2026-06-13': [
-    { t:'race', n:'14 2000 Bauges', d:'~23h', k:'90km', p:'↑8800m' },
-    { t:'race', n:'14 2000 BAUGES — 90km / 8800m D+', d:'22h00', k:'90.0km', p:'↑8800m' }
-  ],
-};
-
-const WEEK_INFO = {
-  22: { label:'S22 · Charge',          km:'288km', dp:'↑7.0km', time:'18h59' },
-  23: { label:'S23 · Affûtage Bauges', km:'30km',  dp:'↑1.3km', time:'4h45'  },
-  24: { label:'S24 · Affutage · Course',km:'98km', dp:'↑8.9km', time:'23h04' },
-};
-
-// Current week: Monday of the week containing today
-function getMondayOf(d) {
-  const day = new Date(d);
-  day.setHours(0,0,0,0);
-  const dow = day.getDay();
-  const diff = (dow === 0) ? -6 : 1 - dow;
-  day.setDate(day.getDate() + diff);
-  return day;
-}
-
-function getWeekNum(date) {
-  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-  const y = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  return Math.ceil((((d - y) / 86400000) + 1) / 7);
-}
-
-function isoDate(dt) {
-  return dt.getFullYear() + '-' +
-    String(dt.getMonth() + 1).padStart(2,'0') + '-' +
-    String(dt.getDate()).padStart(2,'0');
-}
-
-const MONTHS_FR = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-const DAYS_FR   = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-const TYPE_ICON = { trail:'🏔️', run:'🏃', easy:'🚶', strength:'💪', rest:'😴', logistics:'📦', race:'⛰️' };
-
-let calWeekStart = getMondayOf(new Date());
-
-function calNav(dir) {
-  calWeekStart = new Date(calWeekStart);
-  calWeekStart.setDate(calWeekStart.getDate() + dir * 7);
-  renderCal();
-}
-function calGoToday() {
-  calWeekStart = getMondayOf(new Date());
-  renderCal();
-}
-
-function renderCal() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const wn    = getWeekNum(calWeekStart);
-  const wi    = WEEK_INFO[wn] || null;
-
-  // Title: "Sem. 22 · mai 2026"
-  const endOfWeek = new Date(calWeekStart); endOfWeek.setDate(endOfWeek.getDate() + 6);
-  const startM = MONTHS_FR[calWeekStart.getMonth()];
-  const endM   = MONTHS_FR[endOfWeek.getMonth()];
-  const monthStr = (startM === endM) ? startM : startM + ' – ' + endM;
-  document.getElementById('cal-title').innerHTML =
-    `Sem.&nbsp;<strong>${wn}</strong> · ${monthStr} ${calWeekStart.getFullYear()}` +
-    (wi ? `<span class="cal-week-label">— ${wi.label}</span>` : '');
-
-  // Build 7 day objects
-  const days = [];
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(calWeekStart);
-    d.setDate(d.getDate() + i);
-    days.push(d);
-  }
-
-  // ── Construire la table ──
-  // <colgroup> : 7 colonnes égales + 1 colonne Semaine fixe 82px
-  let html = `<table class="cal-table">
-  <colgroup>
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:calc((100% - 82px)/7)">
-    <col style="width:82px">
-  </colgroup>
-  <thead><tr>`;
-
-  // 7 en-têtes jours
-  days.forEach((d, i) => {
-    const key     = isoDate(d);
-    const isToday = d.getTime() === today.getTime();
-    const isRace  = key === '2026-06-13';
-    let thCls = isToday ? 'cal-th-today' : (isRace ? 'cal-th-race' : '');
-    let numCls = 'cal-hdr-num' + (isToday ? ' is-today' : '') + (isRace ? ' is-race' : '');
-    html += `<th class="${thCls}">
-      <div class="cal-hdr-day">${DAYS_FR[i]}</div>
-      <div class="${numCls}">${d.getDate()}</div>
-    </th>`;
-  });
-  // En-tête Semaine
-  html += `<th class="cal-th-sem">
-    <span class="cal-sem-num">S${wn}</span>
-    ${wi ? `<span class="cal-sem-name">${wi.label.replace(/^S\d+ · /,'')}</span>` : ''}
-  </th>`;
-  html += `</tr></thead><tbody><tr>`;
-
-  // 7 cellules de contenu
-  days.forEach((d, i) => {
-    const key     = isoDate(d);
-    const isToday = d.getTime() === today.getTime();
-    const isRace  = key === '2026-06-13';
-    const events  = TRAINING[key] || [];
-    let tdCls = isToday ? 'cal-td-today' : (isRace ? 'cal-td-race' : '');
-    const cards = events.map(ev => {
-      const icon = TYPE_ICON[ev.t] || '';
-      const meta = [ev.d, ev.k, ev.p].filter(x => x && x.length > 0).join(' · ');
-      return `<div class="cal-card ${ev.t}">
-        <div class="cal-card-top">
-          <span class="cal-card-icon">${icon}</span>
-          <span class="cal-card-name">${ev.n}</span>
-        </div>
-        ${meta ? `<div class="cal-card-meta">${meta}</div>` : ''}
-      </div>`;
-    }).join('');
-    html += `<td class="${tdCls}">${cards}</td>`;
-  });
-
-  // Cellule totaux Semaine
-  html += `<td class="cal-td-sem">`;
-  if (wi) {
-    html += `<div class="cal-sem-stat">
-      <div><span class="cal-sem-val">${wi.km}</span><div class="cal-sem-lbl">distance</div></div>
-      <div><span class="cal-sem-val">${wi.dp}</span><div class="cal-sem-lbl">dénivelé</div></div>
-      <div><span class="cal-sem-val">${wi.time}</span><div class="cal-sem-lbl">temps</div></div>
-    </div>`;
-  } else { html += `<span style="font-size:10px;color:var(--text2)">—</span>`; }
-  html += `</td></tr></tbody></table>`;
-
-  document.getElementById('cal-container').innerHTML = html;
-}
-
 // ─── INIT ───
 window.addEventListener('load', () => {
   checkURLConfig();
   initMap(0);
   renderAll();
-  renderCal();
 });
 </script>
 </body>
