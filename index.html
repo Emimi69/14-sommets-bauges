@@ -49,6 +49,17 @@ nav button.active{border-bottom-color:var(--acc);}
 .sc.open .sc-toggle{transform:rotate(180deg);}
 .sc-body{display:none;padding:0 16px 16px;}
 .sc.open .sc-body{display:block;}
+.sec-nut-block{margin-top:12px;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.18);border-radius:9px;padding:11px 13px;font-size:12px;}
+.nut-header{display:flex;justify-content:space-between;font-weight:700;color:var(--acc2);margin-bottom:8px;font-size:12px;}
+.nut-rate{color:var(--text2);font-weight:500;font-size:11px;}
+.nut-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.nut-row:last-of-type{border-bottom:none;}
+.nut-name{color:var(--text);}
+.nut-qty{color:var(--acc2);font-weight:600;margin-left:6px;}
+.nut-g{color:var(--text2);font-size:11px;}
+.nut-g strong{color:var(--text);font-weight:600;}
+.nut-total{display:flex;justify-content:space-between;margin-top:7px;padding-top:6px;border-top:1px solid rgba(99,102,241,.25);font-weight:700;font-size:13px;}
+.nut-total strong{color:var(--acc2);}
 
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
 .chip{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
@@ -537,6 +548,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <a class="dl-btn" href="gpx/section1.gpx" download>
         ⬇ Télécharger GPX Section 1
       </a>
+      <div class="sec-nut-block" data-sec-nutrition="S1"></div>
     </div>
   </div>
 
@@ -601,6 +613,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div class="sec-nut-block" data-sec-nutrition="S2"></div>
     </div>
   </div>
 
@@ -638,6 +651,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div class="sec-nut-block" data-sec-nutrition="S3"></div>
     </div>
   </div>
 
@@ -676,6 +690,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div class="sec-nut-block" data-sec-nutrition="S4"></div>
     </div>
   </div>
 
@@ -733,6 +748,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <a class="dl-btn" href="gpx/section4.gpx" download>
         ⬇ Télécharger GPX (section 4 complète)
       </a>
+      <div class="sec-nut-block" data-sec-nutrition="S5"></div>
     </div>
   </div>
 
@@ -773,6 +789,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div class="sec-nut-block" data-sec-nutrition="S6"></div>
     </div>
   </div>
 
@@ -815,6 +832,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div class="sec-nut-block" data-sec-nutrition="S7"></div>
     </div>
   </div>
 
@@ -1529,6 +1547,44 @@ function renderAll() {
         nameEl.textContent = power > 0 ? 'Gel Baouw x' + baouw + ' + Power Gel x' + power : 'Gel Baouw x' + baouw;
       }
     }
+  });
+
+  // Section nutrition blocks
+  document.querySelectorAll('[data-sec-nutrition]').forEach(el => {
+    const sec = el.dataset.secNutrition;
+    const n   = parseInt(sec.slice(1));
+    const isNight = n >= 6;
+    const dur     = getSegDur(sec);
+    const h = Math.floor(dur / 60), m = dur % 60;
+    const durStr  = h + 'h' + (m ? String(m).padStart(2,'0') : '');
+
+    // Hydratation : 1 flasque 500ml / 75min · Iso Baouw 30g glucides/flasque
+    const flasks     = Math.ceil(dur / 75);
+    const flaskCarbs = flasks * 30;
+    const isoName    = isNight ? 'Iso Baouw décaf (40g/500ml)' : 'Iso Baouw (40g/500ml)';
+
+    // Gels : 1 gel / 40min
+    const totalGels = Math.ceil(dur / 40);
+    let gelCarbs = 0, gelRows = '';
+    if (isNight) {
+      gelCarbs = totalGels * 27;
+      gelRows  = `<div class="nut-row"><span class="nut-name">Power Gel caféiné<span class="nut-qty">×${totalGels}</span></span><span class="nut-g">${totalGels}×27g = <strong>${gelCarbs}g</strong></span></div>`;
+    } else {
+      const power = Math.floor(totalGels / 2), baouw = totalGels - power;
+      const bc = baouw * 22, pc = power * 27;
+      gelCarbs = bc + pc;
+      gelRows  = `<div class="nut-row"><span class="nut-name">Gel Baouw<span class="nut-qty">×${baouw}</span></span><span class="nut-g">${baouw}×22g = <strong>${bc}g</strong></span></div>`;
+      if (power > 0) gelRows += `<div class="nut-row"><span class="nut-name">Power Gel<span class="nut-qty">×${power}</span></span><span class="nut-g">${power}×27g = <strong>${pc}g</strong></span></div>`;
+    }
+
+    const total = flaskCarbs + gelCarbs;
+    const rate  = Math.round(total / (dur / 60));
+
+    el.innerHTML = `
+      <div class="nut-header"><span>Nutrition · ${durStr}</span><span class="nut-rate">${rate} g glucides/h</span></div>
+      <div class="nut-row"><span class="nut-name">${isoName}<span class="nut-qty">×${flasks}</span></span><span class="nut-g">${flasks}×30g = <strong>${flaskCarbs}g</strong></span></div>
+      ${gelRows}
+      <div class="nut-total"><span>Total glucides</span><strong>${total}g</strong></div>`;
   });
 
   // Refresh Jour J if active
