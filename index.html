@@ -60,6 +60,7 @@ nav button.active{border-bottom-color:var(--acc);}
 .nut-g strong{color:var(--text);font-weight:600;}
 .nut-total{display:flex;justify-content:space-between;margin-top:7px;padding-top:6px;border-top:1px solid rgba(99,102,241,.25);font-weight:700;font-size:13px;}
 .nut-total strong{color:var(--acc2);}
+.nut-fi-total{margin-top:6px;padding-top:6px;border-top:1px solid rgba(99,102,241,.25);}
 
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
 .chip{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
@@ -862,71 +863,81 @@ nav button.active{border-bottom-color:var(--acc);}
     <p style="font-size:12px;color:var(--text2);line-height:1.7;">🎯 <strong>59 g glucides/h</strong> (plan KelaWin) · <strong>1 406 g en section</strong> + repas ravitos · Total ~1 464 g · Facteur : ⚡×0.95 optimiste · ●×1.0 réaliste · 🐢×1.05 pessimiste<br>🧃 Iso Baouw 40g/500ml = 30g glucides/flasque · Gel Baouw = 25g · Power Gel = 27g · Power Gel caféiné (nuit) = 27g<br>🍝 Repas chaud lyophilisé à Nant Fourchu (fin S3) + Sainte-Reine (fin S5)</p>
   </div>
 
-  <div class="rcard">
-    <div class="rcard-h"><h3>Ravito S1 → S2 · Route de Tamie</h3><div class="meta">⏰ ~<span data-cp-time="T2">06:20</span> · Pause 10 min · V1</div></div>
+  <!-- Départ S1 -->
+  <div class="rcard" style="border-color:rgba(148,163,184,.3);">
+    <div class="rcard-h" style="background:rgba(148,163,184,.05);"><h3>Départ · S1 · Parking des Rafforts</h3><div class="meta">⏰ 03:00 · Charger le vest</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Eau plate<div class="fi-note">Remplissage poche</div></div><div class="fi-qty">500 ml</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Boisson iso SUCRÉE</div><div class="fi-qty">500 ml</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Gel Baouw<div class="fi-note">Section Sambuy</div></div><div class="fi-qty">x2</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Barre énergétique</div><div class="fi-qty">x1</div></div>
-      <div class="fi"><div class="fi-n">5</div><div class="fi-name">Banane</div><div class="fi-qty">x1</div></div>
-      <div class="fi"><div class="fi-n">6</div><div class="fi-name">Café chaud + sucre<div class="fi-note">5h du matin</div></div><div class="fi-qty">thermos</div></div>
-      <div class="fi"><div class="fi-n">7</div><div class="fi-name">Frontale + piles</div><div class="fi-qty">1</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×3 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×3</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×1</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S1</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">192 g</div></div>
     </div>
   </div>
 
+  <!-- T2 · Route de Tamie → S2 -->
   <div class="rcard" style="border-color:rgba(59,130,246,.3);">
-    <div class="rcard-h" style="background:rgba(59,130,246,.05);"><h3>Ravito à pied · Arcalod (fin S2)</h3><div class="meta" style="color:var(--ravped);">⏰ ~<span data-cp-time="T3">10:00</span> · Pause 15 min · ⚠️ À PIED depuis Nant Fourchu</div></div>
+    <div class="rcard-h" style="background:rgba(59,130,246,.05);"><h3>T2 · Route de Tamie → S2</h3><div class="meta">⏰ ~<span data-cp-time="T2">06:20</span> · Pause 10 min</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Eau plate</div><div class="fi-qty">300 ml</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Boisson iso SALÉE<div class="fi-note">Effort intense</div></div><div class="fi-qty">300 ml</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Gel Baouw</div><div class="fi-qty">x2</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Encas salé</div><div class="fi-qty">x1</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×3 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×3</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×1</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S2</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">192 g</div></div>
     </div>
   </div>
 
-  <div class="rcard" style="border-color:rgba(245,158,11,.3);">
-    <div class="rcard-h" style="background:rgba(245,158,11,.05);"><h3>🥾 Ravito à pied · Fin S4 · Grand Parra</h3><div class="meta" style="color:var(--ravcar);">⏰ ~<span data-cp-time="T5">18:44</span> · Pause 10 min · ⚠️ À PIED depuis route</div></div>
-    <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Eau plate</div><div class="fi-qty">500 ml</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Boisson iso Baouw<div class="fi-note">40g / 500ml · 1 flasque/1h15</div></div><div class="fi-qty" data-flask-dur="S5">1 L</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name"><span data-gel-name="S5" data-gel-type="day">Gel Baouw x2 + Power Gel x1</span><div class="fi-note">1 gel/40min · transition nuit</div></div><div class="fi-qty" data-gel-dur="S5" data-gel-type="day">x3</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Encas salé · capsules sel</div><div class="fi-qty">1 set</div></div>
-    </div>
-  </div>
-
+  <!-- T3 · Arcalod → S3 (à pied) -->
   <div class="rcard" style="border-color:rgba(34,197,94,.3);">
-    <div class="rcard-h" style="background:rgba(34,197,94,.05);"><h3>🍝 Ravito S3 → S4 · Nant Fourchu</h3><div class="meta" style="color:var(--summit);">⏰ ~<span data-cp-time="T4">12:59</span> · Pause 20 min · V1 · D+ cumulé ~3700m</div></div>
+    <div class="rcard-h" style="background:rgba(34,197,94,.05);"><h3>T3 · Arcalod → S3 <span style="font-size:11px;color:var(--ravped);">⚠️ À PIED</span></h3><div class="meta">⏰ ~<span data-cp-time="T3">10:00</span> · Pause 15 min</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Plat lyophilisé chaud<div class="fi-note">Riz, pâtes ou ragoût · réchauffer à l'eau bouillante</div></div><div class="fi-qty">1 plat</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Bouillon chaud très salé · NAAK<div class="fi-note">Électrolytes + sel</div></div><div class="fi-qty">300 ml</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso Baouw<div class="fi-note">40g / 500ml · plein des flasques · 1 flasque/1h15</div></div><div class="fi-qty" data-flask-dur="S4">2 L</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name"><span data-gel-name="S4" data-gel-type="day">Gel Baouw x5 + Power Gel x3</span><div class="fi-note">Pour S4 jusqu'au ravito Grand Parra · 1 gel/40min</div></div><div class="fi-qty" data-gel-dur="S4" data-gel-type="day">x8</div></div>
-      <div class="fi"><div class="fi-n">5</div><div class="fi-name">Capsules sel + café sucré</div><div class="fi-qty">1 set</div></div>
-      <div class="fi"><div class="fi-n">6</div><div class="fi-name">Drop bag coureur</div><div class="fi-qty">1 sac</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×2 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×2</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×1</div></div>
+      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Banane<div class="fi-note">24g glucides</div></div><div class="fi-qty">×1</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S3</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">161 g</div></div>
     </div>
   </div>
 
-  <div class="rcard" style="border-color:rgba(139,92,246,.3);">
-    <div class="rcard-h" style="background:rgba(168,85,247,.05);"><h3>🌙 Ravito S5 → S6 · Sainte-Reine D911</h3><div class="meta" style="color:var(--s6);">⏰ ~<span data-cp-time="T6">20:39</span> · Pause 25 min · V1 · km 52</div></div>
+  <!-- T4 · Nant Fourchu → S4 (repas chaud) -->
+  <div class="rcard" style="border-color:rgba(245,158,11,.3);">
+    <div class="rcard-h" style="background:rgba(245,158,11,.05);"><h3>T4 · Nant Fourchu → S4 🍝</h3><div class="meta" style="color:var(--summit);">⏰ ~<span data-cp-time="T4">12:59</span> · Pause 20 min</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Pizza ou plat lyophilisé chaud<div class="fi-note">Repas chaud · regain d'énergie pour la nuit</div></div><div class="fi-qty">1 plat</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">NAAK Bouillon salé chaud<div class="fi-note">Sections nuit · électrolytes et réchauffement</div></div><div class="fi-qty">300 ml</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso Baouw décaf<div class="fi-note">40g / 500ml · sections nuit · 1 flasque/1h15</div></div><div class="fi-qty" data-flask-dur="S6">1.5 L</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name"><span data-gel-name="S6" data-gel-type="night">Power Gel caféiné x5</span><div class="fi-note">Colombier de nuit + section S6 · 1 gel/40min</div></div><div class="fi-qty" data-gel-dur="S6" data-gel-type="night">x5</div></div>
-      <div class="fi"><div class="fi-n">5</div><div class="fi-name">Veste très chaude<div class="fi-note">Colombier 1989m de nuit</div></div><div class="fi-qty">1</div></div>
-      <div class="fi"><div class="fi-n">6</div><div class="fi-name">Frontale + batterie rechargée</div><div class="fi-qty">1</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Plat lyophilisé chaud<div class="fi-note">Repas chaud avant la plus longue section</div></div><div class="fi-qty">1 plat</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×4 flasques</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×5</div></div>
+      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×3</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S4</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">326 g</div></div>
     </div>
   </div>
 
+  <!-- T5 · Ravito pied Grand Parra → S5 (à pied) -->
+  <div class="rcard" style="border-color:rgba(249,115,22,.3);">
+    <div class="rcard-h" style="background:rgba(249,115,22,.05);"><h3>T5 · Ravito pied Grand Parra → S5 <span style="font-size:11px;color:var(--ravped);">⚠️ À PIED</span></h3><div class="meta" style="color:var(--s5);">⏰ ~<span data-cp-time="T5">18:44</span> · Pause 10 min</div></div>
+    <div class="rcard-b">
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×2 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×1</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×1</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S5</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">112 g</div></div>
+    </div>
+  </div>
+
+  <!-- T6 · Sainte-Reine → S6 (repas chaud + nuit) -->
+  <div class="rcard" style="border-color:rgba(168,85,247,.3);">
+    <div class="rcard-h" style="background:rgba(168,85,247,.05);"><h3>T6 · Sainte-Reine → S6 🌙 🍝</h3><div class="meta" style="color:var(--s6);">⏰ ~<span data-cp-time="T6">20:39</span> · Pause 25 min</div></div>
+    <div class="rcard-b">
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Plat lyophilisé chaud<div class="fi-note">Repas chaud · entrée dans la nuit</div></div><div class="fi-qty">1 plat</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Iso Baouw décaf (40g/500ml)<div class="fi-note">30g glucides / flasque · version décaféinée nuit</div></div><div class="fi-qty">×3 flasques</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel caféiné<div class="fi-note">27g glucides / gel · boost nuit</div></div><div class="fi-qty">×4</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S6</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">198 g</div></div>
+    </div>
+  </div>
+
+  <!-- T7 · La Compote → S7 (nuit) -->
   <div class="rcard" style="border-color:rgba(236,72,153,.3);">
-    <div class="rcard-h" style="background:rgba(236,72,153,.05);"><h3>🌙 Ravito S6 → S7 · La Compote</h3><div class="meta" style="color:#ec4899;">⏰ ~<span data-cp-time="T7">00:24</span> · Pause 10 min · V1 · Tout le monde</div></div>
+    <div class="rcard-h" style="background:rgba(236,72,153,.05);"><h3>T7 · La Compote → S7 🌙</h3><div class="meta" style="color:#ec4899;">⏰ ~<span data-cp-time="T7">00:24</span> · Pause 10 min</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">NAAK Bouillon salé chaud<div class="fi-note">Nuit froide avant Trelod · sodium</div></div><div class="fi-qty">400 ml</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name"><span data-gel-name="S7" data-gel-type="night">Power Gel caféiné x6</span><div class="fi-note">Montée finale Trelod +1499m · 1 gel/40min</div></div><div class="fi-qty" data-gel-dur="S7" data-gel-type="night">x6</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Boisson iso Baouw décaf<div class="fi-note">40g / 500ml · 1 flasque/1h15</div></div><div class="fi-qty" data-flask-dur="S7">1.5 L</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Veste très chaude + frontale vérifiés<div class="fi-note">Descente nuit Trelod → Cornes</div></div><div class="fi-qty">check</div></div>
-      <div class="fi"><div class="fi-n">5</div><div class="fi-name">Boisson de récupération<div class="fi-note">Pour l'arrivée</div></div><div class="fi-qty">500 ml</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw décaf (40g/500ml)<div class="fi-note">30g glucides / flasque · version décaféinée nuit</div></div><div class="fi-qty">×3 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Power Gel caféiné<div class="fi-note">27g glucides / gel · montée finale Trelod</div></div><div class="fi-qty">×5</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S7</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">225 g</div></div>
     </div>
   </div>
 
