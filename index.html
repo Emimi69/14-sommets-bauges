@@ -222,16 +222,25 @@ nav button.active{border-bottom-color:var(--acc);}
   <h1>14 Sommets des Bauges</h1>
   <div class="sub">13 Juin · Départ 03h00 · Parking des Rafforts · 1 voiture · Bivouac</div>
   <div class="stats">
-    <div class="stat"><div class="val">80,4 km</div><div class="lbl">Distance</div></div>
-    <div class="stat"><div class="val">8 700 m</div><div class="lbl">D+ total</div></div>
+    <div class="stat"><div class="val">80,2 km</div><div class="lbl">Distance</div></div>
+    <div class="stat"><div class="val">8 653 m</div><div class="lbl">D+ total</div></div>
     <div class="stat"><div class="val">14</div><div class="lbl">Sommets</div></div>
-    <div class="stat"><div class="val">6 sections</div><div class="lbl">Découpage</div></div>
-    <div class="stat"><div class="val" id="stat-total">~23h</div><div class="lbl">Durée estimée</div></div>
+    <div class="stat"><div class="val">7 sections</div><div class="lbl">Découpage</div></div>
+    <div class="stat"><div class="val" id="stat-total">~25h</div><div class="lbl">Durée estimée</div></div>
   </div>
 </div>
 
 <!-- ═══════════════ PLANNING ═══════════════ -->
 <div id="planning" class="tab active">
+
+  <!-- Carte trace complète -->
+  <div class="card" style="margin-bottom:14px;padding:0;overflow:hidden;border-color:rgba(99,102,241,.3);">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px 0;">
+      <div style="font-size:13px;font-weight:700;color:var(--acc2);">🗺️ Trace complète · 80,2 km · D+ 8 653 m</div>
+      <a href="gpx/trace-complete.gpx" download style="font-size:11px;color:var(--acc2);text-decoration:none;border:1px solid rgba(99,102,241,.3);padding:3px 8px;border-radius:5px;">⬇ GPX</a>
+    </div>
+    <div id="map-full" style="height:220px;margin-top:8px;"></div>
+  </div>
 
   <div class="legend">
     <div class="leg-item"><div class="leg-dot" style="background:#ec4899"></div>Départ/Arrivée</div>
@@ -1909,6 +1918,7 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb => {
 // ─── INIT ───
 window.addEventListener('load', () => {
   checkURLConfig();
+  initMapGPX('map-full', 'gpx/trace-complete.gpx', '#6366f1');
   initMapGPX('map1', 'gpx/section1.gpx', COLORS[0]);
   renderAll();
 });
