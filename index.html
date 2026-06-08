@@ -557,6 +557,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <a class="dl-btn" href="gpx/section1.gpx" download>
         ⬇ Télécharger GPX Section 1
       </a>
+      <div data-pacing="S1" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S1"></div>
     </div>
   </div>
@@ -622,6 +623,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div data-pacing="S2" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S2"></div>
     </div>
   </div>
@@ -660,6 +662,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div data-pacing="S3" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S3"></div>
     </div>
   </div>
@@ -699,6 +702,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div data-pacing="S4" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S4"></div>
     </div>
   </div>
@@ -757,6 +761,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <a class="dl-btn" href="gpx/section4.gpx" download>
         ⬇ Télécharger GPX (section 4 complète)
       </a>
+      <div data-pacing="S5" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S5"></div>
     </div>
   </div>
@@ -798,6 +803,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div data-pacing="S6" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S6"></div>
     </div>
   </div>
@@ -841,6 +847,7 @@ nav button.active{border-bottom-color:var(--acc);}
           </ul>
         </div>
       </div>
+      <div data-pacing="S7" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S7"></div>
     </div>
   </div>
@@ -852,7 +859,7 @@ nav button.active{border-bottom-color:var(--acc);}
 
   <div class="card" style="margin-bottom:12px;border-color:rgba(99,102,241,.3);">
     <h3 style="color:var(--acc2)">Règle nutrition</h3>
-    <p style="font-size:12px;color:var(--text2);line-height:1.7;">🧃 <strong>1 flasque 500ml / 1h15</strong> (quantités calculées dynamiquement) · Gel Baouw + Power Gel de jour · Power Gel caféiné la nuit (1 gel / 40min) · Iso Baouw 40g/500ml · Repas chaud à Nant Fourchu et Sainte-Reine</p>
+    <p style="font-size:12px;color:var(--text2);line-height:1.7;">🎯 <strong>59 g glucides/h</strong> (plan KelaWin) · <strong>1 406 g en section</strong> + repas ravitos · Total ~1 464 g · Facteur : ⚡×0.95 optimiste · ●×1.0 réaliste · 🐢×1.05 pessimiste<br>🧃 Iso Baouw 40g/500ml = 30g glucides/flasque · Gel Baouw = 25g · Power Gel = 27g · Power Gel caféiné (nuit) = 27g<br>🍝 Repas chaud lyophilisé à Nant Fourchu (fin S3) + Sainte-Reine (fin S5)</p>
   </div>
 
   <div class="rcard">
@@ -1524,13 +1531,27 @@ function renderAll() {
   });
 
   // Section duration chips
+  const fmtMin = d => { const h=Math.floor(d/60),m=Math.round(d%60); return h+'h'+(m?String(m).padStart(2,'0'):''); };
   document.querySelectorAll('[data-sec-dur]').forEach(el => {
     const sec = el.dataset.secDur;
     const n = parseInt(sec.slice(1));
     const sched = getSCHED();
     const dur = sched[n-1].dur;
-    const h = Math.floor(dur/60), m = dur%60;
-    el.textContent = h + 'h' + (m ? String(m).padStart(2,'0') : '');
+    el.textContent = fmtMin(dur);
+  });
+
+  // Opt/Réal/Pess timing (KelaWin ×0.95 / ×1.0 / ×1.05)
+  document.querySelectorAll('[data-pacing]').forEach(el => {
+    const sec = el.dataset.pacing;
+    const dur = getSegDur(sec);
+    const carbs = Math.round(dur / 60 * 59);
+    el.innerHTML =
+      `<span style="color:#22c55e;font-weight:700;">⚡ ${fmtMin(Math.round(dur*.95))}</span>` +
+      ` <span style="color:var(--text2)">·</span> ` +
+      `<span style="color:var(--acc2);font-weight:700;">● ${fmtMin(dur)}</span>` +
+      ` <span style="color:var(--text2)">·</span> ` +
+      `<span style="color:var(--s4);font-weight:700;">🐢 ${fmtMin(Math.round(dur*1.05))}</span>` +
+      ` <span style="color:var(--text2);font-size:10px;margin-left:4px;">~${carbs}g glucides</span>`;
   });
 
   // Dynamic hydration quantities (1 flask 500ml per 75 min)
@@ -1558,41 +1579,59 @@ function renderAll() {
     }
   });
 
-  // Section nutrition blocks
+  // Section nutrition blocks — plan KelaWin (59g glucides/h)
+  const NUT_PLAN = {
+    S1: [
+      {name:'Iso Baouw (40g/500ml)',        qty:3, g:30},
+      {name:'Gel Baouw',                    qty:3, g:25},
+      {name:'Power Gel',                    qty:1, g:27},
+    ],
+    S2: [
+      {name:'Iso Baouw (40g/500ml)',        qty:3, g:30},
+      {name:'Gel Baouw',                    qty:3, g:25},
+      {name:'Power Gel',                    qty:1, g:27},
+    ],
+    S3: [
+      {name:'Iso Baouw (40g/500ml)',        qty:2, g:30},
+      {name:'Gel Baouw',                    qty:2, g:25},
+      {name:'Power Gel',                    qty:1, g:27},
+      {name:'Banane',                       qty:1, g:24},
+    ],
+    S4: [
+      {name:'Iso Baouw (40g/500ml)',        qty:4, g:30},
+      {name:'Gel Baouw',                    qty:5, g:25},
+      {name:'Power Gel',                    qty:3, g:27},
+    ],
+    S5: [
+      {name:'Iso Baouw (40g/500ml)',        qty:2, g:30},
+      {name:'Gel Baouw',                    qty:1, g:25},
+      {name:'Power Gel',                    qty:1, g:27},
+    ],
+    S6: [
+      {name:'Iso Baouw décaf (40g/500ml)',  qty:3, g:30},
+      {name:'Power Gel caféiné',            qty:4, g:27},
+    ],
+    S7: [
+      {name:'Iso Baouw décaf (40g/500ml)',  qty:3, g:30},
+      {name:'Power Gel caféiné',            qty:5, g:27},
+    ],
+  };
   document.querySelectorAll('[data-sec-nutrition]').forEach(el => {
-    const sec = el.dataset.secNutrition;
-    const n   = parseInt(sec.slice(1));
-    const isNight = n >= 6;
-    const dur     = getSegDur(sec);
+    const sec  = el.dataset.secNutrition;
+    const dur  = getSegDur(sec);
+    const plan = NUT_PLAN[sec];
+    if (!plan) return;
     const h = Math.floor(dur / 60), m = dur % 60;
-    const durStr  = h + 'h' + (m ? String(m).padStart(2,'0') : '');
-
-    // Hydratation : 1 flasque 500ml / 75min · Iso Baouw 30g glucides/flasque
-    const flasks     = Math.ceil(dur / 75);
-    const flaskCarbs = flasks * 30;
-    const isoName    = isNight ? 'Iso Baouw décaf (40g/500ml)' : 'Iso Baouw (40g/500ml)';
-
-    // Gels : 1 gel / 40min
-    const totalGels = Math.ceil(dur / 40);
-    let gelCarbs = 0, gelRows = '';
-    if (isNight) {
-      gelCarbs = totalGels * 27;
-      gelRows  = `<div class="nut-row"><span class="nut-name">Power Gel caféiné<span class="nut-qty">×${totalGels}</span></span><span class="nut-g">${totalGels}×27g = <strong>${gelCarbs}g</strong></span></div>`;
-    } else {
-      const power = Math.floor(totalGels / 2), baouw = totalGels - power;
-      const bc = baouw * 22, pc = power * 27;
-      gelCarbs = bc + pc;
-      gelRows  = `<div class="nut-row"><span class="nut-name">Gel Baouw<span class="nut-qty">×${baouw}</span></span><span class="nut-g">${baouw}×22g = <strong>${bc}g</strong></span></div>`;
-      if (power > 0) gelRows += `<div class="nut-row"><span class="nut-name">Power Gel<span class="nut-qty">×${power}</span></span><span class="nut-g">${power}×27g = <strong>${pc}g</strong></span></div>`;
-    }
-
-    const total = flaskCarbs + gelCarbs;
-    const rate  = Math.round(total / (dur / 60));
-
+    const durStr = h + 'h' + (m ? String(m).padStart(2,'0') : '');
+    const total  = plan.reduce((s, it) => s + it.qty * it.g, 0);
+    const rate   = Math.round(total / (dur / 60));
+    const rows   = plan.map(it => {
+      const sub = it.qty * it.g;
+      return `<div class="nut-row"><span class="nut-name">${it.name}<span class="nut-qty">×${it.qty}</span></span><span class="nut-g">${it.qty}×${it.g}g = <strong>${sub}g</strong></span></div>`;
+    }).join('');
     el.innerHTML = `
       <div class="nut-header"><span>Nutrition · ${durStr}</span><span class="nut-rate">${rate} g glucides/h</span></div>
-      <div class="nut-row"><span class="nut-name">${isoName}<span class="nut-qty">×${flasks}</span></span><span class="nut-g">${flasks}×30g = <strong>${flaskCarbs}g</strong></span></div>
-      ${gelRows}
+      ${rows}
       <div class="nut-total"><span>Total glucides</span><strong>${total}g</strong></div>`;
   });
 
