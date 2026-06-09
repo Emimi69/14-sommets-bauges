@@ -12,7 +12,7 @@
   --bg:#0f1117;--bg2:#1a1d27;--bg3:#232736;--border:#2e3347;
   --text:#e2e8f0;--text2:#94a3b8;
   --acc:#6366f1;--acc2:#818cf8;
-  --s1:#94a3b8;--s2:#3b82f6;--s3:#22c55e;--s4:#f59e0b;--s5:#f97316;--s6:#a855f7;--s7:#ec4899;
+  --s1:#94a3b8;--s2:#3b82f6;--s3:#22c55e;--s4:#f59e0b;--s5:#f97316;--s6:#a855f7;--s7:#ec4899;--s8:#f43f5e;
   --ravcar:#f59e0b;--ravped:#3b82f6;--summit:#22c55e;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -145,9 +145,9 @@ nav button.active{border-bottom-color:var(--acc);}
 
 /* PACER BADGE per section color */
 .s1-col{color:var(--s1)}.s2-col{color:var(--s2)}.s3-col{color:var(--s3)}
-.s4-col{color:var(--s4)}.s5-col{color:var(--s5)}.s6-col{color:var(--s6)}.s7-col{color:var(--s7)}
+.s4-col{color:var(--s4)}.s5-col{color:var(--s5)}.s6-col{color:var(--s6)}.s7-col{color:var(--s7)}.s8-col{color:var(--s8)}
 .s1-bg{background:var(--s1)}.s2-bg{background:var(--s2)}.s3-bg{background:var(--s3)}
-.s4-bg{background:var(--s4)}.s5-bg{background:var(--s5)}.s6-bg{background:var(--s6)}.s7-bg{background:var(--s7)}
+.s4-bg{background:var(--s4)}.s5-bg{background:var(--s5)}.s6-bg{background:var(--s6)}.s7-bg{background:var(--s7)}.s8-bg{background:var(--s8)}
 
 .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;padding:10px 12px;background:var(--bg2);border-radius:10px;border:1px solid var(--border);}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
@@ -275,8 +275,8 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-time" data-cp-time="T2">05:56</div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
-        <div class="cp-name">Fin S1 · Ravito <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>~km 14 · alt ~765m</span><span>Voiture : V1</span><span data-pacer-relay="S2">→ Vincent prend le relais</span></div>
+        <div class="cp-name">Fin S1 · Route de Tamie <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
+        <div class="cp-meta"><span>~km 12 · alt ~765m</span><span>Voiture : V1</span><span data-pacer-relay="S2">→ Vincent + Louis Le C prennent le relais</span></div>
         <div class="cp-pause">⏱ Pause 10 min</div>
       </div>
     </div>
@@ -285,8 +285,8 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-time" data-cp-time="S2_start">06:06</div>
       <div class="cp-dot" style="background:var(--s2)"></div>
       <div class="cp-info">
-        <div class="cp-name" data-sec-header="S2">Début S2 — Vincent</div>
-        <div class="cp-meta"><span>km ~12 · alt ~900m</span><span data-pacer-label="S2">Pacer : Vincent</span></div>
+        <div class="cp-name" data-sec-header="S2">Début S2 — Vincent + Louis Le C</div>
+        <div class="cp-meta"><span>km ~12 · alt ~900m</span><span data-pacer-label="S2">Pacer : Vincent + Louis Le C</span></div>
       </div>
     </div>
 
@@ -313,7 +313,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <div class="cp-dot" style="background:var(--ravped)"></div>
       <div class="cp-info">
         <div class="cp-name">Arcalod · Fin S2 <span class="tag" style="background:rgba(59,130,246,.12);color:var(--ravped)">Ravito à pied</span></div>
-        <div class="cp-meta"><span>km ~22-23 · alt ~1800m</span><span>Tout le monde monte depuis parking Rafforts</span><span data-pacer-relay="S3">→ Louis M prend le relais</span></div>
+        <div class="cp-meta"><span>km ~22 · alt ~1800m</span><span>Louis M monte depuis parking Rafforts</span><span data-pacer-relay="S3">→ Louis M prend le relais</span></div>
         <div class="cp-pause">⏱ Pause 15 min</div>
       </div>
     </div>
@@ -328,7 +328,7 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="arcalod_sommet">11:09</div>
+      <div class="cp-time" data-cp-time="arcalod_sommet">10:00</div>
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
         <div class="cp-name">Sommet de l'Arcalod <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 4</span></div>
@@ -337,166 +337,150 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="arcalod_bas">11:46</div>
-      <div class="cp-dot" style="background:var(--s3)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Bas de l'Arcalod · après descente</div>
-        <div class="cp-meta"><span>alt ~1400m</span><span data-pacer-name="S3">Louis M</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="tre_mollard">12:16</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Tré le Mollard <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 5</span></div>
-        <div class="cp-meta"><span>alt ~2031m</span><span data-pacer-name="S3">Louis M</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="mont_coche">12:24</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Mont de la Coche <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 6</span></div>
-        <div class="cp-meta"><span>km ~27 · alt ~1975m</span><span data-pacer-name="S3">Louis M</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="T4">11:49</div>
-      <div class="cp-dot" style="background:var(--ravcar)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Nant Fourchu · Fin S3 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>km ~34 · alt 1042m</span><span>Voiture : V1</span><span data-pacer-relay="S4">→ Julien + Louis Le C prennent le relais</span></div>
-        <div class="cp-comment">🍝 Lasagnes / repas chaud</div>
-        <div class="cp-pause">⏱ Pause 20 min</div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="S4_start">12:09</div>
+      <div class="cp-time" data-cp-time="T4">11:45</div>
       <div class="cp-dot" style="background:var(--s4)"></div>
       <div class="cp-info">
-        <div class="cp-name" data-sec-header="S4">Début S4 — Julien + Louis Le C</div>
-        <div class="cp-meta"><span>km ~34 · alt ~1015m</span><span data-pacer-label="S4">Pacer : Julien + Louis Le C</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="pecloz">14:15</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Pecloz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 7</span></div>
-        <div class="cp-meta"><span>km ~38 · alt 2197m</span><span><span data-pacer-name="S4">Louis Le C</span> · Section ultra-technique</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="armenaz">15:10</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Armenaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 8</span></div>
-        <div class="cp-meta"><span>km ~39 · alt 2166m</span><span data-pacer-name="S4">Louis Le C</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="pte_arces">15:40</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Pointe des Arces <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 9</span></div>
-        <div class="cp-meta"><span>km ~41 · alt ~2000m</span><span data-pacer-name="S4">Louis Le C</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="pte_arlicot">16:10</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Pointe des Arlicots <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 10</span></div>
-        <div class="cp-meta"><span>km ~42 · alt ~2000m</span><span data-pacer-name="S4">Louis Le C</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="grand_parra">16:40</div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Grand Parra <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 11</span></div>
-        <div class="cp-meta"><span>km ~44 · alt ~2000m</span><span><span data-pacer-name="S4">Louis Le C</span> · Arrêts repérage</span></div>
-      </div>
-    </div>
-
-    <div class="cp">
-      <div class="cp-time" data-cp-time="T5">18:44</div>
-      <div class="cp-dot" style="background:var(--ravped)"></div>
-      <div class="cp-info">
-        <div class="cp-name">Ravito à pied · Fin S4 <span class="tag" style="background:rgba(59,130,246,.12);color:var(--ravped)">Ravito à pied</span></div>
-        <div class="cp-meta"><span>Descente Grand Parra · accessible à pied</span><span data-pacer-name="S4">Louis Le C</span></div>
+        <div class="cp-name">Fin S3 · Arcalod base <span class="tag" style="background:rgba(245,158,11,.12);color:var(--s4)">Relais</span></div>
+        <div class="cp-meta"><span>alt ~1400m</span><span data-pacer-relay="S4">→ Julien + Louis Le C prennent le relais</span></div>
+        <div class="cp-comment">Louis M redescend vers la voiture · V1 se positionne</div>
         <div class="cp-pause">⏱ Pause 10 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="S5_start">18:54</div>
+      <div class="cp-time" data-cp-time="S4_start">11:55</div>
+      <div class="cp-dot" style="background:var(--s4)"></div>
+      <div class="cp-info">
+        <div class="cp-name" data-sec-header="S4">Début S4 — Julien + Louis Le C</div>
+        <div class="cp-meta"><span>alt ~1400m</span><span data-pacer-label="S4">Pacer : Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="nant_fourchu">13:08</div>
+      <div class="cp-dot" style="background:var(--s4)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Plateau Nant Fourchu</div>
+        <div class="cp-meta"><span>alt ~1042m</span><span data-pacer-name="S4">Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="pecloz">15:18</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Pecloz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 5</span></div>
+        <div class="cp-meta"><span>alt 2197m · section ultra-technique</span><span data-pacer-name="S4">Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="armenaz">15:48</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Armenaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 6</span></div>
+        <div class="cp-meta"><span>alt 2166m</span><span data-pacer-name="S4">Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="T5">15:58</div>
+      <div class="cp-dot" style="background:var(--s5)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Fin S4 · après Armenaz <span class="tag" style="background:rgba(249,115,22,.12);color:var(--s5)">Relais</span></div>
+        <div class="cp-meta"><span>après Armenaz</span><span data-pacer-relay="S5">→ Julien + Louis Le C continuent (S5)</span></div>
+        <div class="cp-comment">Louis M + Vincent montent à pied via trace crew → Sainte-Reine</div>
+        <div class="cp-pause">⏱ Pause 10 min</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="S5_start">16:08</div>
       <div class="cp-dot" style="background:var(--s5)"></div>
       <div class="cp-info">
         <div class="cp-name" data-sec-header="S5">Début S5 — Julien + Louis Le C</div>
-        <div class="cp-meta"><span>Ravito pied → Sainte-Reine</span><span data-pacer-label="S5">Pacer : Julien + Louis Le C</span></div>
+        <div class="cp-meta"><span>alt ~2100m</span><span data-pacer-label="S5">Pacer : Julien + Louis Le C</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="arclusaz">19:39</div>
+      <div class="cp-time" data-cp-time="pte_arces">16:58</div>
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
-        <div class="cp-name">Dent d'Arclusaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 12</span></div>
-        <div class="cp-meta"><span>km ~48 · alt 1960m</span><span data-pacer-name="S5">Louis Le C</span></div>
+        <div class="cp-name">Pointe des Arces <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 7</span></div>
+        <div class="cp-meta"><span>alt ~2000m</span><span data-pacer-name="S5">Julien + Louis Le C</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="T6">20:39</div>
+      <div class="cp-time" data-cp-time="pte_arlicot">17:48</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Pointe des Arlicots <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 8</span></div>
+        <div class="cp-meta"><span>alt ~2000m</span><span data-pacer-name="S5">Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="grand_parra">18:23</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Grand Parra <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 9</span></div>
+        <div class="cp-meta"><span>alt ~2000m · Arrêts repérage</span><span data-pacer-name="S5">Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="arclusaz">19:26</div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Dent d'Arclusaz <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 10</span></div>
+        <div class="cp-meta"><span>alt 1960m</span><span data-pacer-name="S5">Julien + Louis Le C</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time" data-cp-time="T6">20:38</div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
-        <div class="cp-name">Sainte-Reine D911 · Fin S5 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>km ~52 · alt 776m</span><span>Voiture : V1</span><span data-pacer-relay="S6">→ Louis M + Vincent prennent le relais</span></div>
+        <div class="cp-name">Sainte-Reine D911 · Fin S5 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture 🍝</span></div>
+        <div class="cp-meta"><span>alt 776m</span><span>Voiture : V1</span><span data-pacer-relay="S6">→ Vincent continue (S6)</span></div>
+        <div class="cp-comment">🍝 Repas chaud lyophilisé · Louis M + Vincent arrivent via crew trail · Vincent repart seul (S6)</div>
         <div class="cp-pause">⏱ Pause 25 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time" data-cp-time="S6_start">21:04</div>
+      <div class="cp-time" data-cp-time="S6_start">21:03</div>
       <div class="cp-dot" style="background:var(--s6)"></div>
       <div class="cp-info">
-        <div class="cp-name" data-sec-header="S6">Début S6 — Louis M + Vincent</div>
-        <div class="cp-meta"><span>alt ~780m</span><span data-pacer-label="S6">Pacer : Louis M + Vincent</span></div>
+        <div class="cp-name" data-sec-header="S6">Début S6 — Vincent</div>
+        <div class="cp-meta"><span>alt ~780m</span><span data-pacer-label="S6">Pacer : Vincent</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time night" data-cp-time="colombier">23:19</div>
+      <div class="cp-time night" data-cp-time="colombier">23:18</div>
       <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
-        <div class="cp-name">Colombier <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 13</span></div>
-        <div class="cp-meta"><span>km ~61 · alt 1989m · D+ 1284m depuis D911</span><span><span data-pacer-name="S6">Louis M</span> · 🌙 Section nuit</span></div>
+        <div class="cp-name">Colombier <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 11</span></div>
+        <div class="cp-meta"><span>alt 1989m · D+ 1284m depuis D911</span><span data-pacer-name="S6">Vincent</span> · 🌙 Nuit</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time night" data-cp-time="T7">00:24 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-time night" data-cp-time="T7">00:23 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
       <div class="cp-dot" style="background:var(--ravcar)"></div>
       <div class="cp-info">
         <div class="cp-name">La Compote · Fin S6 <span class="tag" style="background:rgba(245,158,11,.12);color:var(--ravcar)">Ravito voiture</span></div>
-        <div class="cp-meta"><span>km ~69 · alt 719m</span><span>Voiture : V1 · Tout le monde</span></div>
-        <div class="cp-comment">Tout le monde repart ensemble pour S7 🎉 — finir en beauté</div>
+        <div class="cp-meta"><span>alt 719m</span><span>Voiture : V1 · Tout le monde</span><span data-pacer-relay="S7">→ Tout le monde</span></div>
+        <div class="cp-comment">Tout le monde repart ensemble 🎉 — dernière section, finir en beauté</div>
         <div class="cp-pause">⏱ Pause 10 min</div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time night" data-cp-time="S7_start">00:34 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-time night" data-cp-time="S7_start">00:33 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
       <div class="cp-dot" style="background:var(--s7)"></div>
       <div class="cp-info">
         <div class="cp-name" data-sec-header="S7">Début S7 — Tout le monde</div>
@@ -505,20 +489,29 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
 
     <div class="cp">
-      <div class="cp-time night" data-cp-time="trelod">03:19 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
-      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
+      <div class="cp-time night" data-cp-time="T8">02:08 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-dot" style="background:var(--s8)"></div>
       <div class="cp-info">
-        <div class="cp-name">Trelod <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 14</span></div>
-        <div class="cp-meta"><span>km ~76 · alt 2124m · D+ 1499m</span><span>Solo · Dernier sommet 🏔️</span></div>
+        <div class="cp-name" data-sec-header="S8">Début S8 — Tout le monde</div>
+        <div class="cp-meta"><span>alt ~900m</span><span data-pacer-label="S8">Tout le monde 🌙</span></div>
       </div>
     </div>
 
     <div class="cp">
-      <div class="cp-time night" data-cp-time="T8">04:09 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
-      <div class="cp-dot" style="background:#ec4899;box-shadow:0 0 6px #ec4899"></div>
+      <div class="cp-time night" data-cp-time="trelod">03:18 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-dot" style="background:var(--summit);box-shadow:0 0 5px var(--summit)"></div>
       <div class="cp-info">
-        <div class="cp-name">Parking des Cornes <span class="tag" style="background:rgba(236,72,153,.15);color:#ec4899">Arrivée</span></div>
-        <div class="cp-meta"><span>km 80.4 · alt 1202m</span><span>Voiture : V1 · Tout le monde</span></div>
+        <div class="cp-name">Trelod <span class="tag" style="background:rgba(34,197,94,.12);color:var(--summit)">Sommet 14</span></div>
+        <div class="cp-meta"><span>alt 2124m · Dernier sommet 🏔️</span><span data-pacer-name="S8">Tout le monde</span></div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <div class="cp-time night" data-cp-time="T9">04:08 <small style="font-size:10px;color:var(--text2)">(14/06)</small></div>
+      <div class="cp-dot" style="background:var(--s8);box-shadow:0 0 6px var(--s8)"></div>
+      <div class="cp-info">
+        <div class="cp-name">Parking des Cornes <span class="tag" style="background:rgba(244,63,94,.15);color:var(--s8)">Arrivée</span></div>
+        <div class="cp-meta"><span>alt 1202m</span><span>Voiture : V1 · Tout le monde</span></div>
         <div class="cp-comment">🎉 ARRIVÉE</div>
       </div>
     </div>
@@ -568,7 +561,7 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="sc-header" onclick="toggleSection('sc12')">
       <div class="sc-num" style="background:#6366f1;color:white;font-size:11px;letter-spacing:-.5px;">R↑</div>
       <div class="sc-title">
-        <h3>Montée Ravito · Nant Fourchu → Arcalod</h3>
+        <h3>Montée Ravito · Pied Arcalod → Arcalod (à pied)</h3>
         <div class="times" style="font-size:12px;color:var(--acc2);">🥾 À pied · Accompagnateurs · ~1h30</div>
       </div>
       <div class="sc-toggle">▾</div>
@@ -595,8 +588,8 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="sc-header" onclick="toggleSection('sc2')">
       <div class="sc-num s2-bg" style="color:white">S2</div>
       <div class="sc-title">
-        <h3>Route de Tamie → Arcalod</h3>
-        <div class="times" data-sec-times="S2">06:06 → 08:50 · Vincent</div>
+        <h3>Route de Tamié → Arcalod</h3>
+        <div class="times" data-sec-times="S2">06:06 → 08:50 · Vincent + Louis Le C</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
@@ -606,7 +599,7 @@ nav button.active{border-bottom-color:var(--acc);}
         <span class="chip km">10.5 km</span>
         <span class="chip dp">D+ 1 502 m</span>
         <span class="chip dm">D- 590 m</span>
-        <span data-pacer-chips="S2"><span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span></span>
+        <span data-pacer-chips="S2"><span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Vincent</span><span class="chip pacer" style="background:rgba(59,130,246,.12);color:var(--s2)">Louis Le C</span></span>
       </div>
       <div class="map-wrap" id="map2-wrap">
         <div id="map2" style="height:200px"></div>
@@ -619,8 +612,8 @@ nav button.active{border-bottom-color:var(--acc);}
           <h3>Notes importantes</h3>
           <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
             <li>Sambuy → Chaurionde : crête très technique</li>
-            <li>Ravito pied Arcalod : tout le monde monte depuis le parking des Rafforts (accessible en voiture)</li>
-            <li>Fin de section : relais → Louis M</li>
+            <li>Ravito pied Arcalod : Louis M monte depuis le parking des Rafforts pour rejoindre le coureur en fin de section</li>
+            <li>Fin de section : relais → Louis M (S3)</li>
           </ul>
         </div>
       </div>
@@ -634,32 +627,32 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="sc-header" onclick="toggleSection('sc3')">
       <div class="sc-num s3-bg" style="color:#0f1117">S3</div>
       <div class="sc-title">
-        <h3>Arcalod → Nant Fourchu</h3>
-        <div class="times" data-sec-times="S3">09:05 → 11:49 · Louis M</div>
+        <h3>Boucle de l'Arcalod</h3>
+        <div class="times" data-sec-times="S3">09:05 → 10:35 · Louis M</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
     <div class="sc-body">
       <div class="chips">
-        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S3">2h44</span>
-        <span class="chip km">9.0 km</span>
-        <span class="chip dp">D+ 783 m</span>
-        <span class="chip dm">D- 1 574 m</span>
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S3">1h30</span>
+        <span class="chip km">~4 km</span>
+        <span class="chip dp">D+ 420 m</span>
+        <span class="chip dm">D- 420 m</span>
         <span data-pacer-chips="S3"><span class="chip pacer" style="background:rgba(34,197,94,.12);color:var(--s3)">Louis M</span></span>
       </div>
       <div class="map-wrap" id="map3-wrap">
         <div id="map3" style="height:200px"></div>
       </div>
-      <a class="dl-btn" href="gpx/section3.gpx" download>
+      <a class="dl-btn" href="gpx/14 2000 section3V2.gpx" download>
         ⬇ Télécharger GPX Section 3
       </a>
       <div style="margin-top:10px;">
         <div class="card" style="margin-bottom:0;">
           <h3>Notes importantes</h3>
           <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
-            <li>Louis M monte depuis le pied de l'Arcalod (accessible depuis parking des Rafforts) pour rejoindre le coureur au relais S2→S3</li>
-            <li>Sommets Mont de la Coche + Tré le Mollard sur cette section</li>
-            <li>Arrivée au parking Nant Fourchu → 🍝 plat lyophilisé + pause 20 min → Julien + Louis Le C prennent le relais (S4)</li>
+            <li>Louis M fait uniquement la boucle Arcalod : montée au sommet (2217m) puis descente au point de départ</li>
+            <li>Fin de section au pied de l'Arcalod → Julien + Louis Le C prennent le relais (S4)</li>
+            <li>Louis M redescend à la voiture après le relais</li>
           </ul>
         </div>
       </div>
@@ -673,33 +666,33 @@ nav button.active{border-bottom-color:var(--acc);}
     <div class="sc-header" onclick="toggleSection('sc4')">
       <div class="sc-num s4-bg" style="color:#0f1117">S4</div>
       <div class="sc-title">
-        <h3>Nant Fourchu → Ravito pied Grand Parra</h3>
-        <div class="times" data-sec-times="S4">13:19 → 18:44 · Julien + Louis Le C</div>
+        <h3>Arcalod → Armenaz</h3>
+        <div class="times" data-sec-times="S4">11:55 → 15:58 · Julien + Louis Le C</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
     <div class="sc-body">
       <div class="chips">
-        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S4">5h25</span>
-        <span class="chip km">16.5 km</span>
-        <span class="chip dp">D+ 1 950 m</span>
-        <span class="chip dm">D- 1 760 m</span>
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S4">~4h</span>
+        <span class="chip km">~18 km</span>
+        <span class="chip dp">D+ 1 800 m</span>
+        <span class="chip dm">D- 900 m</span>
         <span data-pacer-chips="S4"><span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Julien</span><span class="chip pacer" style="background:rgba(245,158,11,.12);color:var(--s4)">Louis Le C</span></span>
       </div>
       <div class="map-wrap" id="map4-wrap">
         <div id="map4" style="height:200px"></div>
       </div>
-      <a class="dl-btn" href="gpx/section4.gpx" download>
+      <a class="dl-btn" href="gpx/14 2000 section 4V2.gpx" download>
         ⬇ Télécharger GPX Section 4
       </a>
       <div style="margin-top:10px;">
         <div class="card" style="margin-bottom:0;">
           <h3>Notes importantes</h3>
           <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
-            <li>Julien + Louis Le C partent ensemble depuis Nant Fourchu</li>
-            <li>Pecloz → Armenaz : section ultra-technique, passage le plus lent</li>
-            <li>Pointe des Arces, Arlicots, Grand Parra : arrêts repérage</li>
-            <li>Fin de section : descente Grand Parra → Ravito pied accessible à pied depuis route</li>
+            <li>Julien + Louis Le C partent ensemble depuis le pied de l'Arcalod</li>
+            <li>Passe par le plateau du Nant Fourchu → Pecloz → Armenaz</li>
+            <li>Pecloz (2197m) : section ultra-technique, passage le plus lent</li>
+            <li>Fin de section après l'Armenaz · Louis M + Vincent montent à pied via crew trail pour S6</li>
           </ul>
         </div>
       </div>
@@ -708,99 +701,99 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
   </div>
 
-  <!-- R2↑ Ravito pied Grand Parra -->
-  <div class="sc" id="sc_r2">
-    <div class="sc-header" onclick="toggleSection('sc_r2')">
-      <div class="sc-num" style="background:var(--s5);color:#0f1117;font-size:11px;letter-spacing:-.5px;">R2↑</div>
-      <div class="sc-title">
-        <h3>Ravito à pied · Descente Grand Parra</h3>
-        <div class="times" style="font-size:12px;color:var(--s5);">🥾 À pied · Entre S4 et S5 · Accompagnateurs</div>
-      </div>
-      <div class="sc-toggle">▾</div>
-    </div>
-    <div class="sc-body">
-      <div class="chips">
-        <span class="chip" style="background:rgba(249,115,22,.15);color:var(--s5);">Ravito à pied · S4→S5</span>
-        <span class="chip" style="background:rgba(59,130,246,.12);color:var(--ravped);">Accompagnateurs</span>
-      </div>
-      <div style="background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--s5);">
-        🥾 Accessible uniquement à pied depuis la route · Arriver avant <span data-cp-time="T5">18:44</span>
-      </div>
-      <div class="map-wrap" id="mapr2-wrap">
-        <div id="mapr2" style="height:200px"></div>
-      </div>
-      <a class="dl-btn" href="gpx/Ravito-marche-2.gpx" download>
-        ⬇ Télécharger GPX Ravito Grand Parra
-      </a>
-    </div>
-  </div>
-
-  <!-- S5 (nouveau) -->
+  <!-- S5 -->
   <div class="sc" id="sc5">
     <div class="sc-header" onclick="toggleSection('sc5')">
       <div class="sc-num s5-bg" style="color:white">S5</div>
       <div class="sc-title">
-        <h3>Ravito pied → Sainte-Reine D911</h3>
-        <div class="times" data-sec-times="S5">18:54 → 20:39 · Julien + Louis Le C</div>
+        <h3>Armenaz → Sainte-Reine D911</h3>
+        <div class="times" data-sec-times="S5">16:08 → 20:38 · Julien + Louis Le C</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
     <div class="sc-body">
       <div class="chips">
-        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S5">1h45</span>
-        <span class="chip km">4.9 km</span>
-        <span class="chip dp">D+ 388 m</span>
-        <span class="chip dm">D- 810 m</span>
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S5">~4h30</span>
+        <span class="chip km">~16 km</span>
+        <span class="chip dp">D+ 600 m</span>
+        <span class="chip dm">D- 1 900 m</span>
         <span data-pacer-chips="S5"><span class="chip pacer" style="background:rgba(249,115,22,.12);color:var(--s5)">Julien</span><span class="chip pacer" style="background:rgba(249,115,22,.12);color:var(--s5)">Louis Le C</span></span>
       </div>
       <div style="background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--s5);">
-        Dent d'Arclusaz (S12) sur cette section · descente vers Sainte-Reine D911
+        Pte des Arces · Pte des Arlicots · Grand Parra · Dent d'Arclusaz → descente vers Sainte-Reine D911
       </div>
       <div class="map-wrap" id="map5-wrap">
         <div id="map5" style="height:200px"></div>
       </div>
-      <a class="dl-btn" href="gpx/section4.gpx" download>
-        ⬇ Télécharger GPX (section 4 complète)
+      <a class="dl-btn" href="gpx/14 2000 section 5V2.gpx" download>
+        ⬇ Télécharger GPX Section 5
       </a>
       <div data-pacing="S5" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
       <div class="sec-nut-block" data-sec-nutrition="S5"></div>
     </div>
   </div>
 
-  <!-- S6 (ex-S5) -->
-  <div class="sc" id="sc6">
-    <div class="sc-header" onclick="toggleSection('sc6')">
-      <div class="sc-num s6-bg" style="color:white">S6</div>
+  <!-- Crew walk S5→S6 -->
+  <div class="sc" id="sc_crew56">
+    <div class="sc-header" onclick="toggleSection('sc_crew56')">
+      <div class="sc-num" style="background:#6366f1;color:white;font-size:11px;letter-spacing:-.5px;">🥾</div>
       <div class="sc-title">
-        <h3>Sainte-Reine → La Compote</h3>
-        <div class="times" data-sec-times="S6" data-sec-suffix=" · Nuit">21:04 → 00:24 · Louis M + Vincent · Nuit</div>
+        <h3>Montée Crew · Armenaz → Sainte-Reine</h3>
+        <div class="times" style="font-size:12px;color:var(--acc2);">🥾 À pied · Louis M + Vincent · pendant S5</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
     <div class="sc-body">
       <div class="chips">
-        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S6">3h20</span>
-        <span class="chip km">15.4 km</span>
-        <span class="chip dp">D+ 1 340 m</span>
-        <span class="chip dm">D- 1 401 m</span>
+        <span class="chip" style="background:rgba(99,102,241,.15);color:var(--acc2);">Crew walk</span>
+        <span class="chip" style="background:rgba(59,130,246,.12);color:var(--ravped);">Louis M + Vincent</span>
+      </div>
+      <div style="background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.25);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--acc2);">
+        🥾 Louis M + Vincent montent à pied depuis la route après l'Armenaz pour rejoindre le coureur à Sainte-Reine (<span data-cp-time="T6">20:38</span>) · Vincent repart pour S6, Louis M redescend
+      </div>
+      <div class="map-wrap" id="map_crew56-wrap">
+        <div id="map_crew56" style="height:200px"></div>
+      </div>
+      <a class="dl-btn" href="gpx/montée-ravitailleurentresection5V2et6V2" download>
+        ⬇ Télécharger GPX Crew Walk S5→S6
+      </a>
+    </div>
+  </div>
+
+  <!-- S6 -->
+  <div class="sc" id="sc6">
+    <div class="sc-header" onclick="toggleSection('sc6')">
+      <div class="sc-num s6-bg" style="color:white">S6</div>
+      <div class="sc-title">
+        <h3>Sainte-Reine → La Compote</h3>
+        <div class="times" data-sec-times="S6" data-sec-suffix=" · Nuit">21:03 → 00:23 · Vincent · Nuit</div>
+      </div>
+      <div class="sc-toggle">▾</div>
+    </div>
+    <div class="sc-body">
+      <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S6">~3h20</span>
+        <span class="chip km">~17 km</span>
+        <span class="chip dp">D+ 1 284 m</span>
+        <span class="chip dm">D- 1 350 m</span>
         <span class="chip night">🌙 Nuit</span>
-        <span data-pacer-chips="S6"><span class="chip pacer" style="background:rgba(168,85,247,.12);color:var(--s6)">Louis M</span><span class="chip pacer" style="background:rgba(168,85,247,.12);color:var(--s6)">Vincent</span></span>
+        <span data-pacer-chips="S6"><span class="chip pacer" style="background:rgba(168,85,247,.12);color:var(--s6)">Vincent</span></span>
       </div>
       <div class="map-wrap" id="map6-wrap">
         <div id="map6" style="height:200px"></div>
       </div>
-      <a class="dl-btn" href="gpx/section5.gpx" download>
+      <a class="dl-btn" href="gpx/14 2000 section 6V2.gpx" download>
         ⬇ Télécharger GPX Section 6
       </a>
       <div style="margin-top:10px;">
         <div class="card" style="margin-bottom:0;">
           <h3>Notes importantes</h3>
           <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
-            <li>Louis M + Vincent partent ensemble depuis Sainte-Reine D911</li>
-            <li>Colombier (S13) inclus dans cette section · grande montée +1284m depuis D911</li>
-            <li>Section de nuit · frontales indispensables</li>
-            <li>Coureur à ~20h de course → double soutien moral important</li>
-            <li>Fin à La Compote → tout le monde présent</li>
+            <li>Vincent seul avec le coureur depuis Sainte-Reine D911</li>
+            <li>Colombier (2056m) : grande montée +1284m depuis la D911</li>
+            <li>Section de nuit · frontale indispensable</li>
+            <li>Coureur à ~20h de course → soutien moral crucial</li>
+            <li>Fin à La Compote → tout le monde présent pour la dernière</li>
           </ul>
         </div>
       </div>
@@ -809,47 +802,77 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
   </div>
 
-  <!-- S7 (ex-S6) -->
+  <!-- S7 -->
   <div class="sc" id="sc7">
     <div class="sc-header" onclick="toggleSection('sc7')">
       <div class="sc-num s7-bg" style="color:white">S7</div>
       <div class="sc-title">
-        <h3>La Compote → Trelod → Parking des Cornes</h3>
-        <div class="times" data-sec-times="S7" data-sec-suffix=" · Nuit">00:34 → 04:09 · Tout le monde · Nuit</div>
+        <h3>La Compote → pied Trelod</h3>
+        <div class="times" data-sec-times="S7" data-sec-suffix=" · Nuit">00:33 → 02:08 · Tout le monde · Nuit</div>
       </div>
       <div class="sc-toggle">▾</div>
     </div>
     <div class="sc-body">
       <div class="chips">
-        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S7">3h35</span>
-        <span class="chip km">12.2 km</span>
-        <span class="chip dp">D+ 1 499 m</span>
-        <span class="chip dm">D- 1 015 m</span>
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S7">~1h35</span>
+        <span class="chip km">~8 km</span>
+        <span class="chip dp">D+ 900 m</span>
+        <span class="chip dm">D- 250 m</span>
         <span class="chip night">🌙 Nuit</span>
         <span data-pacer-chips="S7"><span class="chip pacer" style="background:rgba(236,72,153,.12);color:var(--s7)">Vincent</span><span class="chip pacer" style="background:rgba(236,72,153,.12);color:var(--s7)">Louis M</span><span class="chip pacer" style="background:rgba(236,72,153,.12);color:var(--s7)">Julien</span><span class="chip pacer" style="background:rgba(236,72,153,.12);color:var(--s7)">Louis Le C</span></span>
-      </div>
-      <div style="background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.3);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:#ec4899;">
-        🎉 Section finale — tout le monde monte pour finir en beauté avec le coureur
       </div>
       <div class="map-wrap" id="map7-wrap">
         <div id="map7" style="height:200px"></div>
       </div>
-      <a class="dl-btn" href="gpx/section6.gpx" download>
+      <a class="dl-btn" href="gpx/section7.gpx" download>
         ⬇ Télécharger GPX Section 7
+      </a>
+      <div data-pacing="S7" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
+      <div class="sec-nut-block" data-sec-nutrition="S7"></div>
+    </div>
+  </div>
+
+  <!-- S8 -->
+  <div class="sc" id="sc8">
+    <div class="sc-header" onclick="toggleSection('sc8')">
+      <div class="sc-num s8-bg" style="color:white">S8</div>
+      <div class="sc-title">
+        <h3>Trelod → Parking des Cornes</h3>
+        <div class="times" data-sec-times="S8" data-sec-suffix=" · Nuit">02:08 → 04:08 · Tout le monde · Nuit</div>
+      </div>
+      <div class="sc-toggle">▾</div>
+    </div>
+    <div class="sc-body">
+      <div class="chips">
+        <span class="chip" style="background:rgba(99,102,241,.12);color:var(--acc2);" data-sec-dur="S8">~2h</span>
+        <span class="chip km">~6 km</span>
+        <span class="chip dp">D+ 600 m</span>
+        <span class="chip dm">D- 770 m</span>
+        <span class="chip night">🌙 Nuit</span>
+        <span data-pacer-chips="S8"><span class="chip pacer" style="background:rgba(244,63,94,.12);color:var(--s8)">Vincent</span><span class="chip pacer" style="background:rgba(244,63,94,.12);color:var(--s8)">Louis M</span><span class="chip pacer" style="background:rgba(244,63,94,.12);color:var(--s8)">Julien</span><span class="chip pacer" style="background:rgba(244,63,94,.12);color:var(--s8)">Louis Le C</span></span>
+      </div>
+      <div style="background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.3);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--s8);">
+        🎉 Section finale — Trelod (2124m, sommet 14) puis descente au Parking des Cornes
+      </div>
+      <div class="map-wrap" id="map8-wrap">
+        <div id="map8" style="height:200px"></div>
+      </div>
+      <a class="dl-btn" href="gpx/section8.gpx" download>
+        ⬇ Télécharger GPX Section 8
       </a>
       <div style="margin-top:10px;">
         <div class="card" style="margin-bottom:0;">
           <h3>Notes importantes</h3>
           <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:1.8;">
-            <li>Trelod (S14) : dernier sommet · montée finale +1499m D+</li>
+            <li>Trelod (S14) : dernier sommet · montée finale depuis le pied</li>
             <li>Section entièrement de nuit · vestes très chaudes obligatoires pour tous</li>
             <li>Coureur à ~25h de course — la troupe au complet donne une énergie incroyable</li>
             <li>Tout le monde arrive ensemble au Parking des Cornes 🎉</li>
           </ul>
         </div>
       </div>
-      <div data-pacing="S7" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
-      <div class="sec-nut-block" data-sec-nutrition="S7"></div>
+      <div data-pacing="S8" style="margin-top:10px;padding:8px 10px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;font-size:12px;"></div>
+      <div class="sec-nut-block" data-sec-nutrition="S8"></div>
     </div>
   </div>
 
@@ -860,7 +883,7 @@ nav button.active{border-bottom-color:var(--acc);}
 
   <div class="card" style="margin-bottom:12px;border-color:rgba(99,102,241,.3);">
     <h3 style="color:var(--acc2)">Règle nutrition</h3>
-    <p style="font-size:12px;color:var(--text2);line-height:1.7;">🎯 <strong>59 g glucides/h</strong> (plan KelaWin) · <strong>1 406 g en section</strong> + repas ravitos · Total ~1 464 g · Facteur : ⚡×0.95 optimiste · ●×1.0 réaliste · 🐢×1.05 pessimiste<br>🧃 Iso Baouw 40g/500ml = 30g glucides/flasque · Gel Baouw = 25g · Power Gel = 27g · Power Gel caféiné (nuit) = 27g<br>🍝 Repas chaud lyophilisé à Nant Fourchu (fin S3) + Sainte-Reine (fin S5)</p>
+    <p style="font-size:12px;color:var(--text2);line-height:1.7;">🎯 <strong>59 g glucides/h</strong> (plan KelaWin) · <strong>1 406 g en section</strong> + repas ravitos · Total ~1 464 g · Facteur : ⚡×0.95 optimiste · ●×1.0 réaliste · 🐢×1.05 pessimiste<br>🧃 Iso Baouw 40g/500ml = 30g glucides/flasque · Gel Baouw = 25g · Power Gel = 27g · Power Gel caféiné (nuit) = 27g<br>🍝 Repas chaud lyophilisé à Sainte-Reine (fin S5) · 8 sections · T1→T9</p>
   </div>
 
   <!-- Départ S1 -->
@@ -897,26 +920,25 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
   </div>
 
-  <!-- T4 · Nant Fourchu → S4 (repas chaud) -->
+  <!-- T4 · Arcalod base → S4 -->
   <div class="rcard" style="border-color:rgba(245,158,11,.3);">
-    <div class="rcard-h" style="background:rgba(245,158,11,.05);"><h3>T4 · Nant Fourchu → S4 🍝</h3><div class="meta" style="color:var(--summit);">⏰ ~<span data-cp-time="T4">12:59</span> · Pause 20 min</div></div>
+    <div class="rcard-h" style="background:rgba(245,158,11,.05);"><h3>T4 · Arcalod base → S4</h3><div class="meta" style="color:var(--s4);">⏰ ~<span data-cp-time="T4">11:45</span> · Pause 10 min · Relais Julien + Louis Le C</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Plat lyophilisé chaud<div class="fi-note">Repas chaud avant la plus longue section</div></div><div class="fi-qty">1 plat</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×4 flasques</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×5</div></div>
-      <div class="fi"><div class="fi-n">4</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×3</div></div>
-      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S4</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">326 g</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×3 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×4</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×2</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S4</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">244 g</div></div>
     </div>
   </div>
 
-  <!-- T5 · Ravito pied Grand Parra → S5 (à pied) -->
+  <!-- T5 · Après Armenaz → S5 -->
   <div class="rcard" style="border-color:rgba(249,115,22,.3);">
-    <div class="rcard-h" style="background:rgba(249,115,22,.05);"><h3>T5 · Ravito pied Grand Parra → S5 <span style="font-size:11px;color:var(--ravped);">⚠️ À PIED</span></h3><div class="meta" style="color:var(--s5);">⏰ ~<span data-cp-time="T5">18:44</span> · Pause 10 min</div></div>
+    <div class="rcard-h" style="background:rgba(249,115,22,.05);"><h3>T5 · Après Armenaz → S5</h3><div class="meta" style="color:var(--s5);">⏰ ~<span data-cp-time="T5">15:58</span> · Pause 10 min · Julien + Louis Le C continuent</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×2 flasques</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×1</div></div>
-      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×1</div></div>
-      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S5</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">112 g</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw (40g/500ml)<div class="fi-note">30g glucides / flasque</div></div><div class="fi-qty">×4 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Gel Baouw<div class="fi-note">25g glucides / gel</div></div><div class="fi-qty">×4</div></div>
+      <div class="fi"><div class="fi-n">3</div><div class="fi-name">Power Gel<div class="fi-note">27g glucides / gel</div></div><div class="fi-qty">×2</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S5</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">274 g</div></div>
     </div>
   </div>
 
@@ -931,13 +953,13 @@ nav button.active{border-bottom-color:var(--acc);}
     </div>
   </div>
 
-  <!-- T7 · La Compote → S7 (nuit) -->
+  <!-- T7 · La Compote → S7+S8 (nuit) -->
   <div class="rcard" style="border-color:rgba(236,72,153,.3);">
-    <div class="rcard-h" style="background:rgba(236,72,153,.05);"><h3>T7 · La Compote → S7 🌙</h3><div class="meta" style="color:#ec4899;">⏰ ~<span data-cp-time="T7">00:24</span> · Pause 10 min</div></div>
+    <div class="rcard-h" style="background:rgba(236,72,153,.05);"><h3>T7 · La Compote → S7 + S8 🌙</h3><div class="meta" style="color:#ec4899;">⏰ ~<span data-cp-time="T7">00:23</span> · Pause 10 min · Charger pour S7 + S8 (pas de ravito voiture à T8)</div></div>
     <div class="rcard-b">
-      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw décaf (40g/500ml)<div class="fi-note">30g glucides / flasque · version décaféinée nuit</div></div><div class="fi-qty">×3 flasques</div></div>
-      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Power Gel caféiné<div class="fi-note">27g glucides / gel · montée finale Trelod</div></div><div class="fi-qty">×5</div></div>
-      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S7</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">225 g</div></div>
+      <div class="fi"><div class="fi-n">1</div><div class="fi-name">Iso Baouw décaf (40g/500ml)<div class="fi-note">30g glucides / flasque · S7 (×2) + S8 (×2)</div></div><div class="fi-qty">×4 flasques</div></div>
+      <div class="fi"><div class="fi-n">2</div><div class="fi-name">Power Gel caféiné<div class="fi-note">27g glucides / gel · S7 (×1) + S8 (×2)</div></div><div class="fi-qty">×3</div></div>
+      <div class="fi nut-fi-total"><div class="fi-name" style="font-weight:700;color:var(--acc2);">Total glucides S7+S8</div><div class="fi-qty" style="font-weight:700;color:var(--acc2);">201 g</div></div>
     </div>
   </div>
 
@@ -983,20 +1005,20 @@ nav button.active{border-bottom-color:var(--acc);}
         <tr style="border-bottom:1px solid var(--border);background:rgba(59,130,246,.04);">
           <td style="padding:7px 8px;font-weight:600;">T3a · Arcalod pied</td>
           <td style="padding:7px 8px;color:var(--acc2);" data-cp-time="T3">10:00</td>
-          <td style="padding:7px 8px;color:var(--text2);">Tamié → Nant Fourchu 1h09 + montée à pied ~1h30</td>
+          <td style="padding:7px 8px;color:var(--text2);">Tamié → Arcalod base ~45 min + montée à pied ~1h30</td>
           <td style="padding:7px 8px;"><span style="background:rgba(239,68,68,.15);color:#ef4444;padding:2px 8px;border-radius:4px;font-weight:700;">Partir dès T2 fini</span></td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 8px;font-weight:600;">T3b · Nant Fourchu</td>
-          <td style="padding:7px 8px;color:var(--acc2);" data-cp-time="T4">12:59</td>
-          <td style="padding:7px 8px;color:var(--text2);">Déjà sur place (redescente Arcalod)</td>
-          <td style="padding:7px 8px;"><span style="background:rgba(34,197,94,.15);color:var(--summit);padding:2px 8px;border-radius:4px;font-weight:700;">Déjà là ✓</span></td>
+          <td style="padding:7px 8px;font-weight:600;">T4 · Arcalod base</td>
+          <td style="padding:7px 8px;color:var(--acc2);" data-cp-time="T4">11:45</td>
+          <td style="padding:7px 8px;color:var(--text2);">Rafforts → Arcalod base · ~30 min</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;" data-depart-max="T4" data-depart-offset="-60">10:45</span> depuis Rafforts</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:7px 8px;font-weight:600;">T6 · Sainte-Reine</td>
           <td style="padding:7px 8px;color:var(--acc2);" data-cp-time="T6">20:39</td>
-          <td style="padding:7px 8px;color:var(--text2);">Nant Fourchu → Ste-Reine · 20 min</td>
-          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;" data-depart-max="T6" data-depart-offset="-50">19:49</span> depuis Nant Fourchu</td>
+          <td style="padding:7px 8px;color:var(--text2);">Arcalod base → Ste-Reine · ~40 min</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;" data-depart-max="T6" data-depart-offset="-70">19:28</span> depuis Arcalod base</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:7px 8px;font-weight:600;">T7 · La Compote</td>
@@ -1005,10 +1027,10 @@ nav button.active{border-bottom-color:var(--acc);}
           <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;" data-depart-max="T7" data-depart-offset="-40">23:44</span> depuis Sainte-Reine</td>
         </tr>
         <tr>
-          <td style="padding:7px 8px;font-weight:600;">T8 · Parking Cornes</td>
-          <td style="padding:7px 8px;color:var(--acc2);" data-cp-time="T8">04:09</td>
+          <td style="padding:7px 8px;font-weight:600;">T9 · Parking Cornes</td>
+          <td style="padding:7px 8px;color:var(--acc2);" data-cp-time="T9">04:08</td>
           <td style="padding:7px 8px;color:var(--text2);">La Compote → Cornes · 13 min</td>
-          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;" data-depart-max="T8" data-depart-offset="-43">03:26</span> depuis La Compote</td>
+          <td style="padding:7px 8px;"><span style="background:rgba(245,158,11,.15);color:var(--ravcar);padding:2px 8px;border-radius:4px;font-weight:700;" data-depart-max="T9" data-depart-offset="-43">03:25</span> depuis La Compote</td>
         </tr>
       </tbody>
     </table>
@@ -1082,8 +1104,8 @@ nav button.active{border-bottom-color:var(--acc);}
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 au parking Route de Tamie (D911 · alt ~900m)</div></li>
         <li><div class="act-n">2</div><div>Ravito 10 min · flasques · café chaud</div></li>
-        <li><div class="act-n">3</div><div>Vincent repart avec le coureur (S2 démarre ~06:06)</div></li>
-        <li><div class="act-n">4</div><div>V1 → Nant Fourchu (1h09) · arriver ~07:19 · <strong>montée à pied dès l'arrivée</strong> pour ravito ~08:50</div></li>
+        <li><div class="act-n">3</div><div>Vincent + Louis Le C repartent avec le coureur (S2 démarre ~06:06)</div></li>
+        <li><div class="act-n">4</div><div>V1 → Arcalod base · arriver ~07:30 · <strong>montée à pied dès l'arrivée</strong> via trace R1 pour ravito à pied ~08:50</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
@@ -1101,12 +1123,12 @@ nav button.active{border-bottom-color:var(--acc);}
       <div><h3>Pied de l'Arcalod · Ravito à pied S2→S3</h3><div class="meta">⏰ coureur ~08:50 · Pause 15 min · À PIED</div></div>
     </div>
     <div class="lcard-b">
-      <div class="drive-badge">🚗 Tamie → Nant Fourchu · 1h09 · arriver ~07:19 · 🥾 Montée à pied pour ravito ~08:50</div>
+      <div class="drive-badge">🚗 Tamié → Arcalod base · ~45 min · arriver ~07:30 · 🥾 Montée à pied dès l'arrivée pour ravito ~08:50</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 au parking pied de l'Arcalod (accessible depuis D911 côté Rafforts)</div></li>
         <li><div class="act-n">2</div><div><strong>TOUT LE MONDE monte à pied</strong> vers la zone de transition S2→S3 (alt ~1800m) · compter ~1h30-2h de montée · partir dès ~06:30-07:00</div></li>
         <li><div class="act-n">3</div><div>Ravito à pied ~08:50 · Louis M prend le relais · Vincent redescend</div></li>
-        <li><div class="act-n">4</div><div>Redescendre à V1 · V1 → Nant Fourchu (~35 min) · arriver ~10:05</div></li>
+        <li><div class="act-n">4</div><div>Redescendre à V1 au parking Arcalod base · V1 déjà sur place pour T4 (~11:45)</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel à porter à pied</h3>
       <ul class="mat-list">
@@ -1119,26 +1141,23 @@ nav button.active{border-bottom-color:var(--acc);}
 
   <div class="lcard">
     <div class="lcard-h">
-      <div class="lnum">T3b</div>
-      <div><h3>Nant Fourchu · Lasagnes + Ravito S3→S4</h3><div class="meta">⏰ coureur ~11:49 · Pause 20 min</div></div>
+      <div class="lnum">T4</div>
+      <div><h3>Arcalod base · Relais S3→S4</h3><div class="meta">⏰ coureur ~11:45 · Pause 10 min · Relais Julien + Louis Le C</div></div>
     </div>
     <div class="lcard-b">
-      <div class="drive-badge">🚗 Nant Fourchu → rester sur place après descente · préparer lasagnes (coureur ~11:49)</div>
+      <div class="drive-badge">🚗 Déjà sur place (Arcalod base) après la descente du ravito T3a</div>
       <ul class="act-list">
-        <li><div class="act-n">1</div><div>Garer V1 au parking Nant Fourchu (D990 dir. St-François-de-Sales · alt 1042m)</div></li>
-        <li><div class="act-n">2</div><div>Préparer lasagnes + repas chaud pour l'arrivée ~11:49</div></li>
-        <li><div class="act-n">3</div><div>Accueil coureur + Louis M · 🍝 Lasagnes + pause 20 min</div></li>
-        <li><div class="act-n">4</div><div>Julien + Louis Le C repartent avec le coureur (S4 démarre ~12:09)</div></li>
-        <li><div class="act-n">5</div><div>V1 → Sainte-Reine D911 (20 min) · arriver ~12:35 · <strong>fenêtre de repos ~6h</strong> avant le coureur (~18:27)</div></li>
+        <li><div class="act-n">1</div><div>Garer V1 au parking pied Arcalod (accessible depuis la route)</div></li>
+        <li><div class="act-n">2</div><div>Accueil coureur + Louis M qui redescend · pause 10 min · ravito</div></li>
+        <li><div class="act-n">3</div><div>Julien + Louis Le C repartent avec le coureur (S4 démarre ~11:55)</div></li>
+        <li><div class="act-n">4</div><div>Louis M + Vincent partent à pied via trace crew pour rejoindre Sainte-Reine (T6)</div></li>
+        <li><div class="act-n">5</div><div>V1 → Sainte-Reine D911 (~40 min) · arriver ~12:25 · <strong>fenêtre de repos ~8h</strong> avant le coureur (~20:38)</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
-        <li><input type="checkbox"> LASAGNES / REPAS CHAUD (thermos ou réchaud)</li>
-        <li><input type="checkbox"> Bouillon chaud salé</li>
-        <li><input type="checkbox"> Eau x4 + iso sucré x2</li>
-        <li><input type="checkbox"> Gels Baouw x3 + Décaf x2</li>
-        <li><input type="checkbox"> Drop bag coureur</li>
-        <li><input type="checkbox"> Capsules sel + café sucré</li>
+        <li><input type="checkbox"> Iso Baouw x3 flasques + eau</li>
+        <li><input type="checkbox"> Gel Baouw x4 + Power Gel x2</li>
+        <li><input type="checkbox"> Bouillon salé chaud</li>
         <li><input type="checkbox"> Kit premiers secours</li>
       </ul>
     </div>
@@ -1147,16 +1166,16 @@ nav button.active{border-bottom-color:var(--acc);}
   <div class="lcard">
     <div class="lcard-h">
       <div class="lnum">T6</div>
-      <div><h3>Sainte-Reine D911 · Ravito S5→S6</h3><div class="meta">⏰ coureur ~20:39 · Pause 25 min · km 52 · alt 776m</div></div>
+      <div><h3>Sainte-Reine D911 · Ravito S5→S6</h3><div class="meta">⏰ coureur ~20:38 · Pause 25 min · alt 776m</div></div>
     </div>
     <div class="lcard-b">
-      <div class="drive-badge">🚗 Nant Fourchu → Sainte-Reine D911 · 20 min · arriver ~14:00 · 💤 Repos ~6h avant coureur (~20:39)</div>
+      <div class="drive-badge">🚗 Arcalod base → Sainte-Reine D911 · ~40 min · arriver ~12:25 · 💤 Repos ~8h avant coureur (~20:38)</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 sur D911 au km 52 (alt ~776m) · entre Arclusaz et Colombier</div></li>
-        <li><div class="act-n">2</div><div>Louis M + Vincent accueillent le coureur à l'arrivée S5</div></li>
-        <li><div class="act-n">3</div><div>Ravito 25 min · veste chaude · gels caféiné · frontale</div></li>
-        <li><div class="act-n">4</div><div>Louis M + Vincent repartent avec le coureur (S6 démarre ~21:04)</div></li>
-        <li><div class="act-n">5</div><div>V1 → La Compote (10 min) · arriver ~21:20 · <strong>fenêtre de repos ~3h</strong> avant le coureur (~00:24)</div></li>
+        <li><div class="act-n">2</div><div>Louis M + Vincent arrivent via trace crew walk · Julien + Louis Le C arrivent via S5</div></li>
+        <li><div class="act-n">3</div><div>🍝 Repas lyophilisé chaud · 25 min · veste chaude · gels caféiné · frontale</div></li>
+        <li><div class="act-n">4</div><div><strong>Vincent repart seul</strong> avec le coureur (S6 démarre ~21:03)</div></li>
+        <li><div class="act-n">5</div><div>V1 → La Compote (10 min) · arriver ~21:15 · <strong>fenêtre de repos ~3h</strong> avant le coureur (~00:23)</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
@@ -1173,16 +1192,16 @@ nav button.active{border-bottom-color:var(--acc);}
   <div class="lcard">
     <div class="lcard-h">
       <div class="lnum">T7</div>
-      <div><h3>La Compote · Ravito S6→S7</h3><div class="meta">⏰ coureur ~00:24 · Pause 10 min · Tout le monde</div></div>
+      <div><h3>La Compote · Ravito S6→S7+S8</h3><div class="meta">⏰ coureur ~00:23 · Pause 10 min · Tout le monde</div></div>
     </div>
     <div class="lcard-b">
-      <div class="drive-badge">🚗 Sainte-Reine → La Compote · 10 min · arriver ~21:20 · 💤 Repos ~3h avant coureur (~00:24)</div>
+      <div class="drive-badge">🚗 Sainte-Reine → La Compote · 10 min · arriver ~21:15 · 💤 Repos ~3h avant coureur (~00:23)</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Garer V1 au village de La Compote (alt 719m · D201)</div></li>
         <li><div class="act-n">2</div><div>Tout le monde présent · soutien moral crucial à ~25h de course</div></li>
-        <li><div class="act-n">3</div><div>Vérifier frontale + veste très chaude · descente de nuit depuis Trelod</div></li>
-        <li><div class="act-n">4</div><div><strong>Tout le monde repart avec le coureur</strong> pour la montée finale (S7)</div></li>
-        <li><div class="act-n">5</div><div>1 personne conduit V1 → Parking des Cornes (~25 min) pour accueillir à l'arrivée</div></li>
+        <li><div class="act-n">3</div><div>Vérifier frontale + veste très chaude · montée Trelod de nuit (S7+S8)</div></li>
+        <li><div class="act-n">4</div><div><strong>Tout le monde repart avec le coureur</strong> pour S7 (La Compote → pied Trelod) puis S8 (Trelod → Cornes)</div></li>
+        <li><div class="act-n">5</div><div>1 personne conduit V1 → Parking des Cornes (~25 min) pour accueillir à l'arrivée (T9 ~04:08)</div></li>
       </ul>
       <h3 style="margin:8px 0 6px;">Matériel</h3>
       <ul class="mat-list">
@@ -1197,9 +1216,9 @@ nav button.active{border-bottom-color:var(--acc);}
   </div>
 
   <div class="lcard">
-    <div class="lcard-h"><div class="lnum" style="background:var(--s7)">T8</div><div><h3>🎉 Parking des Cornes · ARRIVÉE</h3><div class="meta">⏰ ~04:09 (14 juin) · alt 1202m</div></div></div>
+    <div class="lcard-h"><div class="lnum" style="background:var(--s8)">T9</div><div><h3>🎉 Parking des Cornes · ARRIVÉE</h3><div class="meta">⏰ ~04:08 (14 juin) · alt 1202m</div></div></div>
     <div class="lcard-b">
-      <div class="drive-badge">🚗 La Compote → Parking des Cornes · 13 min · arriver ~00:47 · attente ~3h</div>
+      <div class="drive-badge">🚗 La Compote → Parking des Cornes · 13 min · arriver ~00:36 · attente ~3h30</div>
       <ul class="act-list">
         <li><div class="act-n">1</div><div>Accueil du coureur · boisson de récupération · couverture de survie</div></li>
         <li><div class="act-n">2</div><div>Tout le monde arrive ensemble depuis Trelod 🏔️</div></li>
@@ -1257,7 +1276,7 @@ nav button.active{border-bottom-color:var(--acc);}
       <li><input type="checkbox" id="s20"><label class="check-label" for="s20">Buff + gants légers + casquette</label></li>
       <li class="check-cat">🎒 Dans le sac</li>
       <li><input type="checkbox" id="s21"><label class="check-label" for="s21">Veste polaire / softshell<div class="check-note">Sommets et nuit</div></label></li>
-      <li><input type="checkbox" id="s22"><label class="check-label" for="s22">Veste très chaude<div class="check-note">Sections nuit S6-S7 · alt 2000m</div></label></li>
+      <li><input type="checkbox" id="s22"><label class="check-label" for="s22">Veste très chaude<div class="check-note">Sections nuit S6/S7/S8 · alt 2000m</div></label></li>
       <li><input type="checkbox" id="s23"><label class="check-label" for="s23">Crème anti-frottement<div class="check-note">Appliquer AVANT le départ</div></label></li>
       <li><input type="checkbox" id="s24"><label class="check-label" for="s24">Bâtons pliables<div class="check-note">8700m D+ · fortement recommandé</div></label></li>
       <li><input type="checkbox" id="s25"><label class="check-label" for="s25">Argent / CB<div class="check-note">Urgence ou abandon</div></label></li>
@@ -1270,8 +1289,8 @@ nav button.active{border-bottom-color:var(--acc);}
     <h3 style="color:var(--ravcar)">Notes veille</h3>
     <ul style="padding-left:14px;color:var(--text2);font-size:12px;line-height:2;">
       <li>Préparer le sac la VEILLE au soir · tout cocher avant de dormir</li>
-      <li>Charger les 7 sections GPX sur la montre</li>
-      <li>Drop bags étiquetés (T3 Nant Fourchu)</li>
+      <li>Charger les 8 sections GPX sur la montre</li>
+      <li>Drop bags étiquetés (T4 Arcalod / T6 Ste-Reine)</li>
       <li>Vérifier la météo · risque orage = veste imper obligatoire</li>
       <li>Charger TOUS les appareils électroniques</li>
       <li>Repas solide vers 22h (pâtes ou riz) · se coucher tôt</li>
@@ -1318,54 +1337,57 @@ nav button.active{border-bottom-color:var(--acc);}
 // ─── CONFIG ───
 const DEFAULT_PACERS = {
   S1: [],
-  S2: ["Vincent"],
+  S2: ["Vincent", "Louis Le C"],
   S3: ["Louis M"],
   S4: ["Julien", "Louis Le C"],
   S5: ["Julien", "Louis Le C"],
-  S6: ["Louis M", "Vincent"],
-  S7: ["Vincent", "Louis M", "Julien", "Louis Le C"]
+  S6: ["Vincent"],
+  S7: ["Vincent", "Louis M", "Julien", "Louis Le C"],
+  S8: ["Vincent", "Louis M", "Julien", "Louis Le C"]
 };
 
 // Sub-segments par section : id = clé dans computeTimes(), null = segment terminal (T)
 const DEFAULT_SUBSEG = {
   S1: [
-    { dur: 70,  id: 'dent_cons',     label: 'Rafforts → Dent de Cons' },
-    { dur: 130, id: null,             label: 'Dent de Cons → Tamié' }
+    { dur: 70,  id: 'dent_cons',      label: 'Rafforts → Dent de Cons' },
+    { dur: 130, id: null,              label: 'Dent de Cons → Tamié' }
   ],
   S2: [
-    { dur: 135, id: 'sambuy',         label: 'Tamié → Sambuy' },
-    { dur: 45,  id: 'chaurionde',     label: 'Sambuy → Chaurionde' },
-    { dur: 30,  id: null,             label: 'Chaurionde → Arcalod' }
+    { dur: 135, id: 'sambuy',          label: 'Tamié → Sambuy' },
+    { dur: 45,  id: 'chaurionde',      label: 'Sambuy → Chaurionde' },
+    { dur: 30,  id: null,              label: 'Chaurionde → Arcalod' }
   ],
   S3: [
-    { dur: 54,  id: 'arcalod_sommet', label: 'Arcalod → Sommet Arcalod' },
-    { dur: 37,  id: 'arcalod_bas',    label: 'Sommet Arcalod → Bas descente' },
-    { dur: 30,  id: 'tre_mollard',    label: 'Bas Arcalod → Tré le Mollard' },
-    { dur: 8,   id: 'mont_coche',     label: 'Tré le Mollard → Mont de la Coche' },
-    { dur: 35,  id: null,             label: 'Mont de la Coche → Nant Fourchu' }
+    { dur: 55,  id: 'arcalod_sommet',  label: '↑ Arcalod (sommet)' },
+    { dur: 35,  id: null,              label: '↓ Descente Arcalod' }
   ],
   S4: [
-    { dur: 130, id: 'pecloz',       label: 'Nant Fourchu → Pecloz' },
-    { dur: 30,  id: 'armenaz',      label: 'Pecloz → Armenaz' },
-    { dur: 50,  id: 'pte_arces',    label: 'Armenaz → Pte des Arces' },
-    { dur: 50,  id: 'pte_arlicot',  label: 'Pte Arces → Pte des Arlicots' },
-    { dur: 35,  id: 'grand_parra',  label: 'Pte Arlicots → Grand Parra' },
-    { dur: 30,  id: null,           label: 'Grand Parra → Ravito pied' }
+    { dur: 73,  id: 'nant_fourchu',    label: 'Arcalod → plateau Nant Fourchu' },
+    { dur: 130, id: 'pecloz',          label: 'Plateau → Pecloz' },
+    { dur: 30,  id: 'armenaz',         label: 'Pecloz → Armenaz' },
+    { dur: 10,  id: null,              label: 'Fin S4 · relais Vincent' }
   ],
   S5: [
-    { dur: 45,  id: 'arclusaz',     label: 'Ravito pied → Dent d\'Arclusaz' },
-    { dur: 60,  id: null,           label: 'Arclusaz → Sainte-Reine D911' }
+    { dur: 50,  id: 'pte_arces',       label: 'Armenaz → Pte des Arces' },
+    { dur: 50,  id: 'pte_arlicot',     label: 'Pte Arces → Pte des Arlicots' },
+    { dur: 35,  id: 'grand_parra',     label: 'Pte Arlicots → Grand Parra' },
+    { dur: 30,  id: 'arclusaz_pied',   label: 'Grand Parra → pied Arclusaz' },
+    { dur: 45,  id: 'arclusaz',        label: 'Pied → Dent d\'Arclusaz' },
+    { dur: 60,  id: null,              label: 'Arclusaz → Sainte-Reine D911' }
   ],
   S6: [
-    { dur: 135, id: 'colombier',    label: 'Sainte-Reine → Colombier' },
-    { dur: 65,  id: null,           label: 'Colombier → La Compote' }
+    { dur: 135, id: 'colombier',       label: 'Sainte-Reine → Colombier' },
+    { dur: 65,  id: null,              label: 'Colombier → La Compote' }
   ],
   S7: [
-    { dur: 165, id: 'trelod',       label: 'La Compote → Trelod' },
-    { dur: 50,  id: null,           label: 'Trelod → Parking des Cornes' }
+    { dur: 95,  id: null,              label: 'La Compote → pied Trelod' }
+  ],
+  S8: [
+    { dur: 70,  id: 'trelod',          label: 'Montée → Trelod (sommet)' },
+    { dur: 50,  id: null,              label: 'Trelod → Parking des Cornes' }
   ]
 };
-const SCHED_PAUSES = [10, 15, 20, 10, 25, 10, 0];
+const SCHED_PAUSES = [10, 15, 10, 10, 25, 10, 0, 0];
 
 function getSubSegs() {
   try {
@@ -1385,7 +1407,7 @@ function saveSubSegs(ss) {
 }
 function getSCHED() {
   const ss = getSubSegs();
-  return ['S1','S2','S3','S4','S5','S6','S7'].map((s, i) => ({
+  return ['S1','S2','S3','S4','S5','S6','S7','S8'].map((s, i) => ({
     dur: ss[s].reduce((a, b) => a + b.dur, 0),
     pause: SCHED_PAUSES[i]
   }));
@@ -1393,8 +1415,8 @@ function getSCHED() {
 const BASE_DEP = 180; // 03:00 en minutes depuis minuit
 
 // Couleurs par section
-const SEC_COLORS  = ['#94a3b8','#3b82f6','#22c55e','#f59e0b','#f97316','#a855f7','#ec4899'];
-const SEC_ALPHAS  = ['rgba(148,163,184','rgba(59,130,246','rgba(34,197,94','rgba(245,158,11','rgba(249,115,22','rgba(168,85,247','rgba(236,72,153'];
+const SEC_COLORS  = ['#94a3b8','#3b82f6','#22c55e','#f59e0b','#f97316','#a855f7','#ec4899','#f43f5e'];
+const SEC_ALPHAS  = ['rgba(148,163,184','rgba(59,130,246','rgba(34,197,94','rgba(245,158,11','rgba(249,115,22','rgba(168,85,247','rgba(236,72,153','rgba(244,63,94'];
 
 // ─── STORAGE ───
 function loadPacers() {
@@ -1420,11 +1442,11 @@ function parseHHMM(s) {
 }
 
 // ─── COMPUTE TIMES ───
-// Returns { T1..T8, S1_start..S7_start, dent_cons, sambuy, ... } in minutes
+// Returns { T1..T9, S1_start..S8_start, dent_cons, sambuy, ... } in minutes
 function computeTimes(actual) {
   const SCHED   = getSCHED();
   const subsegs = getSubSegs();
-  const secs    = ['S1','S2','S3','S4','S5','S6','S7'];
+  const secs    = ['S1','S2','S3','S4','S5','S6','S7','S8'];
   actual = actual || {};
   const t = {};
   t.T1 = actual.T1 != null ? actual.T1 : BASE_DEP;
@@ -1457,7 +1479,7 @@ function pacerStr(sec, pacers) {
 // ─── RENDER ALL ───
 function getSegDur(key) {
   const ss = getSubSegs();
-  if (['S1','S2','S3','S4','S5','S6','S7'].includes(key)) return ss[key].reduce((a,b) => a+b.dur, 0);
+  if (['S1','S2','S3','S4','S5','S6','S7','S8'].includes(key)) return ss[key].reduce((a,b) => a+b.dur, 0);
   return 0;
 }
 
@@ -1603,28 +1625,31 @@ function renderAll() {
       {name:'Power Gel',                    qty:1, g:27},
     ],
     S3: [
-      {name:'Iso Baouw (40g/500ml)',        qty:2, g:30},
-      {name:'Gel Baouw',                    qty:2, g:25},
-      {name:'Power Gel',                    qty:1, g:27},
-      {name:'Banane',                       qty:1, g:24},
-    ],
-    S4: [
-      {name:'Iso Baouw (40g/500ml)',        qty:4, g:30},
-      {name:'Gel Baouw',                    qty:5, g:25},
-      {name:'Power Gel',                    qty:3, g:27},
-    ],
-    S5: [
-      {name:'Iso Baouw (40g/500ml)',        qty:2, g:30},
+      {name:'Iso Baouw (40g/500ml)',        qty:1, g:30},
       {name:'Gel Baouw',                    qty:1, g:25},
       {name:'Power Gel',                    qty:1, g:27},
+    ],
+    S4: [
+      {name:'Iso Baouw (40g/500ml)',        qty:3, g:30},
+      {name:'Gel Baouw',                    qty:4, g:25},
+      {name:'Power Gel',                    qty:2, g:27},
+    ],
+    S5: [
+      {name:'Iso Baouw (40g/500ml)',        qty:4, g:30},
+      {name:'Gel Baouw',                    qty:4, g:25},
+      {name:'Power Gel',                    qty:2, g:27},
     ],
     S6: [
       {name:'Iso Baouw décaf (40g/500ml)',  qty:3, g:30},
       {name:'Power Gel caféiné',            qty:4, g:27},
     ],
     S7: [
-      {name:'Iso Baouw décaf (40g/500ml)',  qty:3, g:30},
-      {name:'Power Gel caféiné',            qty:5, g:27},
+      {name:'Iso Baouw décaf (40g/500ml)',  qty:2, g:30},
+      {name:'Power Gel caféiné',            qty:1, g:27},
+    ],
+    S8: [
+      {name:'Iso Baouw décaf (40g/500ml)',  qty:2, g:30},
+      {name:'Power Gel caféiné',            qty:2, g:27},
     ],
   };
   document.querySelectorAll('[data-sec-nutrition]').forEach(el => {
@@ -1655,11 +1680,12 @@ const JJ_CPS = [
   { id: 'T1', name: 'Départ',           loc: 'Parking des Rafforts',        pause: null, voiture: null },
   { id: 'T2', name: 'Fin S1',           loc: 'Route de Tamie',               pause: 10,   voiture: 'Rafforts → Tamié · 37 min' },
   { id: 'T3', name: 'Fin S2',           loc: 'Arcalod (à pied)',              pause: 15,   voiture: null },
-  { id: 'T4', name: 'Fin S3 🍝',        loc: 'Nant Fourchu',                 pause: 20,   voiture: 'Arcalod → Nant Fourchu · ~35 min' },
-  { id: 'T5', name: 'Fin S4 🥾',        loc: 'Ravito pied · Grand Parra',    pause: 10,   voiture: null },
-  { id: 'T6', name: 'Fin S5',           loc: 'Sainte-Reine D911',            pause: 25,   voiture: 'Ravito GP → Ste-Reine · ~20 min' },
+  { id: 'T4', name: 'Fin S3',           loc: 'Arcalod base · relais Julien',  pause: 10,   voiture: 'Rafforts → Arcalod base · ~30 min' },
+  { id: 'T5', name: 'Fin S4',           loc: 'Après Armenaz',                 pause: 10,   voiture: null },
+  { id: 'T6', name: 'Fin S5 🍝',        loc: 'Sainte-Reine D911',            pause: 25,   voiture: 'Arcalod → Ste-Reine · ~40 min' },
   { id: 'T7', name: 'Fin S6',           loc: 'La Compote',                   pause: 10,   voiture: 'Ste-Reine → La Compote · 10 min' },
-  { id: 'T8', name: 'ARRIVÉE 🎉',       loc: 'Parking des Cornes',           pause: null, voiture: 'La Compote → Cornes · 13 min' },
+  { id: 'T8', name: 'Fin S7',           loc: 'La Compote → Trelod',          pause: 0,    voiture: null },
+  { id: 'T9', name: 'ARRIVÉE 🎉',       loc: 'Parking des Cornes',           pause: null, voiture: 'La Compote → Cornes · 13 min' },
 ];
 
 function renderJourJ() {
@@ -1740,11 +1766,12 @@ function openPacerModal() {
   const secs = [
     { id:'S1', label:'S1 · Rafforts → Tamié',              n:1 },
     { id:'S2', label:'S2 · Tamié → Arcalod',                n:2 },
-    { id:'S3', label:'S3 · Arcalod → Nant Fourchu',         n:3 },
-    { id:'S4', label:'S4 · Nant Fourchu → Ravito pied GP',  n:4 },
-    { id:'S5', label:'S5 · Ravito pied → Sainte-Reine',     n:5 },
+    { id:'S3', label:'S3 · Boucle Arcalod',                 n:3 },
+    { id:'S4', label:'S4 · Arcalod → Armenaz',              n:4 },
+    { id:'S5', label:'S5 · Armenaz → Sainte-Reine',         n:5 },
     { id:'S6', label:'S6 · Sainte-Reine → La Compote',      n:6 },
-    { id:'S7', label:'S7 · La Compote → Parking Cornes',    n:7 },
+    { id:'S7', label:'S7 · La Compote → pied Trelod',       n:7 },
+    { id:'S8', label:'S8 · Trelod → Parking Cornes',        n:8 },
   ];
   const body = secs.map(s => `
 <div class="pm-row">
@@ -1765,7 +1792,7 @@ function closePacerModal() {
 }
 
 function savePacerModal() {
-  const secs = ['S1','S2','S3','S4','S5','S6','S7'];
+  const secs = ['S1','S2','S3','S4','S5','S6','S7','S8'];
   const newP = {};
   secs.forEach(s => {
     const val = (document.getElementById('pm-' + s)?.value || '').trim();
@@ -1790,11 +1817,12 @@ function openTimeModal() {
   const secs = [
     { id:'S1', label:'S1 · Rafforts → Tamié',              n:1 },
     { id:'S2', label:'S2 · Tamié → Arcalod',                n:2 },
-    { id:'S3', label:'S3 · Arcalod → Nant Fourchu',         n:3 },
-    { id:'S4', label:'S4 · Nant Fourchu → Ravito pied GP',  n:4 },
-    { id:'S5', label:'S5 · Ravito pied → Sainte-Reine',     n:5 },
+    { id:'S3', label:'S3 · Boucle Arcalod',                 n:3 },
+    { id:'S4', label:'S4 · Arcalod → Armenaz',              n:4 },
+    { id:'S5', label:'S5 · Armenaz → Sainte-Reine',         n:5 },
     { id:'S6', label:'S6 · Sainte-Reine → La Compote',      n:6 },
-    { id:'S7', label:'S7 · La Compote → Cornes',            n:7 },
+    { id:'S7', label:'S7 · La Compote → pied Trelod',       n:7 },
+    { id:'S8', label:'S8 · Trelod → Parking Cornes',        n:8 },
   ];
   const body = secs.map(sec => `
 <div class="pm-row">
@@ -1822,7 +1850,7 @@ function parseHMS(s) {
 }
 function saveTimeModal() {
   const ss = getSubSegs();
-  const secs = ['S1','S2','S3','S4','S5','S6','S7'];
+  const secs = ['S1','S2','S3','S4','S5','S6','S7','S8'];
   secs.forEach(sec => {
     ss[sec].forEach((seg, i) => {
       const inp = document.getElementById('tm-' + sec + '-' + i);
@@ -1880,7 +1908,7 @@ function toggleSection(id) {
   el.classList.toggle('open');
   if (el.classList.contains('open')) {
     if (id === 'sc12') setTimeout(() => initMapGPX('map12', 'gpx/section1-2.gpx', '#6366f1'), 50);
-    else if (id === 'sc_r2') setTimeout(() => initMapGPX('mapr2', 'gpx/Ravito-marche-2.gpx', '#f59e0b'), 50);
+    else if (id === 'sc_crew56') setTimeout(() => initMapGPX('map_crew56', 'gpx/montée-ravitailleurentresection5V2et6V2', '#6366f1'), 50);
     else {
       const n = parseInt(id.replace('sc',''));
       const gpx = SEC_GPX[n];
@@ -1890,9 +1918,18 @@ function toggleSection(id) {
 }
 
 // ─── LEAFLET MAPS ───
-const COLORS = ['#94a3b8','#3b82f6','#22c55e','#f59e0b','#f97316','#a855f7','#ec4899'];
+const COLORS = ['#94a3b8','#3b82f6','#22c55e','#f59e0b','#f97316','#a855f7','#ec4899','#f43f5e'];
 // Map section card number → GPX file (S5 new uses section4 since no separate file)
-const SEC_GPX = { 1:'section1.gpx',2:'section2.gpx',3:'section3.gpx',4:'section4.gpx',5:'section4.gpx',6:'section5.gpx',7:'section6.gpx' };
+const SEC_GPX = {
+  1:'section1.gpx',
+  2:'section2.gpx',
+  3:'14 2000 section3V2.gpx',
+  4:'14 2000 section 4V2.gpx',
+  5:'14 2000 section 5V2.gpx',
+  6:'14 2000 section 6V2.gpx',
+  7:'section7.gpx',
+  8:'section8.gpx'
+};
 const mapInstances = {};
 
 function initMap(idx) {
@@ -1918,7 +1955,7 @@ function initMap(idx) {
 function initMaps() {
   document.querySelectorAll('.sc.open').forEach(sc => {
     if (sc.id === 'sc12') setTimeout(() => initMapGPX('map12', 'gpx/section1-2.gpx', '#6366f1'), 50);
-    else if (sc.id === 'sc_r2') setTimeout(() => initMapGPX('mapr2', 'gpx/Ravito-marche-2.gpx', '#f59e0b'), 50);
+    else if (sc.id === 'sc_crew56') setTimeout(() => initMapGPX('map_crew56', 'gpx/montée-ravitailleurentresection5V2et6V2', '#6366f1'), 50);
     else {
       const n = parseInt(sc.id.replace('sc',''));
       const gpx = SEC_GPX[n];
